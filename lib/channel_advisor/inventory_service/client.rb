@@ -2,7 +2,7 @@
 module ChannelAdvisor::InventoryServiceSOAP
 
 class InventoryServiceSoap < ::SOAP::RPC::Driver
-  DefaultEndpointUrl = "https://api.channeladvisor.com/ChannelAdvisorAPI/v4/InventoryService.asmx"
+  DefaultEndpointUrl = "https://api.channeladvisor.com/ChannelAdvisorAPI/v6/InventoryService.asmx"
 
   Methods = [
     [ "http://api.channeladvisor.com/webservices/DoesSkuExist",

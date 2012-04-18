@@ -26,7 +26,7 @@ end
 
 # {http://api.channeladvisor.com/webservices/}TaxRateResult
 #   taxAmount - SOAP::SOAPDecimal
-#   taxType - ChannelAdvisor::TaxServiceSOAP::TaxTypeCode
+#   taxType - SOAP::SOAPString
 #   itemDetailList - ChannelAdvisor::TaxServiceSOAP::ArrayOfTaxItemBase
 class TaxRateResult
   attr_accessor :taxAmount
@@ -48,7 +48,7 @@ end
 # abstract
 #   taxAmount - SOAP::SOAPDecimal
 #   taxRate - SOAP::SOAPDouble
-#   taxType - ChannelAdvisor::TaxServiceSOAP::TaxTypeCode
+#   taxType - SOAP::SOAPString
 class TaxItemBase
   attr_accessor :taxAmount
   attr_accessor :taxRate
@@ -61,10 +61,29 @@ class TaxItemBase
   end
 end
 
+# {http://api.channeladvisor.com/webservices/}TaxItemVatShipping
+#   taxAmount - SOAP::SOAPDecimal
+#   taxRate - SOAP::SOAPDouble
+#   taxType - SOAP::SOAPString
+#   shippingCost - SOAP::SOAPDecimal
+class TaxItemVatShipping < TaxItemBase
+  attr_accessor :taxAmount
+  attr_accessor :taxRate
+  attr_accessor :taxType
+  attr_accessor :shippingCost
+
+  def initialize(taxAmount = nil, taxRate = nil, taxType = nil, shippingCost = nil)
+    @taxAmount = taxAmount
+    @taxRate = taxRate
+    @taxType = taxType
+    @shippingCost = shippingCost
+  end
+end
+
 # {http://api.channeladvisor.com/webservices/}TaxItemProduct
 #   taxAmount - SOAP::SOAPDecimal
 #   taxRate - SOAP::SOAPDouble
-#   taxType - ChannelAdvisor::TaxServiceSOAP::TaxTypeCode
+#   taxType - SOAP::SOAPString
 #   quantity - SOAP::SOAPInt
 #   unitPrice - SOAP::SOAPDecimal
 #   lineItemID - SOAP::SOAPInt
@@ -89,25 +108,6 @@ class TaxItemProduct < TaxItemBase
     @lineItemID = lineItemID
     @title = title
     @sKU = sKU
-  end
-end
-
-# {http://api.channeladvisor.com/webservices/}TaxItemVatShipping
-#   taxAmount - SOAP::SOAPDecimal
-#   taxRate - SOAP::SOAPDouble
-#   taxType - ChannelAdvisor::TaxServiceSOAP::TaxTypeCode
-#   shippingCost - SOAP::SOAPDecimal
-class TaxItemVatShipping < TaxItemBase
-  attr_accessor :taxAmount
-  attr_accessor :taxRate
-  attr_accessor :taxType
-  attr_accessor :shippingCost
-
-  def initialize(taxAmount = nil, taxRate = nil, taxType = nil, shippingCost = nil)
-    @taxAmount = taxAmount
-    @taxRate = taxRate
-    @taxType = taxType
-    @shippingCost = shippingCost
   end
 end
 
@@ -150,15 +150,6 @@ end
 class ResultStatus < ::String
   Failure = ResultStatus.new("Failure")
   Success = ResultStatus.new("Success")
-end
-
-# {http://api.channeladvisor.com/webservices/}TaxTypeCode
-class TaxTypeCode < ::String
-  NoChange = TaxTypeCode.new("NoChange")
-  NoTax = TaxTypeCode.new("NoTax")
-  TaxUS = TaxTypeCode.new("TaxUS")
-  VatExclusive = TaxTypeCode.new("VatExclusive")
-  VatInclusive = TaxTypeCode.new("VatInclusive")
 end
 
 # {http://api.channeladvisor.com/webservices/}GetTaxRateList

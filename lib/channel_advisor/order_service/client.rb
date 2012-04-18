@@ -2,7 +2,7 @@
 module ChannelAdvisor::OrderServiceSOAP
 
 class OrderServiceSoap < ::SOAP::RPC::Driver
-  DefaultEndpointUrl = "https://api.channeladvisor.com/ChannelAdvisorAPI/v4/OrderService.asmx"
+  DefaultEndpointUrl = "https://api.channeladvisor.com/ChannelAdvisorAPI/v6/OrderService.asmx"
 
   Methods = [
     [ "http://api.channeladvisor.com/webservices/SetOrdersExportStatus",
@@ -17,22 +17,6 @@ class OrderServiceSoap < ::SOAP::RPC::Driver
       "submitOrderRefund",
       [ ["in", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "SubmitOrderRefund"]],
         ["out", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "SubmitOrderRefundResponse"]] ],
-      { :request_style =>  :document, :request_use =>  :literal,
-        :response_style => :document, :response_use => :literal,
-        :faults => {} }
-    ],
-    [ "http://api.channeladvisor.com/webservices/GetOrderList",
-      "getOrderList",
-      [ ["in", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "GetOrderList"]],
-        ["out", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "GetOrderListResponse"]] ],
-      { :request_style =>  :document, :request_use =>  :literal,
-        :response_style => :document, :response_use => :literal,
-        :faults => {} }
-    ],
-    [ "http://api.channeladvisor.com/webservices/SubmitOrder",
-      "submitOrder",
-      [ ["in", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "SubmitOrder"]],
-        ["out", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "SubmitOrderResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
         :faults => {} }
@@ -65,6 +49,38 @@ class OrderServiceSoap < ::SOAP::RPC::Driver
       "updateOrderList",
       [ ["in", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "UpdateOrderList"]],
         ["out", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "UpdateOrderListResponse"]] ],
+      { :request_style =>  :document, :request_use =>  :literal,
+        :response_style => :document, :response_use => :literal,
+        :faults => {} }
+    ],
+    [ "http://api.channeladvisor.com/webservices/OrderMerge",
+      "orderMerge",
+      [ ["in", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "OrderMerge"]],
+        ["out", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "OrderMergeResponse"]] ],
+      { :request_style =>  :document, :request_use =>  :literal,
+        :response_style => :document, :response_use => :literal,
+        :faults => {} }
+    ],
+    [ "http://api.channeladvisor.com/webservices/OrderSplit",
+      "orderSplit",
+      [ ["in", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "OrderSplit"]],
+        ["out", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "OrderSplitResponse"]] ],
+      { :request_style =>  :document, :request_use =>  :literal,
+        :response_style => :document, :response_use => :literal,
+        :faults => {} }
+    ],
+    [ "http://api.channeladvisor.com/webservices/SubmitOrder",
+      "submitOrder",
+      [ ["in", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "SubmitOrder"]],
+        ["out", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "SubmitOrderResponse"]] ],
+      { :request_style =>  :document, :request_use =>  :literal,
+        :response_style => :document, :response_use => :literal,
+        :faults => {} }
+    ],
+    [ "http://api.channeladvisor.com/webservices/GetOrderList",
+      "getOrderList",
+      [ ["in", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "GetOrderList"]],
+        ["out", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "GetOrderListResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
         :faults => {} }

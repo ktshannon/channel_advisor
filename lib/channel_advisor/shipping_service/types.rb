@@ -118,6 +118,40 @@ class ShippingCarrier
   end
 end
 
+# {http://api.channeladvisor.com/webservices/}ArrayOfInt
+class ArrayOfInt < ::Array
+end
+
+# {http://api.channeladvisor.com/webservices/}ArrayOfString
+class ArrayOfString < ::Array
+end
+
+# {http://api.channeladvisor.com/webservices/}APIResultOfArrayOfOrderShipmentHistoryResponse
+#   status - ChannelAdvisor::ShippingServiceSOAP::ResultStatus
+#   messageCode - SOAP::SOAPInt
+#   message - SOAP::SOAPString
+#   data - SOAP::SOAPString
+#   resultData - ChannelAdvisor::ShippingServiceSOAP::ArrayOfOrderShipmentHistoryResponse
+class APIResultOfArrayOfOrderShipmentHistoryResponse
+  attr_accessor :status
+  attr_accessor :messageCode
+  attr_accessor :message
+  attr_accessor :data
+  attr_accessor :resultData
+
+  def initialize(status = nil, messageCode = nil, message = nil, data = nil, resultData = nil)
+    @status = status
+    @messageCode = messageCode
+    @message = message
+    @data = data
+    @resultData = resultData
+  end
+end
+
+# {http://api.channeladvisor.com/webservices/}ArrayOfOrderShipmentHistoryResponse
+class ArrayOfOrderShipmentHistoryResponse < ::Array
+end
+
 # {http://api.channeladvisor.com/webservices/}APIResultOfBoolean
 #   status - ChannelAdvisor::ShippingServiceSOAP::ResultStatus
 #   messageCode - SOAP::SOAPInt
@@ -157,7 +191,7 @@ end
 # {http://api.channeladvisor.com/webservices/}OrderShipment
 #   orderId - SOAP::SOAPInt
 #   clientOrderIdentifier - SOAP::SOAPString
-#   shipmentType - ChannelAdvisor::ShippingServiceSOAP::ShipmentTypeEnum
+#   shipmentType - SOAP::SOAPString
 #   partialShipment - ChannelAdvisor::ShippingServiceSOAP::PartialShipmentContents
 #   fullShipment - ChannelAdvisor::ShippingServiceSOAP::FullShipmentContents
 class OrderShipment
@@ -316,6 +350,89 @@ class APIResultOfString
   end
 end
 
+# {http://api.channeladvisor.com/datacontracts/ShippingService}OrderShipmentHistoryResponse
+#   orderID - SOAP::SOAPInt
+#   clientOrderIdentifier - SOAP::SOAPString
+#   shippingStatus - SOAP::SOAPString
+#   shippingStatusUpdateDateGMT - SOAP::SOAPDateTime
+#   orderShipments - ChannelAdvisor::ShippingServiceSOAP::ArrayOfOrderShipmentResponse
+class OrderShipmentHistoryResponse
+  attr_accessor :orderID
+  attr_accessor :clientOrderIdentifier
+  attr_accessor :shippingStatus
+  attr_accessor :shippingStatusUpdateDateGMT
+  attr_accessor :orderShipments
+
+  def initialize(orderID = nil, clientOrderIdentifier = nil, shippingStatus = nil, shippingStatusUpdateDateGMT = nil, orderShipments = nil)
+    @orderID = orderID
+    @clientOrderIdentifier = clientOrderIdentifier
+    @shippingStatus = shippingStatus
+    @shippingStatusUpdateDateGMT = shippingStatusUpdateDateGMT
+    @orderShipments = orderShipments
+  end
+end
+
+# {http://api.channeladvisor.com/datacontracts/ShippingService}ArrayOfOrderShipmentResponse
+class ArrayOfOrderShipmentResponse < ::Array
+end
+
+# {http://api.channeladvisor.com/datacontracts/ShippingService}OrderShipmentResponse
+#   shipmentDateGMT - SOAP::SOAPDateTime
+#   carrierCode - SOAP::SOAPString
+#   classCode - SOAP::SOAPString
+#   trackingNumber - SOAP::SOAPString
+#   distributionCenterCode - SOAP::SOAPString
+#   shipmentCost - SOAP::SOAPDecimal
+#   shipmentTaxCost - SOAP::SOAPDecimal
+#   shipmentInsuranceCost - SOAP::SOAPDecimal
+#   sellerFulfillmentID - SOAP::SOAPString
+#   shipmentLineItems - ChannelAdvisor::ShippingServiceSOAP::ArrayOfShipmentLineItemResponse
+class OrderShipmentResponse
+  attr_accessor :shipmentDateGMT
+  attr_accessor :carrierCode
+  attr_accessor :classCode
+  attr_accessor :trackingNumber
+  attr_accessor :distributionCenterCode
+  attr_accessor :shipmentCost
+  attr_accessor :shipmentTaxCost
+  attr_accessor :shipmentInsuranceCost
+  attr_accessor :sellerFulfillmentID
+  attr_accessor :shipmentLineItems
+
+  def initialize(shipmentDateGMT = nil, carrierCode = nil, classCode = nil, trackingNumber = nil, distributionCenterCode = nil, shipmentCost = nil, shipmentTaxCost = nil, shipmentInsuranceCost = nil, sellerFulfillmentID = nil, shipmentLineItems = nil)
+    @shipmentDateGMT = shipmentDateGMT
+    @carrierCode = carrierCode
+    @classCode = classCode
+    @trackingNumber = trackingNumber
+    @distributionCenterCode = distributionCenterCode
+    @shipmentCost = shipmentCost
+    @shipmentTaxCost = shipmentTaxCost
+    @shipmentInsuranceCost = shipmentInsuranceCost
+    @sellerFulfillmentID = sellerFulfillmentID
+    @shipmentLineItems = shipmentLineItems
+  end
+end
+
+# {http://api.channeladvisor.com/datacontracts/ShippingService}ArrayOfShipmentLineItemResponse
+class ArrayOfShipmentLineItemResponse < ::Array
+end
+
+# {http://api.channeladvisor.com/datacontracts/ShippingService}ShipmentLineItemResponse
+#   lineItemID - SOAP::SOAPInt
+#   sKU - SOAP::SOAPString
+#   quantity - SOAP::SOAPInt
+class ShipmentLineItemResponse
+  attr_accessor :lineItemID
+  attr_accessor :sKU
+  attr_accessor :quantity
+
+  def initialize(lineItemID = nil, sKU = nil, quantity = nil)
+    @lineItemID = lineItemID
+    @sKU = sKU
+    @quantity = quantity
+  end
+end
+
 # {http://api.channeladvisor.com/datacontracts/ShippingService}ShipmentResponse
 #   success - SOAP::SOAPBoolean
 #   message - SOAP::SOAPString
@@ -333,12 +450,6 @@ end
 class ResultStatus < ::String
   Failure = ResultStatus.new("Failure")
   Success = ResultStatus.new("Success")
-end
-
-# {http://api.channeladvisor.com/webservices/}ShipmentTypeEnum
-class ShipmentTypeEnum < ::String
-  Full = ShipmentTypeEnum.new("Full")
-  Partial = ShipmentTypeEnum.new("Partial")
 end
 
 # {http://api.channeladvisor.com/webservices/}GetShippingRateList
@@ -396,6 +507,32 @@ class GetShippingCarrierListResponse
 
   def initialize(getShippingCarrierListResult = nil)
     @getShippingCarrierListResult = getShippingCarrierListResult
+  end
+end
+
+# {http://api.channeladvisor.com/webservices/}GetOrderShipmentHistoryList
+#   accountID - SOAP::SOAPString
+#   orderIDList - ChannelAdvisor::ShippingServiceSOAP::ArrayOfInt
+#   clientOrderIdentifierList - ChannelAdvisor::ShippingServiceSOAP::ArrayOfString
+class GetOrderShipmentHistoryList
+  attr_accessor :accountID
+  attr_accessor :orderIDList
+  attr_accessor :clientOrderIdentifierList
+
+  def initialize(accountID = nil, orderIDList = nil, clientOrderIdentifierList = nil)
+    @accountID = accountID
+    @orderIDList = orderIDList
+    @clientOrderIdentifierList = clientOrderIdentifierList
+  end
+end
+
+# {http://api.channeladvisor.com/webservices/}GetOrderShipmentHistoryListResponse
+#   getOrderShipmentHistoryListResult - ChannelAdvisor::ShippingServiceSOAP::APIResultOfArrayOfOrderShipmentHistoryResponse
+class GetOrderShipmentHistoryListResponse
+  attr_accessor :getOrderShipmentHistoryListResult
+
+  def initialize(getOrderShipmentHistoryListResult = nil)
+    @getOrderShipmentHistoryListResult = getOrderShipmentHistoryListResult
   end
 end
 

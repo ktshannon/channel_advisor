@@ -23,7 +23,7 @@ module DefaultMappingRegistry
     :schema_type => XSD::QName.new(NsWebservices, "TaxRateResult"),
     :schema_element => [
       ["taxAmount", ["SOAP::SOAPDecimal", XSD::QName.new(NsWebservices, "TaxAmount")]],
-      ["taxType", ["ChannelAdvisor::TaxServiceSOAP::TaxTypeCode", XSD::QName.new(NsWebservices, "TaxType")]],
+      ["taxType", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "TaxType")], [0, 1]],
       ["itemDetailList", ["ChannelAdvisor::TaxServiceSOAP::ArrayOfTaxItemBase", XSD::QName.new(NsWebservices, "ItemDetailList")], [0, 1]]
     ]
   )
@@ -37,30 +37,30 @@ module DefaultMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => ChannelAdvisor::TaxServiceSOAP::TaxItemProduct,
-    :schema_type => XSD::QName.new(NsWebservices, "TaxItemProduct"),
-    :schema_basetype => XSD::QName.new(NsWebservices, "TaxItemBase"),
-    :schema_element => [
-      ["taxAmount", ["SOAP::SOAPDecimal", XSD::QName.new(NsWebservices, "TaxAmount")]],
-      ["taxRate", ["SOAP::SOAPDouble", XSD::QName.new(NsWebservices, "TaxRate")]],
-      ["taxType", ["ChannelAdvisor::TaxServiceSOAP::TaxTypeCode", XSD::QName.new(NsWebservices, "TaxType")]],
-      ["quantity", ["SOAP::SOAPInt", XSD::QName.new(NsWebservices, "Quantity")]],
-      ["unitPrice", ["SOAP::SOAPDecimal", XSD::QName.new(NsWebservices, "UnitPrice")]],
-      ["lineItemID", ["SOAP::SOAPInt", XSD::QName.new(NsWebservices, "LineItemID")]],
-      ["title", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "Title")], [0, 1]],
-      ["sKU", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "SKU")], [0, 1]]
-    ]
-  )
-
-  EncodedRegistry.register(
     :class => ChannelAdvisor::TaxServiceSOAP::TaxItemVatShipping,
     :schema_type => XSD::QName.new(NsWebservices, "TaxItemVatShipping"),
     :schema_basetype => XSD::QName.new(NsWebservices, "TaxItemBase"),
     :schema_element => [
       ["taxAmount", ["SOAP::SOAPDecimal", XSD::QName.new(NsWebservices, "TaxAmount")]],
       ["taxRate", ["SOAP::SOAPDouble", XSD::QName.new(NsWebservices, "TaxRate")]],
-      ["taxType", ["ChannelAdvisor::TaxServiceSOAP::TaxTypeCode", XSD::QName.new(NsWebservices, "TaxType")]],
+      ["taxType", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "TaxType")], [0, 1]],
       ["shippingCost", ["SOAP::SOAPDecimal", XSD::QName.new(NsWebservices, "ShippingCost")]]
+    ]
+  )
+
+  EncodedRegistry.register(
+    :class => ChannelAdvisor::TaxServiceSOAP::TaxItemProduct,
+    :schema_type => XSD::QName.new(NsWebservices, "TaxItemProduct"),
+    :schema_basetype => XSD::QName.new(NsWebservices, "TaxItemBase"),
+    :schema_element => [
+      ["taxAmount", ["SOAP::SOAPDecimal", XSD::QName.new(NsWebservices, "TaxAmount")]],
+      ["taxRate", ["SOAP::SOAPDouble", XSD::QName.new(NsWebservices, "TaxRate")]],
+      ["taxType", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "TaxType")], [0, 1]],
+      ["quantity", ["SOAP::SOAPInt", XSD::QName.new(NsWebservices, "Quantity")]],
+      ["unitPrice", ["SOAP::SOAPDecimal", XSD::QName.new(NsWebservices, "UnitPrice")]],
+      ["lineItemID", ["SOAP::SOAPInt", XSD::QName.new(NsWebservices, "LineItemID")]],
+      ["title", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "Title")], [0, 1]],
+      ["sKU", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "SKU")], [0, 1]]
     ]
   )
 
@@ -88,11 +88,6 @@ module DefaultMappingRegistry
   EncodedRegistry.register(
     :class => ChannelAdvisor::TaxServiceSOAP::ResultStatus,
     :schema_type => XSD::QName.new(NsWebservices, "ResultStatus")
-  )
-
-  EncodedRegistry.register(
-    :class => ChannelAdvisor::TaxServiceSOAP::TaxTypeCode,
-    :schema_type => XSD::QName.new(NsWebservices, "TaxTypeCode")
   )
 
   LiteralRegistry.register(
@@ -112,7 +107,7 @@ module DefaultMappingRegistry
     :schema_type => XSD::QName.new(NsWebservices, "TaxRateResult"),
     :schema_element => [
       ["taxAmount", ["SOAP::SOAPDecimal", XSD::QName.new(NsWebservices, "TaxAmount")]],
-      ["taxType", ["ChannelAdvisor::TaxServiceSOAP::TaxTypeCode", XSD::QName.new(NsWebservices, "TaxType")]],
+      ["taxType", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "TaxType")], [0, 1]],
       ["itemDetailList", ["ChannelAdvisor::TaxServiceSOAP::ArrayOfTaxItemBase", XSD::QName.new(NsWebservices, "ItemDetailList")], [0, 1]]
     ]
   )
@@ -126,30 +121,30 @@ module DefaultMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ChannelAdvisor::TaxServiceSOAP::TaxItemProduct,
-    :schema_type => XSD::QName.new(NsWebservices, "TaxItemProduct"),
-    :schema_basetype => XSD::QName.new(NsWebservices, "TaxItemBase"),
-    :schema_element => [
-      ["taxAmount", ["SOAP::SOAPDecimal", XSD::QName.new(NsWebservices, "TaxAmount")]],
-      ["taxRate", ["SOAP::SOAPDouble", XSD::QName.new(NsWebservices, "TaxRate")]],
-      ["taxType", ["ChannelAdvisor::TaxServiceSOAP::TaxTypeCode", XSD::QName.new(NsWebservices, "TaxType")]],
-      ["quantity", ["SOAP::SOAPInt", XSD::QName.new(NsWebservices, "Quantity")]],
-      ["unitPrice", ["SOAP::SOAPDecimal", XSD::QName.new(NsWebservices, "UnitPrice")]],
-      ["lineItemID", ["SOAP::SOAPInt", XSD::QName.new(NsWebservices, "LineItemID")]],
-      ["title", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "Title")], [0, 1]],
-      ["sKU", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "SKU")], [0, 1]]
-    ]
-  )
-
-  LiteralRegistry.register(
     :class => ChannelAdvisor::TaxServiceSOAP::TaxItemVatShipping,
     :schema_type => XSD::QName.new(NsWebservices, "TaxItemVatShipping"),
     :schema_basetype => XSD::QName.new(NsWebservices, "TaxItemBase"),
     :schema_element => [
       ["taxAmount", ["SOAP::SOAPDecimal", XSD::QName.new(NsWebservices, "TaxAmount")]],
       ["taxRate", ["SOAP::SOAPDouble", XSD::QName.new(NsWebservices, "TaxRate")]],
-      ["taxType", ["ChannelAdvisor::TaxServiceSOAP::TaxTypeCode", XSD::QName.new(NsWebservices, "TaxType")]],
+      ["taxType", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "TaxType")], [0, 1]],
       ["shippingCost", ["SOAP::SOAPDecimal", XSD::QName.new(NsWebservices, "ShippingCost")]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => ChannelAdvisor::TaxServiceSOAP::TaxItemProduct,
+    :schema_type => XSD::QName.new(NsWebservices, "TaxItemProduct"),
+    :schema_basetype => XSD::QName.new(NsWebservices, "TaxItemBase"),
+    :schema_element => [
+      ["taxAmount", ["SOAP::SOAPDecimal", XSD::QName.new(NsWebservices, "TaxAmount")]],
+      ["taxRate", ["SOAP::SOAPDouble", XSD::QName.new(NsWebservices, "TaxRate")]],
+      ["taxType", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "TaxType")], [0, 1]],
+      ["quantity", ["SOAP::SOAPInt", XSD::QName.new(NsWebservices, "Quantity")]],
+      ["unitPrice", ["SOAP::SOAPDecimal", XSD::QName.new(NsWebservices, "UnitPrice")]],
+      ["lineItemID", ["SOAP::SOAPInt", XSD::QName.new(NsWebservices, "LineItemID")]],
+      ["title", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "Title")], [0, 1]],
+      ["sKU", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "SKU")], [0, 1]]
     ]
   )
 
@@ -180,21 +175,16 @@ module DefaultMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ChannelAdvisor::TaxServiceSOAP::TaxTypeCode,
-    :schema_type => XSD::QName.new(NsWebservices, "TaxTypeCode")
-  )
-
-  LiteralRegistry.register(
     :class => ChannelAdvisor::TaxServiceSOAP::GetTaxRateList,
     :schema_name => XSD::QName.new(NsWebservices, "GetTaxRateList"),
     :schema_element => [
-      ["accountID", "SOAP::SOAPString", [0, 1]],
+      ["accountID", "SOAP::SOAPString"],
       ["cartID", "SOAP::SOAPInt"],
       ["street", "SOAP::SOAPString", [0, 1]],
       ["city", "SOAP::SOAPString", [0, 1]],
-      ["state", "SOAP::SOAPString", [0, 1]],
+      ["state", "SOAP::SOAPString"],
       ["postalCode", "SOAP::SOAPString", [0, 1]],
-      ["country", "SOAP::SOAPString", [0, 1]],
+      ["country", "SOAP::SOAPString"],
       ["shippingCost", "SOAP::SOAPDecimal"]
     ]
   )

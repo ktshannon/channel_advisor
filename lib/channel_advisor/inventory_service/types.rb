@@ -119,7 +119,7 @@ end
 #   supplierCode - SOAP::SOAPString
 #   warehouseLocation - SOAP::SOAPString
 #   taxProductCode - SOAP::SOAPString
-#   flagStyle - ChannelAdvisor::InventoryServiceSOAP::FlagType
+#   flagStyle - SOAP::SOAPString
 #   flagDescription - SOAP::SOAPString
 #   isBlocked - SOAP::SOAPBoolean
 #   blockComment - SOAP::SOAPString
@@ -398,13 +398,16 @@ end
 
 # {http://api.channeladvisor.com/webservices/}ShippingInfo
 #   distributionCenterCode - SOAP::SOAPString
+#   isFBA - SOAP::SOAPBoolean
 #   shippingRateList - ChannelAdvisor::InventoryServiceSOAP::ArrayOfShippingRateInfo
 class ShippingInfo
   attr_accessor :distributionCenterCode
+  attr_accessor :isFBA
   attr_accessor :shippingRateList
 
-  def initialize(distributionCenterCode = nil, shippingRateList = nil)
+  def initialize(distributionCenterCode = nil, isFBA = nil, shippingRateList = nil)
     @distributionCenterCode = distributionCenterCode
+    @isFBA = isFBA
     @shippingRateList = shippingRateList
   end
 end
@@ -422,10 +425,10 @@ end
 #   firstItemHandlingRate - SOAP::SOAPDecimal
 #   additionalItemHandlingRate - SOAP::SOAPDecimal
 #   freeShippingIfBuyItNow - SOAP::SOAPBoolean
-#   firstItemRateAttribute - ChannelAdvisor::InventoryServiceSOAP::ShippingRateAttribute
-#   firstItemHandlingRateAttribute - ChannelAdvisor::InventoryServiceSOAP::HandlingRateAttribute
-#   additionalItemRateAttribute - ChannelAdvisor::InventoryServiceSOAP::ShippingRateAttribute
-#   additionalItemHandlingRateAttribute - ChannelAdvisor::InventoryServiceSOAP::HandlingRateAttribute
+#   firstItemRateAttribute - SOAP::SOAPString
+#   firstItemHandlingRateAttribute - SOAP::SOAPString
+#   additionalItemRateAttribute - SOAP::SOAPString
+#   additionalItemHandlingRateAttribute - SOAP::SOAPString
 class ShippingRateInfo
   attr_accessor :destinationZoneName
   attr_accessor :carrierCode
@@ -457,7 +460,7 @@ class ShippingRateInfo
 end
 
 # {http://api.channeladvisor.com/webservices/}InventoryItemCriteria
-#   dateRangeField - ChannelAdvisor::InventoryServiceSOAP::InventoryItemDateRangeField
+#   dateRangeField - SOAP::SOAPString
 #   dateRangeStartGMT - SOAP::SOAPDateTime
 #   dateRangeEndGMT - SOAP::SOAPDateTime
 #   partialSku - SOAP::SOAPString
@@ -465,8 +468,8 @@ end
 #   skuEndsWith - SOAP::SOAPString
 #   classificationName - SOAP::SOAPString
 #   labelName - SOAP::SOAPString
-#   quantityCheckField - ChannelAdvisor::InventoryServiceSOAP::InventoryItemQuantityField
-#   quantityCheckType - ChannelAdvisor::InventoryServiceSOAP::NumericFilterType
+#   quantityCheckField - SOAP::SOAPString
+#   quantityCheckType - SOAP::SOAPString
 #   quantityCheckValue - SOAP::SOAPInt
 #   pageNumber - SOAP::SOAPInt
 #   pageSize - SOAP::SOAPInt
@@ -782,7 +785,7 @@ end
 # {http://api.channeladvisor.com/webservices/}InventoryQuantityResponse
 #   sKU - SOAP::SOAPString
 #   quantity - SOAP::SOAPInt
-#   messageCode - ChannelAdvisor::InventoryServiceSOAP::ErrorCode
+#   messageCode - SOAP::SOAPInt
 #   message - SOAP::SOAPString
 class InventoryQuantityResponse
   attr_accessor :sKU
@@ -808,7 +811,7 @@ end
 #   supplierCode - SOAP::SOAPString
 #   warehouseLocation - SOAP::SOAPString
 #   taxProductCode - SOAP::SOAPString
-#   flagStyle - ChannelAdvisor::InventoryServiceSOAP::FlagType
+#   flagStyle - SOAP::SOAPString
 #   flagDescription - SOAP::SOAPString
 #   isBlocked - SOAP::SOAPBoolean
 #   blockComment - SOAP::SOAPString
@@ -923,7 +926,7 @@ class InventoryItemSubmit
 end
 
 # {http://api.channeladvisor.com/webservices/}QuantityInfoSubmit
-#   updateType - ChannelAdvisor::InventoryServiceSOAP::InventoryQuantityUpdateType
+#   updateType - SOAP::SOAPString
 #   total - SOAP::SOAPInt
 class QuantityInfoSubmit
   attr_accessor :updateType
@@ -1219,150 +1222,6 @@ class ResultStatus < ::String
   Success = ResultStatus.new("Success")
 end
 
-# {http://api.channeladvisor.com/webservices/}FlagType
-class FlagType < ::String
-  BlueFlag = FlagType.new("BlueFlag")
-  ExclamationPoint = FlagType.new("ExclamationPoint")
-  GreenFlag = FlagType.new("GreenFlag")
-  ItemCopied = FlagType.new("ItemCopied")
-  NoFlag = FlagType.new("NoFlag")
-  NotAvailable = FlagType.new("NotAvailable")
-  Price = FlagType.new("Price")
-  QuestionMark = FlagType.new("QuestionMark")
-  RedFlag = FlagType.new("RedFlag")
-  YellowFlag = FlagType.new("YellowFlag")
-end
-
-# {http://api.channeladvisor.com/webservices/}ShippingRateAttribute
-class ShippingRateAttribute < ::String
-  NotAvailable = ShippingRateAttribute.new("NotAvailable")
-  Price = ShippingRateAttribute.new("Price")
-  TBD = ShippingRateAttribute.new("TBD")
-end
-
-# {http://api.channeladvisor.com/webservices/}HandlingRateAttribute
-class HandlingRateAttribute < ::String
-  NotAvailable = HandlingRateAttribute.new("NotAvailable")
-  Price = HandlingRateAttribute.new("Price")
-end
-
-# {http://api.channeladvisor.com/webservices/}InventoryItemDateRangeField
-class InventoryItemDateRangeField < ::String
-  CreateDate = InventoryItemDateRangeField.new("CreateDate")
-  LastUpdateDate = InventoryItemDateRangeField.new("LastUpdateDate")
-  QtyLastModifiedDate = InventoryItemDateRangeField.new("QtyLastModifiedDate")
-end
-
-# {http://api.channeladvisor.com/webservices/}InventoryItemQuantityField
-class InventoryItemQuantityField < ::String
-  Available = InventoryItemQuantityField.new("Available")
-  Open = InventoryItemQuantityField.new("Open")
-  PendingCheckout = InventoryItemQuantityField.new("PendingCheckout")
-  PendingPayment = InventoryItemQuantityField.new("PendingPayment")
-  PendingShipment = InventoryItemQuantityField.new("PendingShipment")
-  Total = InventoryItemQuantityField.new("Total")
-end
-
-# {http://api.channeladvisor.com/webservices/}NumericFilterType
-class NumericFilterType < ::String
-  EqualTo = NumericFilterType.new("EqualTo")
-  GreaterThan = NumericFilterType.new("GreaterThan")
-  GreaterThanOrEqualTo = NumericFilterType.new("GreaterThanOrEqualTo")
-  LessThan = NumericFilterType.new("LessThan")
-  LessThanOrEqualTo = NumericFilterType.new("LessThanOrEqualTo")
-end
-
-# {http://api.channeladvisor.com/webservices/}InventoryItemSortField
-class InventoryItemSortField < ::String
-  Sku = InventoryItemSortField.new("Sku")
-  Title = InventoryItemSortField.new("Title")
-end
-
-# {http://api.channeladvisor.com/webservices/}SortDirection
-class SortDirection < ::String
-  Ascending = SortDirection.new("Ascending")
-  Descending = SortDirection.new("Descending")
-end
-
-# {http://api.channeladvisor.com/webservices/}ErrorCode
-class ErrorCode < ::String
-  AccountIDIsBlank = ErrorCode.new("AccountIDIsBlank")
-  AccountIDIsNull = ErrorCode.new("AccountIDIsNull")
-  AccountIDNotExists = ErrorCode.new("AccountIDNotExists")
-  CartIDNull = ErrorCode.new("CartIDNull")
-  CartNotFound = ErrorCode.new("CartNotFound")
-  DataIntegrityViolation = ErrorCode.new("DataIntegrityViolation")
-  EMailAddressBadFormat = ErrorCode.new("EMailAddressBadFormat")
-  EmptyCartSubmit = ErrorCode.new("EmptyCartSubmit")
-  ErrorInvoiceCreation = ErrorCode.new("ErrorInvoiceCreation")
-  Error_AuctionWinnerValidation = ErrorCode.new("Error_AuctionWinnerValidation")
-  Error_NotValidCartID = ErrorCode.new("Error_NotValidCartID")
-  Error_PromotionNotFound = ErrorCode.new("Error_PromotionNotFound")
-  Error_SKUDuplicated = ErrorCode.new("Error_SKUDuplicated")
-  Error_SavingBillingData = ErrorCode.new("Error_SavingBillingData")
-  Error_SavingOrderShippingData = ErrorCode.new("Error_SavingOrderShippingData")
-  FetchFilterInfoNull = ErrorCode.new("FetchFilterInfoNull")
-  InvalidArguments = ErrorCode.new("InvalidArguments")
-  InvalidCartID = ErrorCode.new("InvalidCartID")
-  InvalidSaleSource = ErrorCode.new("InvalidSaleSource")
-  Invalid_AddressLength = ErrorCode.new("Invalid_AddressLength")
-  Invalid_CCLast4 = ErrorCode.new("Invalid_CCLast4")
-  Invalid_CarrierClassData = ErrorCode.new("Invalid_CarrierClassData")
-  Invalid_CityLength = ErrorCode.new("Invalid_CityLength")
-  Invalid_CompanyNameLength = ErrorCode.new("Invalid_CompanyNameLength")
-  Invalid_CountryLength = ErrorCode.new("Invalid_CountryLength")
-  Invalid_CustomFieldValue = ErrorCode.new("Invalid_CustomFieldValue")
-  Invalid_FirstNameLength = ErrorCode.new("Invalid_FirstNameLength")
-  Invalid_JobTitleLength = ErrorCode.new("Invalid_JobTitleLength")
-  Invalid_LastNameLength = ErrorCode.new("Invalid_LastNameLength")
-  Invalid_OrderId = ErrorCode.new("Invalid_OrderId")
-  Invalid_OrderNumberLength = ErrorCode.new("Invalid_OrderNumberLength")
-  Invalid_OrderStatus = ErrorCode.new("Invalid_OrderStatus")
-  Invalid_PhoneLength = ErrorCode.new("Invalid_PhoneLength")
-  Invalid_PostalCodeLength = ErrorCode.new("Invalid_PostalCodeLength")
-  Invalid_ShippingInstructionsLgth = ErrorCode.new("Invalid_ShippingInstructionsLgth")
-  Invalid_SuffixLength = ErrorCode.new("Invalid_SuffixLength")
-  Invalid_TitleLength = ErrorCode.new("Invalid_TitleLength")
-  Invalid_TrackingNumberLgth = ErrorCode.new("Invalid_TrackingNumberLgth")
-  LineItemIDNotFound = ErrorCode.new("LineItemIDNotFound")
-  LineItemOrSKUEmpty = ErrorCode.new("LineItemOrSKUEmpty")
-  MissingEmailAddress = ErrorCode.new("MissingEmailAddress")
-  MultiplePromoCodesSpecified = ErrorCode.new("MultiplePromoCodesSpecified")
-  NegativeQuantity = ErrorCode.new("NegativeQuantity")
-  OrderCollectionNull = ErrorCode.new("OrderCollectionNull")
-  OrderIdIsNullOrEmpty = ErrorCode.new("OrderIdIsNullOrEmpty")
-  PromoAmountOutOfRange = ErrorCode.new("PromoAmountOutOfRange")
-  QuantityNotEnough = ErrorCode.new("QuantityNotEnough")
-  RoverRegionNotFound = ErrorCode.new("RoverRegionNotFound")
-  SKUNotFound = ErrorCode.new("SKUNotFound")
-  ShippingCostNegative = ErrorCode.new("ShippingCostNegative")
-  SkuIsBlank = ErrorCode.new("SkuIsBlank")
-  SkuIsNull = ErrorCode.new("SkuIsNull")
-  Success = ErrorCode.new("Success")
-  TooManyGiftWrapAmounts = ErrorCode.new("TooManyGiftWrapAmounts")
-  TooManyInsuranceAmounts = ErrorCode.new("TooManyInsuranceAmounts")
-  TooManySKUsRequested = ErrorCode.new("TooManySKUsRequested")
-  TooManyShippingAmounts = ErrorCode.new("TooManyShippingAmounts")
-  TooManyTaxAmounts = ErrorCode.new("TooManyTaxAmounts")
-  TooManyVATGiftWrapAmounts = ErrorCode.new("TooManyVATGiftWrapAmounts")
-  TooManyVATShippingAmounts = ErrorCode.new("TooManyVATShippingAmounts")
-  Unexpected = ErrorCode.new("Unexpected")
-  VATRangeOutOfRange = ErrorCode.new("VATRangeOutOfRange")
-  WrongAccountSettings = ErrorCode.new("WrongAccountSettings")
-  WrongCountryInfo = ErrorCode.new("WrongCountryInfo")
-  WrongStateInfo = ErrorCode.new("WrongStateInfo")
-  ZeroQuantity = ErrorCode.new("ZeroQuantity")
-end
-
-# {http://api.channeladvisor.com/webservices/}InventoryQuantityUpdateType
-class InventoryQuantityUpdateType < ::String
-  Absolute = InventoryQuantityUpdateType.new("Absolute")
-  Available = InventoryQuantityUpdateType.new("Available")
-  InStock = InventoryQuantityUpdateType.new("InStock")
-  Relative = InventoryQuantityUpdateType.new("Relative")
-  UnShipped = InventoryQuantityUpdateType.new("UnShipped")
-end
-
 # {http://api.channeladvisor.com/webservices/}DoesSkuExist
 #   accountID - SOAP::SOAPString
 #   sku - SOAP::SOAPString
@@ -1449,8 +1308,8 @@ end
 #   accountID - SOAP::SOAPString
 #   itemCriteria - ChannelAdvisor::InventoryServiceSOAP::InventoryItemCriteria
 #   detailLevel - ChannelAdvisor::InventoryServiceSOAP::InventoryItemDetailLevel
-#   sortField - ChannelAdvisor::InventoryServiceSOAP::InventoryItemSortField
-#   sortDirection - ChannelAdvisor::InventoryServiceSOAP::SortDirection
+#   sortField - SOAP::SOAPString
+#   sortDirection - SOAP::SOAPString
 class GetFilteredInventoryItemList
   attr_accessor :accountID
   attr_accessor :itemCriteria
@@ -1480,8 +1339,8 @@ end
 # {http://api.channeladvisor.com/webservices/}GetFilteredSkuList
 #   accountID - SOAP::SOAPString
 #   itemCriteria - ChannelAdvisor::InventoryServiceSOAP::InventoryItemCriteria
-#   sortField - ChannelAdvisor::InventoryServiceSOAP::InventoryItemSortField
-#   sortDirection - ChannelAdvisor::InventoryServiceSOAP::SortDirection
+#   sortField - SOAP::SOAPString
+#   sortDirection - SOAP::SOAPString
 class GetFilteredSkuList
   attr_accessor :accountID
   attr_accessor :itemCriteria

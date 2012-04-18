@@ -152,7 +152,7 @@ module DefaultMappingRegistry
     :class => ChannelAdvisor::AdminServiceSOAP::GetAuthorizationList,
     :schema_name => XSD::QName.new(NsWebservices, "GetAuthorizationList"),
     :schema_element => [
-      ["localID", "SOAP::SOAPInt"]
+      ["localID", "SOAP::SOAPInteger", [0, 1]]
     ]
   )
 
