@@ -87,7 +87,7 @@ module DefaultMappingRegistry
       ["title", ["SOAP::SOAPString", XSD::QName.new(NsOrders, "Title")], [0, 1]],
       ["lineItemID", ["SOAP::SOAPInt", XSD::QName.new(NsOrders, "LineItemID")]],
       ["quantity", ["SOAP::SOAPInt", XSD::QName.new(NsOrders, "Quantity")]],
-      ["itemSaleSource", ["ChannelAdvisor::CartServiceSOAP::SiteToken", XSD::QName.new(NsOrders, "ItemSaleSource")]],
+      ["itemSaleSource", ["SOAP::SOAPString", XSD::QName.new(NsOrders, "ItemSaleSource")], [0, 1]],
       ["unitPrice", ["SOAP::SOAPDecimal", XSD::QName.new(NsOrders, "UnitPrice")]],
       ["currencyCode", ["SOAP::SOAPString", XSD::QName.new(NsOrders, "CurrencyCode")], [0, 1]],
       ["unitWeight", ["ChannelAdvisor::CartServiceSOAP::ItemWeight", XSD::QName.new(NsOrders, "UnitWeight")], [0, 1]]
@@ -111,7 +111,7 @@ module DefaultMappingRegistry
       ["title", ["SOAP::SOAPString", XSD::QName.new(NsOrders, "Title")], [0, 1]],
       ["lineItemID", ["SOAP::SOAPInt", XSD::QName.new(NsOrders, "LineItemID")]],
       ["quantity", ["SOAP::SOAPInt", XSD::QName.new(NsOrders, "Quantity")]],
-      ["itemSaleSource", ["ChannelAdvisor::CartServiceSOAP::SiteToken", XSD::QName.new(NsOrders, "ItemSaleSource")]],
+      ["itemSaleSource", ["SOAP::SOAPString", XSD::QName.new(NsOrders, "ItemSaleSource")], [0, 1]],
       ["unitPrice", ["SOAP::SOAPDecimal", XSD::QName.new(NsOrders, "UnitPrice")]],
       ["allowNegativeQuantity", ["SOAP::SOAPBoolean", XSD::QName.new(NsOrders, "AllowNegativeQuantity")]]
     ]
@@ -120,11 +120,6 @@ module DefaultMappingRegistry
   EncodedRegistry.register(
     :class => ChannelAdvisor::CartServiceSOAP::ResultStatus,
     :schema_type => XSD::QName.new(NsWebservices, "ResultStatus")
-  )
-
-  EncodedRegistry.register(
-    :class => ChannelAdvisor::CartServiceSOAP::SiteToken,
-    :schema_type => XSD::QName.new(NsOrders, "SiteToken")
   )
 
   LiteralRegistry.register(
@@ -207,7 +202,7 @@ module DefaultMappingRegistry
       ["title", ["SOAP::SOAPString", XSD::QName.new(NsOrders, "Title")], [0, 1]],
       ["lineItemID", ["SOAP::SOAPInt", XSD::QName.new(NsOrders, "LineItemID")]],
       ["quantity", ["SOAP::SOAPInt", XSD::QName.new(NsOrders, "Quantity")]],
-      ["itemSaleSource", ["ChannelAdvisor::CartServiceSOAP::SiteToken", XSD::QName.new(NsOrders, "ItemSaleSource")]],
+      ["itemSaleSource", ["SOAP::SOAPString", XSD::QName.new(NsOrders, "ItemSaleSource")], [0, 1]],
       ["unitPrice", ["SOAP::SOAPDecimal", XSD::QName.new(NsOrders, "UnitPrice")]],
       ["currencyCode", ["SOAP::SOAPString", XSD::QName.new(NsOrders, "CurrencyCode")], [0, 1]],
       ["unitWeight", ["ChannelAdvisor::CartServiceSOAP::ItemWeight", XSD::QName.new(NsOrders, "UnitWeight")], [0, 1]]
@@ -231,7 +226,7 @@ module DefaultMappingRegistry
       ["title", ["SOAP::SOAPString", XSD::QName.new(NsOrders, "Title")], [0, 1]],
       ["lineItemID", ["SOAP::SOAPInt", XSD::QName.new(NsOrders, "LineItemID")]],
       ["quantity", ["SOAP::SOAPInt", XSD::QName.new(NsOrders, "Quantity")]],
-      ["itemSaleSource", ["ChannelAdvisor::CartServiceSOAP::SiteToken", XSD::QName.new(NsOrders, "ItemSaleSource")]],
+      ["itemSaleSource", ["SOAP::SOAPString", XSD::QName.new(NsOrders, "ItemSaleSource")], [0, 1]],
       ["unitPrice", ["SOAP::SOAPDecimal", XSD::QName.new(NsOrders, "UnitPrice")]],
       ["allowNegativeQuantity", ["SOAP::SOAPBoolean", XSD::QName.new(NsOrders, "AllowNegativeQuantity")]]
     ]
@@ -243,15 +238,10 @@ module DefaultMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ChannelAdvisor::CartServiceSOAP::SiteToken,
-    :schema_type => XSD::QName.new(NsOrders, "SiteToken")
-  )
-
-  LiteralRegistry.register(
     :class => ChannelAdvisor::CartServiceSOAP::GetCart,
     :schema_name => XSD::QName.new(NsWebservices, "GetCart"),
     :schema_element => [
-      ["accountID", "SOAP::SOAPString", [0, 1]],
+      ["accountID", "SOAP::SOAPString"],
       ["cartID", "SOAP::SOAPInt"]
     ]
   )
@@ -277,7 +267,7 @@ module DefaultMappingRegistry
     :class => ChannelAdvisor::CartServiceSOAP::DeleteCart,
     :schema_name => XSD::QName.new(NsWebservices, "DeleteCart"),
     :schema_element => [
-      ["accountID", "SOAP::SOAPString", [0, 1]],
+      ["accountID", "SOAP::SOAPString"],
       ["cartID", "SOAP::SOAPInt"]
     ]
   )
@@ -294,7 +284,7 @@ module DefaultMappingRegistry
     :class => ChannelAdvisor::CartServiceSOAP::CreateCart,
     :schema_name => XSD::QName.new(NsWebservices, "CreateCart"),
     :schema_element => [
-      ["accountID", "SOAP::SOAPString", [0, 1]],
+      ["accountID", "SOAP::SOAPString"],
       ["buyerEmail", "SOAP::SOAPString", [0, 1]],
       ["lineItem", "ChannelAdvisor::CartServiceSOAP::ArrayOfCartItemRequest", [0, 1]]
     ]
@@ -312,10 +302,10 @@ module DefaultMappingRegistry
     :class => ChannelAdvisor::CartServiceSOAP::ModifyCart,
     :schema_name => XSD::QName.new(NsWebservices, "ModifyCart"),
     :schema_element => [
-      ["accountID", "SOAP::SOAPString", [0, 1]],
+      ["accountID", "SOAP::SOAPString"],
       ["cartID", "SOAP::SOAPInt"],
       ["buyerEmail", "SOAP::SOAPString", [0, 1]],
-      ["lineItem", "ChannelAdvisor::CartServiceSOAP::ArrayOfCartItemRequest", [0, 1]]
+      ["lineItemList", "ChannelAdvisor::CartServiceSOAP::ArrayOfCartItemRequest", [0, 1]]
     ]
   )
 

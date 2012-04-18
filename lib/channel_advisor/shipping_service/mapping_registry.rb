@@ -88,6 +88,42 @@ module DefaultMappingRegistry
   )
 
   EncodedRegistry.register(
+    :class => ChannelAdvisor::ShippingServiceSOAP::ArrayOfInt,
+    :schema_type => XSD::QName.new(NsWebservices, "ArrayOfInt"),
+    :schema_element => [
+      ["int", "SOAP::SOAPInt[]", [0, nil]]
+    ]
+  )
+
+  EncodedRegistry.register(
+    :class => ChannelAdvisor::ShippingServiceSOAP::ArrayOfString,
+    :schema_type => XSD::QName.new(NsWebservices, "ArrayOfString"),
+    :schema_element => [
+      ["string", "SOAP::SOAPString[]", [0, nil]]
+    ]
+  )
+
+  EncodedRegistry.register(
+    :class => ChannelAdvisor::ShippingServiceSOAP::APIResultOfArrayOfOrderShipmentHistoryResponse,
+    :schema_type => XSD::QName.new(NsWebservices, "APIResultOfArrayOfOrderShipmentHistoryResponse"),
+    :schema_element => [
+      ["status", ["ChannelAdvisor::ShippingServiceSOAP::ResultStatus", XSD::QName.new(NsWebservices, "Status")]],
+      ["messageCode", ["SOAP::SOAPInt", XSD::QName.new(NsWebservices, "MessageCode")]],
+      ["message", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "Message")], [0, 1]],
+      ["data", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "Data")], [0, 1]],
+      ["resultData", ["ChannelAdvisor::ShippingServiceSOAP::ArrayOfOrderShipmentHistoryResponse", XSD::QName.new(NsWebservices, "ResultData")], [0, 1]]
+    ]
+  )
+
+  EncodedRegistry.register(
+    :class => ChannelAdvisor::ShippingServiceSOAP::ArrayOfOrderShipmentHistoryResponse,
+    :schema_type => XSD::QName.new(NsWebservices, "ArrayOfOrderShipmentHistoryResponse"),
+    :schema_element => [
+      ["orderShipmentHistoryResponse", ["ChannelAdvisor::ShippingServiceSOAP::OrderShipmentHistoryResponse[]", XSD::QName.new(NsWebservices, "OrderShipmentHistoryResponse")], [0, nil]]
+    ]
+  )
+
+  EncodedRegistry.register(
     :class => ChannelAdvisor::ShippingServiceSOAP::APIResultOfBoolean,
     :schema_type => XSD::QName.new(NsWebservices, "APIResultOfBoolean"),
     :schema_element => [
@@ -121,7 +157,7 @@ module DefaultMappingRegistry
     :schema_element => [
       ["orderId", ["SOAP::SOAPInt", XSD::QName.new(NsWebservices, "OrderId")]],
       ["clientOrderIdentifier", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "ClientOrderIdentifier")], [0, 1]],
-      ["shipmentType", ["ChannelAdvisor::ShippingServiceSOAP::ShipmentTypeEnum", XSD::QName.new(NsWebservices, "ShipmentType")]],
+      ["shipmentType", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "ShipmentType")], [0, 1]],
       ["partialShipment", ["ChannelAdvisor::ShippingServiceSOAP::PartialShipmentContents", XSD::QName.new(NsWebservices, "PartialShipment")], [0, 1]],
       ["fullShipment", ["ChannelAdvisor::ShippingServiceSOAP::FullShipmentContents", XSD::QName.new(NsWebservices, "FullShipment")], [0, 1]]
     ]
@@ -216,6 +252,61 @@ module DefaultMappingRegistry
   )
 
   EncodedRegistry.register(
+    :class => ChannelAdvisor::ShippingServiceSOAP::OrderShipmentHistoryResponse,
+    :schema_type => XSD::QName.new(NsShippingService, "OrderShipmentHistoryResponse"),
+    :schema_element => [
+      ["orderID", ["SOAP::SOAPInt", XSD::QName.new(NsShippingService, "OrderID")]],
+      ["clientOrderIdentifier", ["SOAP::SOAPString", XSD::QName.new(NsShippingService, "ClientOrderIdentifier")], [0, 1]],
+      ["shippingStatus", ["SOAP::SOAPString", XSD::QName.new(NsShippingService, "ShippingStatus")], [0, 1]],
+      ["shippingStatusUpdateDateGMT", ["SOAP::SOAPDateTime", XSD::QName.new(NsShippingService, "ShippingStatusUpdateDateGMT")]],
+      ["orderShipments", ["ChannelAdvisor::ShippingServiceSOAP::ArrayOfOrderShipmentResponse", XSD::QName.new(NsShippingService, "OrderShipments")], [0, 1]]
+    ]
+  )
+
+  EncodedRegistry.register(
+    :class => ChannelAdvisor::ShippingServiceSOAP::ArrayOfOrderShipmentResponse,
+    :schema_type => XSD::QName.new(NsShippingService, "ArrayOfOrderShipmentResponse"),
+    :schema_element => [
+      ["orderShipmentResponse", ["ChannelAdvisor::ShippingServiceSOAP::OrderShipmentResponse[]", XSD::QName.new(NsShippingService, "OrderShipmentResponse")], [0, nil]]
+    ]
+  )
+
+  EncodedRegistry.register(
+    :class => ChannelAdvisor::ShippingServiceSOAP::OrderShipmentResponse,
+    :schema_type => XSD::QName.new(NsShippingService, "OrderShipmentResponse"),
+    :schema_element => [
+      ["shipmentDateGMT", ["SOAP::SOAPDateTime", XSD::QName.new(NsShippingService, "ShipmentDateGMT")]],
+      ["carrierCode", ["SOAP::SOAPString", XSD::QName.new(NsShippingService, "CarrierCode")], [0, 1]],
+      ["classCode", ["SOAP::SOAPString", XSD::QName.new(NsShippingService, "ClassCode")], [0, 1]],
+      ["trackingNumber", ["SOAP::SOAPString", XSD::QName.new(NsShippingService, "TrackingNumber")], [0, 1]],
+      ["distributionCenterCode", ["SOAP::SOAPString", XSD::QName.new(NsShippingService, "DistributionCenterCode")], [0, 1]],
+      ["shipmentCost", ["SOAP::SOAPDecimal", XSD::QName.new(NsShippingService, "ShipmentCost")]],
+      ["shipmentTaxCost", ["SOAP::SOAPDecimal", XSD::QName.new(NsShippingService, "ShipmentTaxCost")]],
+      ["shipmentInsuranceCost", ["SOAP::SOAPDecimal", XSD::QName.new(NsShippingService, "ShipmentInsuranceCost")]],
+      ["sellerFulfillmentID", ["SOAP::SOAPString", XSD::QName.new(NsShippingService, "SellerFulfillmentID")], [0, 1]],
+      ["shipmentLineItems", ["ChannelAdvisor::ShippingServiceSOAP::ArrayOfShipmentLineItemResponse", XSD::QName.new(NsShippingService, "ShipmentLineItems")], [0, 1]]
+    ]
+  )
+
+  EncodedRegistry.register(
+    :class => ChannelAdvisor::ShippingServiceSOAP::ArrayOfShipmentLineItemResponse,
+    :schema_type => XSD::QName.new(NsShippingService, "ArrayOfShipmentLineItemResponse"),
+    :schema_element => [
+      ["shipmentLineItemResponse", ["ChannelAdvisor::ShippingServiceSOAP::ShipmentLineItemResponse[]", XSD::QName.new(NsShippingService, "ShipmentLineItemResponse")], [0, nil]]
+    ]
+  )
+
+  EncodedRegistry.register(
+    :class => ChannelAdvisor::ShippingServiceSOAP::ShipmentLineItemResponse,
+    :schema_type => XSD::QName.new(NsShippingService, "ShipmentLineItemResponse"),
+    :schema_element => [
+      ["lineItemID", ["SOAP::SOAPInt", XSD::QName.new(NsShippingService, "LineItemID")]],
+      ["sKU", ["SOAP::SOAPString", XSD::QName.new(NsShippingService, "SKU")], [0, 1]],
+      ["quantity", ["SOAP::SOAPInt", XSD::QName.new(NsShippingService, "Quantity")]]
+    ]
+  )
+
+  EncodedRegistry.register(
     :class => ChannelAdvisor::ShippingServiceSOAP::ShipmentResponse,
     :schema_type => XSD::QName.new(NsShippingService, "ShipmentResponse"),
     :schema_element => [
@@ -227,11 +318,6 @@ module DefaultMappingRegistry
   EncodedRegistry.register(
     :class => ChannelAdvisor::ShippingServiceSOAP::ResultStatus,
     :schema_type => XSD::QName.new(NsWebservices, "ResultStatus")
-  )
-
-  EncodedRegistry.register(
-    :class => ChannelAdvisor::ShippingServiceSOAP::ShipmentTypeEnum,
-    :schema_type => XSD::QName.new(NsWebservices, "ShipmentTypeEnum")
   )
 
   LiteralRegistry.register(
@@ -315,6 +401,42 @@ module DefaultMappingRegistry
   )
 
   LiteralRegistry.register(
+    :class => ChannelAdvisor::ShippingServiceSOAP::ArrayOfInt,
+    :schema_type => XSD::QName.new(NsWebservices, "ArrayOfInt"),
+    :schema_element => [
+      ["int", "SOAP::SOAPInt[]", [0, nil]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => ChannelAdvisor::ShippingServiceSOAP::ArrayOfString,
+    :schema_type => XSD::QName.new(NsWebservices, "ArrayOfString"),
+    :schema_element => [
+      ["string", "SOAP::SOAPString[]", [0, nil]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => ChannelAdvisor::ShippingServiceSOAP::APIResultOfArrayOfOrderShipmentHistoryResponse,
+    :schema_type => XSD::QName.new(NsWebservices, "APIResultOfArrayOfOrderShipmentHistoryResponse"),
+    :schema_element => [
+      ["status", ["ChannelAdvisor::ShippingServiceSOAP::ResultStatus", XSD::QName.new(NsWebservices, "Status")]],
+      ["messageCode", ["SOAP::SOAPInt", XSD::QName.new(NsWebservices, "MessageCode")]],
+      ["message", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "Message")], [0, 1]],
+      ["data", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "Data")], [0, 1]],
+      ["resultData", ["ChannelAdvisor::ShippingServiceSOAP::ArrayOfOrderShipmentHistoryResponse", XSD::QName.new(NsWebservices, "ResultData")], [0, 1]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => ChannelAdvisor::ShippingServiceSOAP::ArrayOfOrderShipmentHistoryResponse,
+    :schema_type => XSD::QName.new(NsWebservices, "ArrayOfOrderShipmentHistoryResponse"),
+    :schema_element => [
+      ["orderShipmentHistoryResponse", ["ChannelAdvisor::ShippingServiceSOAP::OrderShipmentHistoryResponse[]", XSD::QName.new(NsWebservices, "OrderShipmentHistoryResponse")], [0, nil]]
+    ]
+  )
+
+  LiteralRegistry.register(
     :class => ChannelAdvisor::ShippingServiceSOAP::APIResultOfBoolean,
     :schema_type => XSD::QName.new(NsWebservices, "APIResultOfBoolean"),
     :schema_element => [
@@ -348,7 +470,7 @@ module DefaultMappingRegistry
     :schema_element => [
       ["orderId", ["SOAP::SOAPInt", XSD::QName.new(NsWebservices, "OrderId")]],
       ["clientOrderIdentifier", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "ClientOrderIdentifier")], [0, 1]],
-      ["shipmentType", ["ChannelAdvisor::ShippingServiceSOAP::ShipmentTypeEnum", XSD::QName.new(NsWebservices, "ShipmentType")]],
+      ["shipmentType", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "ShipmentType")], [0, 1]],
       ["partialShipment", ["ChannelAdvisor::ShippingServiceSOAP::PartialShipmentContents", XSD::QName.new(NsWebservices, "PartialShipment")], [0, 1]],
       ["fullShipment", ["ChannelAdvisor::ShippingServiceSOAP::FullShipmentContents", XSD::QName.new(NsWebservices, "FullShipment")], [0, 1]]
     ]
@@ -443,6 +565,61 @@ module DefaultMappingRegistry
   )
 
   LiteralRegistry.register(
+    :class => ChannelAdvisor::ShippingServiceSOAP::OrderShipmentHistoryResponse,
+    :schema_type => XSD::QName.new(NsShippingService, "OrderShipmentHistoryResponse"),
+    :schema_element => [
+      ["orderID", ["SOAP::SOAPInt", XSD::QName.new(NsShippingService, "OrderID")]],
+      ["clientOrderIdentifier", ["SOAP::SOAPString", XSD::QName.new(NsShippingService, "ClientOrderIdentifier")], [0, 1]],
+      ["shippingStatus", ["SOAP::SOAPString", XSD::QName.new(NsShippingService, "ShippingStatus")], [0, 1]],
+      ["shippingStatusUpdateDateGMT", ["SOAP::SOAPDateTime", XSD::QName.new(NsShippingService, "ShippingStatusUpdateDateGMT")]],
+      ["orderShipments", ["ChannelAdvisor::ShippingServiceSOAP::ArrayOfOrderShipmentResponse", XSD::QName.new(NsShippingService, "OrderShipments")], [0, 1]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => ChannelAdvisor::ShippingServiceSOAP::ArrayOfOrderShipmentResponse,
+    :schema_type => XSD::QName.new(NsShippingService, "ArrayOfOrderShipmentResponse"),
+    :schema_element => [
+      ["orderShipmentResponse", ["ChannelAdvisor::ShippingServiceSOAP::OrderShipmentResponse[]", XSD::QName.new(NsShippingService, "OrderShipmentResponse")], [0, nil]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => ChannelAdvisor::ShippingServiceSOAP::OrderShipmentResponse,
+    :schema_type => XSD::QName.new(NsShippingService, "OrderShipmentResponse"),
+    :schema_element => [
+      ["shipmentDateGMT", ["SOAP::SOAPDateTime", XSD::QName.new(NsShippingService, "ShipmentDateGMT")]],
+      ["carrierCode", ["SOAP::SOAPString", XSD::QName.new(NsShippingService, "CarrierCode")], [0, 1]],
+      ["classCode", ["SOAP::SOAPString", XSD::QName.new(NsShippingService, "ClassCode")], [0, 1]],
+      ["trackingNumber", ["SOAP::SOAPString", XSD::QName.new(NsShippingService, "TrackingNumber")], [0, 1]],
+      ["distributionCenterCode", ["SOAP::SOAPString", XSD::QName.new(NsShippingService, "DistributionCenterCode")], [0, 1]],
+      ["shipmentCost", ["SOAP::SOAPDecimal", XSD::QName.new(NsShippingService, "ShipmentCost")]],
+      ["shipmentTaxCost", ["SOAP::SOAPDecimal", XSD::QName.new(NsShippingService, "ShipmentTaxCost")]],
+      ["shipmentInsuranceCost", ["SOAP::SOAPDecimal", XSD::QName.new(NsShippingService, "ShipmentInsuranceCost")]],
+      ["sellerFulfillmentID", ["SOAP::SOAPString", XSD::QName.new(NsShippingService, "SellerFulfillmentID")], [0, 1]],
+      ["shipmentLineItems", ["ChannelAdvisor::ShippingServiceSOAP::ArrayOfShipmentLineItemResponse", XSD::QName.new(NsShippingService, "ShipmentLineItems")], [0, 1]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => ChannelAdvisor::ShippingServiceSOAP::ArrayOfShipmentLineItemResponse,
+    :schema_type => XSD::QName.new(NsShippingService, "ArrayOfShipmentLineItemResponse"),
+    :schema_element => [
+      ["shipmentLineItemResponse", ["ChannelAdvisor::ShippingServiceSOAP::ShipmentLineItemResponse[]", XSD::QName.new(NsShippingService, "ShipmentLineItemResponse")], [0, nil]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => ChannelAdvisor::ShippingServiceSOAP::ShipmentLineItemResponse,
+    :schema_type => XSD::QName.new(NsShippingService, "ShipmentLineItemResponse"),
+    :schema_element => [
+      ["lineItemID", ["SOAP::SOAPInt", XSD::QName.new(NsShippingService, "LineItemID")]],
+      ["sKU", ["SOAP::SOAPString", XSD::QName.new(NsShippingService, "SKU")], [0, 1]],
+      ["quantity", ["SOAP::SOAPInt", XSD::QName.new(NsShippingService, "Quantity")]]
+    ]
+  )
+
+  LiteralRegistry.register(
     :class => ChannelAdvisor::ShippingServiceSOAP::ShipmentResponse,
     :schema_type => XSD::QName.new(NsShippingService, "ShipmentResponse"),
     :schema_element => [
@@ -457,21 +634,16 @@ module DefaultMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ChannelAdvisor::ShippingServiceSOAP::ShipmentTypeEnum,
-    :schema_type => XSD::QName.new(NsWebservices, "ShipmentTypeEnum")
-  )
-
-  LiteralRegistry.register(
     :class => ChannelAdvisor::ShippingServiceSOAP::GetShippingRateList,
     :schema_name => XSD::QName.new(NsWebservices, "GetShippingRateList"),
     :schema_element => [
-      ["accountID", "SOAP::SOAPString", [0, 1]],
+      ["accountID", "SOAP::SOAPString"],
       ["cartID", "SOAP::SOAPInt"],
       ["street", "SOAP::SOAPString", [0, 1]],
       ["city", "SOAP::SOAPString", [0, 1]],
       ["state", "SOAP::SOAPString", [0, 1]],
       ["postalCode", "SOAP::SOAPString", [0, 1]],
-      ["country", "SOAP::SOAPString", [0, 1]]
+      ["country", "SOAP::SOAPString"]
     ]
   )
 
@@ -496,7 +668,7 @@ module DefaultMappingRegistry
     :class => ChannelAdvisor::ShippingServiceSOAP::GetShippingCarrierList,
     :schema_name => XSD::QName.new(NsWebservices, "GetShippingCarrierList"),
     :schema_element => [
-      ["accountID", "SOAP::SOAPString", [0, 1]]
+      ["accountID", "SOAP::SOAPString"]
     ]
   )
 
@@ -509,10 +681,28 @@ module DefaultMappingRegistry
   )
 
   LiteralRegistry.register(
+    :class => ChannelAdvisor::ShippingServiceSOAP::GetOrderShipmentHistoryList,
+    :schema_name => XSD::QName.new(NsWebservices, "GetOrderShipmentHistoryList"),
+    :schema_element => [
+      ["accountID", "SOAP::SOAPString"],
+      ["orderIDList", "ChannelAdvisor::ShippingServiceSOAP::ArrayOfInt", [0, 1]],
+      ["clientOrderIdentifierList", "ChannelAdvisor::ShippingServiceSOAP::ArrayOfString", [0, 1]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => ChannelAdvisor::ShippingServiceSOAP::GetOrderShipmentHistoryListResponse,
+    :schema_name => XSD::QName.new(NsWebservices, "GetOrderShipmentHistoryListResponse"),
+    :schema_element => [
+      ["getOrderShipmentHistoryListResult", ["ChannelAdvisor::ShippingServiceSOAP::APIResultOfArrayOfOrderShipmentHistoryResponse", XSD::QName.new(NsWebservices, "GetOrderShipmentHistoryListResult")], [0, 1]]
+    ]
+  )
+
+  LiteralRegistry.register(
     :class => ChannelAdvisor::ShippingServiceSOAP::OrderShipped,
     :schema_name => XSD::QName.new(NsWebservices, "OrderShipped"),
     :schema_element => [
-      ["accountID", "SOAP::SOAPString", [0, 1]],
+      ["accountID", "SOAP::SOAPString"],
       ["orderID", "SOAP::SOAPInt"],
       ["dateShippedGMT", "SOAP::SOAPDateTime"],
       ["carrierCode", "SOAP::SOAPString", [0, 1]],
@@ -534,8 +724,8 @@ module DefaultMappingRegistry
     :class => ChannelAdvisor::ShippingServiceSOAP::SubmitOrderShipmentList,
     :schema_name => XSD::QName.new(NsWebservices, "SubmitOrderShipmentList"),
     :schema_element => [
-      ["accountID", "SOAP::SOAPString", [0, 1]],
-      ["shipmentList", ["ChannelAdvisor::ShippingServiceSOAP::OrderShipmentList", XSD::QName.new(NsWebservices, "ShipmentList")], [0, 1]]
+      ["accountID", "SOAP::SOAPString"],
+      ["shipmentList", ["ChannelAdvisor::ShippingServiceSOAP::OrderShipmentList", XSD::QName.new(NsWebservices, "ShipmentList")]]
     ]
   )
 

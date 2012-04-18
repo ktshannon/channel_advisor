@@ -2,7 +2,7 @@
 module ChannelAdvisor::ShippingServiceSOAP
 
 class ShippingServiceSoap < ::SOAP::RPC::Driver
-  DefaultEndpointUrl = "https://api.channeladvisor.com/ChannelAdvisorAPI/v4/ShippingService.asmx"
+  DefaultEndpointUrl = "https://api.channeladvisor.com/ChannelAdvisorAPI/v6/ShippingService.asmx"
 
   Methods = [
     [ "http://api.channeladvisor.com/webservices/GetShippingRateList",
@@ -17,6 +17,14 @@ class ShippingServiceSoap < ::SOAP::RPC::Driver
       "getShippingCarrierList",
       [ ["in", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "GetShippingCarrierList"]],
         ["out", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "GetShippingCarrierListResponse"]] ],
+      { :request_style =>  :document, :request_use =>  :literal,
+        :response_style => :document, :response_use => :literal,
+        :faults => {} }
+    ],
+    [ "http://api.channeladvisor.com/webservices/GetOrderShipmentHistoryList",
+      "getOrderShipmentHistoryList",
+      [ ["in", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "GetOrderShipmentHistoryList"]],
+        ["out", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "GetOrderShipmentHistoryListResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
         :faults => {} }

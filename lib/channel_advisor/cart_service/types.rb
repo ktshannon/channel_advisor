@@ -125,7 +125,7 @@ end
 #   title - SOAP::SOAPString
 #   lineItemID - SOAP::SOAPInt
 #   quantity - SOAP::SOAPInt
-#   itemSaleSource - ChannelAdvisor::CartServiceSOAP::SiteToken
+#   itemSaleSource - SOAP::SOAPString
 #   unitPrice - SOAP::SOAPDecimal
 class CartItem < InventoryItemBase
   attr_accessor :sKU
@@ -150,7 +150,7 @@ end
 #   title - SOAP::SOAPString
 #   lineItemID - SOAP::SOAPInt
 #   quantity - SOAP::SOAPInt
-#   itemSaleSource - ChannelAdvisor::CartServiceSOAP::SiteToken
+#   itemSaleSource - SOAP::SOAPString
 #   unitPrice - SOAP::SOAPDecimal
 #   currencyCode - SOAP::SOAPString
 #   unitWeight - ChannelAdvisor::CartServiceSOAP::ItemWeight
@@ -181,7 +181,7 @@ end
 #   title - SOAP::SOAPString
 #   lineItemID - SOAP::SOAPInt
 #   quantity - SOAP::SOAPInt
-#   itemSaleSource - ChannelAdvisor::CartServiceSOAP::SiteToken
+#   itemSaleSource - SOAP::SOAPString
 #   unitPrice - SOAP::SOAPDecimal
 #   allowNegativeQuantity - SOAP::SOAPBoolean
 class CartItemRequest < CartItem
@@ -231,41 +231,6 @@ end
 class ResultStatus < ::String
   Failure = ResultStatus.new("Failure")
   Success = ResultStatus.new("Success")
-end
-
-# {http://api.channeladvisor.com/datacontracts/orders}SiteToken
-class SiteToken < ::String
-  AMAZON_AUCTIONS = SiteToken.new("AMAZON_AUCTIONS")
-  AMAZON_DE = SiteToken.new("AMAZON_DE")
-  AMAZON_FR = SiteToken.new("AMAZON_FR")
-  AMAZON_MARKETPLACE = SiteToken.new("AMAZON_MARKETPLACE")
-  AMAZON_MERCHANTSAT = SiteToken.new("AMAZON_MERCHANTSAT")
-  AMAZON_UK = SiteToken.new("AMAZON_UK")
-  AMAZON_US = SiteToken.new("AMAZON_US")
-  BUY_DOT_COM = SiteToken.new("BUY_DOT_COM")
-  CHANNELADVISOR_STORE = SiteToken.new("CHANNELADVISOR_STORE")
-  DEMANDWARE_STORE = SiteToken.new("DEMANDWARE_STORE")
-  DIRECT_SALE = SiteToken.new("DIRECT_SALE")
-  EBAY_AU = SiteToken.new("EBAY_AU")
-  EBAY_CA = SiteToken.new("EBAY_CA")
-  EBAY_DE = SiteToken.new("EBAY_DE")
-  EBAY_ES = SiteToken.new("EBAY_ES")
-  EBAY_FR = SiteToken.new("EBAY_FR")
-  EBAY_IE = SiteToken.new("EBAY_IE")
-  EBAY_IT = SiteToken.new("EBAY_IT")
-  EBAY_MOTORS = SiteToken.new("EBAY_MOTORS")
-  EBAY_MOTORS_FIXED_PRICE = SiteToken.new("EBAY_MOTORS_FIXED_PRICE")
-  EBAY_STORES = SiteToken.new("EBAY_STORES")
-  EBAY_UK = SiteToken.new("EBAY_UK")
-  EBAY_US = SiteToken.new("EBAY_US")
-  OVERSTOCK = SiteToken.new("OVERSTOCK")
-  OVERSTOCK_SHOPPING = SiteToken.new("OVERSTOCK_SHOPPING")
-  PIXMANIA = SiteToken.new("PIXMANIA")
-  STOREADVISOR_PREMIUM = SiteToken.new("STOREADVISOR_PREMIUM")
-  TRADING_POST = SiteToken.new("TRADING_POST")
-  UNKNOWN = SiteToken.new("UNKNOWN")
-  YAHOO = SiteToken.new("YAHOO")
-  YAHOO_STORES = SiteToken.new("YAHOO_STORES")
 end
 
 # {http://api.channeladvisor.com/webservices/}GetCart
@@ -344,18 +309,18 @@ end
 #   accountID - SOAP::SOAPString
 #   cartID - SOAP::SOAPInt
 #   buyerEmail - SOAP::SOAPString
-#   lineItem - ChannelAdvisor::CartServiceSOAP::ArrayOfCartItemRequest
+#   lineItemList - ChannelAdvisor::CartServiceSOAP::ArrayOfCartItemRequest
 class ModifyCart
   attr_accessor :accountID
   attr_accessor :cartID
   attr_accessor :buyerEmail
-  attr_accessor :lineItem
+  attr_accessor :lineItemList
 
-  def initialize(accountID = nil, cartID = nil, buyerEmail = nil, lineItem = nil)
+  def initialize(accountID = nil, cartID = nil, buyerEmail = nil, lineItemList = nil)
     @accountID = accountID
     @cartID = cartID
     @buyerEmail = buyerEmail
-    @lineItem = lineItem
+    @lineItemList = lineItemList
   end
 end
 

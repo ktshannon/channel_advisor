@@ -16,7 +16,7 @@ module DefaultMappingRegistry
       ["postingTemplate", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "PostingTemplate")], [0, 1]],
       ["adTemplate", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "AdTemplate")], [0, 1]],
       ["schedule", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "Schedule")], [0, 1]],
-      ["flagStyle", ["ChannelAdvisor::MarketplaceAdServiceSOAP::FlagType", XSD::QName.new(NsWebservices, "FlagStyle")]],
+      ["flagStyle", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "FlagStyle")], [0, 1]],
       ["flagDescription", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "FlagDescription")], [0, 1]],
       ["primaryCategory", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "PrimaryCategory")], [0, 1]],
       ["secondaryCategory", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "SecondaryCategory")], [0, 1]],
@@ -106,6 +106,14 @@ module DefaultMappingRegistry
   )
 
   EncodedRegistry.register(
+    :class => ChannelAdvisor::MarketplaceAdServiceSOAP::ArrayOfInt,
+    :schema_type => XSD::QName.new(NsWebservices, "ArrayOfInt"),
+    :schema_element => [
+      ["int", "SOAP::SOAPInt[]", [0, nil]]
+    ]
+  )
+
+  EncodedRegistry.register(
     :class => ChannelAdvisor::MarketplaceAdServiceSOAP::APIResultOfString,
     :schema_type => XSD::QName.new(NsWebservices, "APIResultOfString"),
     :schema_element => [
@@ -115,11 +123,6 @@ module DefaultMappingRegistry
       ["data", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "Data")], [0, 1]],
       ["resultData", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "ResultData")], [0, 1]]
     ]
-  )
-
-  EncodedRegistry.register(
-    :class => ChannelAdvisor::MarketplaceAdServiceSOAP::FlagType,
-    :schema_type => XSD::QName.new(NsWebservices, "FlagType")
   )
 
   EncodedRegistry.register(
@@ -137,7 +140,7 @@ module DefaultMappingRegistry
       ["postingTemplate", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "PostingTemplate")], [0, 1]],
       ["adTemplate", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "AdTemplate")], [0, 1]],
       ["schedule", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "Schedule")], [0, 1]],
-      ["flagStyle", ["ChannelAdvisor::MarketplaceAdServiceSOAP::FlagType", XSD::QName.new(NsWebservices, "FlagStyle")]],
+      ["flagStyle", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "FlagStyle")], [0, 1]],
       ["flagDescription", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "FlagDescription")], [0, 1]],
       ["primaryCategory", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "PrimaryCategory")], [0, 1]],
       ["secondaryCategory", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "SecondaryCategory")], [0, 1]],
@@ -227,6 +230,14 @@ module DefaultMappingRegistry
   )
 
   LiteralRegistry.register(
+    :class => ChannelAdvisor::MarketplaceAdServiceSOAP::ArrayOfInt,
+    :schema_type => XSD::QName.new(NsWebservices, "ArrayOfInt"),
+    :schema_element => [
+      ["int", "SOAP::SOAPInt[]", [0, nil]]
+    ]
+  )
+
+  LiteralRegistry.register(
     :class => ChannelAdvisor::MarketplaceAdServiceSOAP::APIResultOfString,
     :schema_type => XSD::QName.new(NsWebservices, "APIResultOfString"),
     :schema_element => [
@@ -236,11 +247,6 @@ module DefaultMappingRegistry
       ["data", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "Data")], [0, 1]],
       ["resultData", ["SOAP::SOAPString", XSD::QName.new(NsWebservices, "ResultData")], [0, 1]]
     ]
-  )
-
-  LiteralRegistry.register(
-    :class => ChannelAdvisor::MarketplaceAdServiceSOAP::FlagType,
-    :schema_type => XSD::QName.new(NsWebservices, "FlagType")
   )
 
   LiteralRegistry.register(
@@ -280,10 +286,10 @@ module DefaultMappingRegistry
     :schema_element => [
       ["accountID", "SOAP::SOAPString"],
       ["skuList", "ChannelAdvisor::MarketplaceAdServiceSOAP::ArrayOfMarketplaceAdSkuRequest", [0, 1]],
-      ["postingTemplate", "SOAP::SOAPString", [0, 1]],
+      ["postingTemplate", "SOAP::SOAPString"],
       ["adTemplate", "SOAP::SOAPString", [0, 1]],
       ["schedule", "SOAP::SOAPString", [0, 1]],
-      ["flagStyle", "ChannelAdvisor::MarketplaceAdServiceSOAP::FlagType"],
+      ["flagStyle", "SOAP::SOAPString", [0, 1]],
       ["flagDescription", "SOAP::SOAPString", [0, 1]],
       ["primaryCategory", "SOAP::SOAPString", [0, 1]],
       ["secondaryCategory", "SOAP::SOAPString", [0, 1]],
@@ -314,6 +320,23 @@ module DefaultMappingRegistry
     :schema_name => XSD::QName.new(NsWebservices, "DeleteMarketplaceAdResponse"),
     :schema_element => [
       ["deleteMarketplaceAdResult", ["ChannelAdvisor::MarketplaceAdServiceSOAP::APIResultOfBoolean", XSD::QName.new(NsWebservices, "DeleteMarketplaceAdResult")], [0, 1]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => ChannelAdvisor::MarketplaceAdServiceSOAP::DeleteMarketplaceAdList,
+    :schema_name => XSD::QName.new(NsWebservices, "DeleteMarketplaceAdList"),
+    :schema_element => [
+      ["accountID", "SOAP::SOAPString"],
+      ["marketplaceAdIDList", "ChannelAdvisor::MarketplaceAdServiceSOAP::ArrayOfInt", [0, 1]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => ChannelAdvisor::MarketplaceAdServiceSOAP::DeleteMarketplaceAdListResponse,
+    :schema_name => XSD::QName.new(NsWebservices, "DeleteMarketplaceAdListResponse"),
+    :schema_element => [
+      ["deleteMarketplaceAdListResult", ["ChannelAdvisor::MarketplaceAdServiceSOAP::APIResultOfBoolean", XSD::QName.new(NsWebservices, "DeleteMarketplaceAdListResult")], [0, 1]]
     ]
   )
 
