@@ -4,138 +4,28 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{channel_advisor}
-  s.version = "0.3.0"
+  s.name = 'channel_advisor'
+  s.version = '1.0.0'
 
-  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Second Rotation, Inc."]
-  s.date = %q{2011-02-23}
-  s.description = %q{channel_advisor was developed by: Second Rotation, Inc.}
-  s.email = %q{jason@gazelle.com}
+  s.required_rubygems_version = Gem::Requirement.new('>= 0')
+  s.authors = ['Second Rotation, Inc.']
+  s.description = 'channel_advisor was developed by: Second Rotation, Inc.'
+  s.email = 'jason@gazelle.com'
   s.extra_rdoc_files = [
-    "LICENSE",
-    "README"
+    'LICENSE',
+    'README'
   ]
-  s.files = [
-    ".rspec",
-    "Gemfile",
-    "LICENSE",
-    "README",
-    "Rakefile",
-    "VERSION",
-    "artifacts.yml",
-    "channel_advisor.gemspec",
-    "lib/channel_advisor.rb",
-    "lib/channel_advisor/admin_service.rb",
-    "lib/channel_advisor/admin_service/client.rb",
-    "lib/channel_advisor/admin_service/mapping_registry.rb",
-    "lib/channel_advisor/admin_service/types.rb",
-    "lib/channel_advisor/auth_handler.rb",
-    "lib/channel_advisor/cart_service.rb",
-    "lib/channel_advisor/cart_service/client.rb",
-    "lib/channel_advisor/cart_service/mapping_registry.rb",
-    "lib/channel_advisor/cart_service/types.rb",
-    "lib/channel_advisor/errors.rb",
-    "lib/channel_advisor/inventory_service.rb",
-    "lib/channel_advisor/inventory_service/client.rb",
-    "lib/channel_advisor/inventory_service/mapping_registry.rb",
-    "lib/channel_advisor/inventory_service/types.rb",
-    "lib/channel_advisor/listing_service.rb",
-    "lib/channel_advisor/listing_service/client.rb",
-    "lib/channel_advisor/listing_service/mapping_registry.rb",
-    "lib/channel_advisor/listing_service/types.rb",
-    "lib/channel_advisor/marketplace_ad_service.rb",
-    "lib/channel_advisor/marketplace_ad_service/client.rb",
-    "lib/channel_advisor/marketplace_ad_service/mapping_registry.rb",
-    "lib/channel_advisor/marketplace_ad_service/types.rb",
-    "lib/channel_advisor/message_code.rb",
-    "lib/channel_advisor/order_service.rb",
-    "lib/channel_advisor/order_service/client.rb",
-    "lib/channel_advisor/order_service/mapping_registry.rb",
-    "lib/channel_advisor/order_service/types.rb",
-    "lib/channel_advisor/service_proxy.rb",
-    "lib/channel_advisor/shared_requires.rb",
-    "lib/channel_advisor/shipping_service.rb",
-    "lib/channel_advisor/shipping_service/client.rb",
-    "lib/channel_advisor/shipping_service/mapping_registry.rb",
-    "lib/channel_advisor/shipping_service/types.rb",
-    "lib/channel_advisor/store_service.rb",
-    "lib/channel_advisor/store_service/client.rb",
-    "lib/channel_advisor/store_service/mapping_registry.rb",
-    "lib/channel_advisor/store_service/types.rb",
-    "lib/channel_advisor/tax_service.rb",
-    "lib/channel_advisor/tax_service/client.rb",
-    "lib/channel_advisor/tax_service/mapping_registry.rb",
-    "lib/channel_advisor/tax_service/types.rb",
-    "spec/integration/inventory_sync_spec.rb",
-    "spec/lib/channel_advisor/admin_service_spec.rb",
-    "spec/lib/channel_advisor/auth_handler_spec.rb",
-    "spec/lib/channel_advisor/cart_service_spec.rb",
-    "spec/lib/channel_advisor/errors_spec.rb",
-    "spec/lib/channel_advisor/inventory_service_spec.rb",
-    "spec/lib/channel_advisor/marketplace_ad_service_spec.rb",
-    "spec/lib/channel_advisor/message_code_spec.rb",
-    "spec/lib/channel_advisor/order_service_spec.rb",
-    "spec/lib/channel_advisor/service_proxy_spec.rb",
-    "spec/lib/channel_advisor/shipping_service_spec.rb",
-    "spec/lib/channel_advisor/store_service_spec.rb",
-    "spec/lib/channel_advisor/tax_service_spec.rb",
-    "spec/spec.opts",
-    "spec/spec_helper.rb"
-  ]
-  s.homepage = %q{http://github.com/secondrotation/channel_advisor/}
-  s.licenses = ["MIT"]
-  s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.4.2}
-  s.summary = %q{channel_advisor}
-  s.test_files = [
-    "spec/integration/inventory_sync_spec.rb",
-    "spec/lib/channel_advisor/admin_service_spec.rb",
-    "spec/lib/channel_advisor/auth_handler_spec.rb",
-    "spec/lib/channel_advisor/cart_service_spec.rb",
-    "spec/lib/channel_advisor/errors_spec.rb",
-    "spec/lib/channel_advisor/inventory_service_spec.rb",
-    "spec/lib/channel_advisor/marketplace_ad_service_spec.rb",
-    "spec/lib/channel_advisor/message_code_spec.rb",
-    "spec/lib/channel_advisor/order_service_spec.rb",
-    "spec/lib/channel_advisor/service_proxy_spec.rb",
-    "spec/lib/channel_advisor/shipping_service_spec.rb",
-    "spec/lib/channel_advisor/store_service_spec.rb",
-    "spec/lib/channel_advisor/tax_service_spec.rb",
-    "spec/spec_helper.rb"
-  ]
+  s.files        = `git ls-files`.split("\n")
+  s.test_files   = `git ls-files -- {test,spec,features}/*`.split("\n")
+  s.executables  = `git ls-files`.split("\n").map{|f| f =~ /^bin\/(.*)/ ? $1 : nil}.compact
+  s.homepage = 'http://github.com/secondrotation/channel_advisor/'
+  s.licenses = ['MIT']
+  s.require_paths = ['lib']
+  s.rubygems_version = '1.4.2'
+  s.summary = 'channel_advisor'
 
-  if s.respond_to? :specification_version then
-    s.specification_version = 3
-
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<soap4r>, ["~> 1.5"])
-      s.add_runtime_dependency(%q<configatron>, ["~> 2.6"])
-      s.add_development_dependency(%q<rspec>, ["~> 2.3"])
-      s.add_development_dependency(%q<yard>, ["~> 0.6"])
-      s.add_development_dependency(%q<bundler>, ["~> 1.0"])
-      s.add_development_dependency(%q<jeweler>, ["~> 1.5"])
-      s.add_development_dependency(%q<rcov>, [">= 0"])
-      s.add_development_dependency(%q<metric_fu>, [">= 0"])
-    else
-      s.add_dependency(%q<soap4r>, ["~> 1.5"])
-      s.add_dependency(%q<configatron>, ["~> 2.6"])
-      s.add_dependency(%q<rspec>, ["~> 2.3"])
-      s.add_dependency(%q<yard>, ["~> 0.6"])
-      s.add_dependency(%q<bundler>, ["~> 1.0"])
-      s.add_dependency(%q<jeweler>, ["~> 1.5"])
-      s.add_dependency(%q<rcov>, [">= 0"])
-      s.add_dependency(%q<metric_fu>, [">= 0"])
-    end
-  else
-    s.add_dependency(%q<soap4r>, ["~> 1.5"])
-    s.add_dependency(%q<configatron>, ["~> 2.6"])
-    s.add_dependency(%q<rspec>, ["~> 2.3"])
-    s.add_dependency(%q<yard>, ["~> 0.6"])
-    s.add_dependency(%q<bundler>, ["~> 1.0"])
-    s.add_dependency(%q<jeweler>, ["~> 1.5"])
-    s.add_dependency(%q<rcov>, [">= 0"])
-    s.add_dependency(%q<metric_fu>, [">= 0"])
-  end
+  s.add_runtime_dependency('soap4r-ruby1.9', ['~> 2.0.5'])
+  s.add_runtime_dependency('configatron', ['~> 2.6'])
+  s.add_development_dependency('rspec', ['~> 2.99'])
+  s.add_development_dependency('bundler', ['~> 1.0'])
 end
-
