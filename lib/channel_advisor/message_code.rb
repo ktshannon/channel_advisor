@@ -1,7 +1,7 @@
 module ChannelAdvisor
   class MessageCode
     attr_accessor :code, :message
-    
+
     def initialize(code, message)
       @code = code
       @message = message
@@ -17,11 +17,16 @@ module ChannelAdvisor
       code = code.to_i
       message = nil
       case code
-      when 0: Success
-      when 1: Unexpected
-      when 3: NoAccountID
-      when 5: NoSkuValue
-      when 8: TooManySkus
+      when 0
+        Success
+      when 1
+        Unexpected
+      when 3
+        NoAccountID
+      when 5
+        NoSkuValue
+      when 8
+        TooManySkus
       else
         MessageCode.new(code, 'Unknown Error')
       end
