@@ -19,10 +19,27 @@ namespace :gem do
   end
 end
 
+
+
 namespace :fury do
+  def gem_name
+    searcher = if Gem::Specification.respond_to? :find
+      # ruby 2.0
+      Gem::Specification
+    elsif Gem.respond_to? :searcher
+      # ruby 1.8/1.9
+      Gem.searcher.init_gemspecs
+    end
+    spec = unless searcher.nil?
+      searcher.find do |spec|
+        File.fnmatch(File.join(spec.full_gem_path,'*'), __FILE__)
+      end
+    end
+  end
+
   task :upload do
     client = Gemfury::Client.new(user_api_key: ENV['circle_key'], account: 'gazelleinc')
-    client.push_gem(File.new("pkg/secondrotation-esb_xml-#{Bump::Bump.current}.gem"))
+    client.push_gem(File.new("pkg/#{gem_name}-#{Bump::Bump.current}.gem"))
   end
 end
 
