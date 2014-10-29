@@ -26,6 +26,21 @@ namespace :fury do
   end
 end
 
+require 'rspec'
+require "rspec/core/rake_task"
+
+RSpec::Core::RakeTask.new(:rspec) do |t|
+  t.pattern = 'spec/**/*_spec.rb'
+end
+
+task :default => :rspec
+
+RSpec::Core::RakeTask.new(:rcov) do |spec|
+  spec.pattern = 'spec/**/*_spec.rb'
+  spec.rcov = true
+  spec.rcov_opts = ['--exclude', 'gems/*,spec/*']
+end
+
 desc "Generate CA Service Definitions"
 task :generate do
   services = %w(admin_service cart_service inventory_service listing_service marketplace_ad_service order_service shipping_service store_service tax_service)
