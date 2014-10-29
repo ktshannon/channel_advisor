@@ -112,12 +112,12 @@ end
 
 # {http://api.channeladvisor.com/webservices/}ResultStatus
 class ResultStatus < ::String
-  Failure = ResultStatus.new("Failure")
-  Success = ResultStatus.new("Success")
+  Failure = new("Failure")
+  Success = new("Success")
 end
 
 # {http://api.channeladvisor.com/webservices/}GetAuthorizationList
-#   localID - SOAP::SOAPInteger
+#   localID - SOAP::SOAPInt
 class GetAuthorizationList
   attr_accessor :localID
 

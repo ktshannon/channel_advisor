@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency('soap4r-ruby1.9', ['~> 2.0.5'])
   s.add_runtime_dependency('configatron', ['~> 2.6'])
+  s.add_development_dependency('rake', ['>= 0'])
   s.add_development_dependency('rspec', ['~> 2.99'])
   s.add_development_dependency('bundler', ['~> 1.0'])
 end

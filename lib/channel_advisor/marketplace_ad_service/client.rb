@@ -1,46 +1,39 @@
 
-module ChannelAdvisor::MarketplaceAdServiceSOAP
+module ChannelAdvisor
+module MarketplaceAdServiceSOAP
 
 class MarketplaceAdServiceSoap < ::SOAP::RPC::Driver
-  DefaultEndpointUrl = "https://api.channeladvisor.com/ChannelAdvisorAPI/v6/MarketplaceAdService.asmx"
+  DefaultEndpointUrl = "https://api.channeladvisor.com/ChannelAdvisorAPI/v4/MarketplaceAdService.asmx"
 
   Methods = [
     [ "http://api.channeladvisor.com/webservices/AddMarketplaceAd",
       "addMarketplaceAd",
-      [ ["in", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "AddMarketplaceAd"]],
-        ["out", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "AddMarketplaceAdResponse"]] ],
+      [ [:in, "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "AddMarketplaceAd"]],
+        [:out, "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "AddMarketplaceAdResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
         :faults => {} }
     ],
     [ "http://api.channeladvisor.com/webservices/AddMarketplaceAdForSkuList",
       "addMarketplaceAdForSkuList",
-      [ ["in", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "AddMarketplaceAdForSkuList"]],
-        ["out", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "AddMarketplaceAdForSkuListResponse"]] ],
+      [ [:in, "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "AddMarketplaceAdForSkuList"]],
+        [:out, "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "AddMarketplaceAdForSkuListResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
         :faults => {} }
     ],
     [ "http://api.channeladvisor.com/webservices/DeleteMarketplaceAd",
       "deleteMarketplaceAd",
-      [ ["in", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "DeleteMarketplaceAd"]],
-        ["out", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "DeleteMarketplaceAdResponse"]] ],
-      { :request_style =>  :document, :request_use =>  :literal,
-        :response_style => :document, :response_use => :literal,
-        :faults => {} }
-    ],
-    [ "http://api.channeladvisor.com/webservices/DeleteMarketplaceAdList",
-      "deleteMarketplaceAdList",
-      [ ["in", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "DeleteMarketplaceAdList"]],
-        ["out", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "DeleteMarketplaceAdListResponse"]] ],
+      [ [:in, "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "DeleteMarketplaceAd"]],
+        [:out, "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "DeleteMarketplaceAdResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
         :faults => {} }
     ],
     [ "http://api.channeladvisor.com/webservices/Ping",
       "ping",
-      [ ["in", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "Ping"]],
-        ["out", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "PingResponse"]] ],
+      [ [:in, "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "Ping"]],
+        [:out, "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "PingResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
         :faults => {} }
@@ -50,8 +43,8 @@ class MarketplaceAdServiceSoap < ::SOAP::RPC::Driver
   def initialize(endpoint_url = nil)
     endpoint_url ||= DefaultEndpointUrl
     super(endpoint_url, nil)
-    self.mapping_registry = DefaultMappingRegistry::EncodedRegistry
-    self.literal_mapping_registry = DefaultMappingRegistry::LiteralRegistry
+    self.mapping_registry = ::ChannelAdvisor::DefaultMappingRegistry::EncodedRegistry
+    self.literal_mapping_registry = ::ChannelAdvisor::DefaultMappingRegistry::LiteralRegistry
     init_methods
   end
 
@@ -77,4 +70,5 @@ private
 end
 
 
+end
 end
