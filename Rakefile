@@ -10,6 +10,22 @@ require 'rake'
 
 Bundler::GemHelper.install_tasks
 
+require 'gemfury'
+require 'bump'
+
+namespace :gem do
+  task :bump do
+    Bump::Bump.run("patch", commit: true, bundle: false, tag: true)
+  end
+end
+
+namespace :fury do
+  task :upload do
+    client = Gemfury::Client.new(user_api_key: ENV['circle_key'], account: 'gazelleinc')
+    client.push_gem(File.new("pkg/secondrotation-esb_xml-#{Bump::Bump.current}.gem"))
+  end
+end
+
 desc "Generate CA Service Definitions"
 task :generate do
   services = %w(admin_service cart_service inventory_service listing_service marketplace_ad_service order_service shipping_service store_service tax_service)
