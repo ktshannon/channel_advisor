@@ -1,0 +1,10 @@
+checkout:
+  pre:
+    - git config --global user.email "circleci@gazelle.com"
+    - git config --global user.name "Gazelle CircleCI Bot"
+deployment:
+  gemserver:
+    branch: master
+    commands:
+      - bundle exec rake install
+      - bundle exec rake fury:upload
