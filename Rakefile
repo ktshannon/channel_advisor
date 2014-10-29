@@ -22,7 +22,7 @@ end
 
 
 namespace :fury do
-  def gem_name
+  def this_gem
     searcher = if Gem::Specification.respond_to? :find
       # ruby 2.0
       Gem::Specification
@@ -39,7 +39,7 @@ namespace :fury do
 
   task :upload do
     client = Gemfury::Client.new(user_api_key: ENV['circle_key'], account: 'gazelleinc')
-    client.push_gem(File.new("pkg/#{gem_name}-#{Bump::Bump.current}.gem"))
+    client.push_gem(File.new("pkg/#{this_gem.name}-#{Bump::Bump.current}.gem"))
   end
 end
 
