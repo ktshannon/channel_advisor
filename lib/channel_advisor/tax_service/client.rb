@@ -1,22 +1,23 @@
 
-module ChannelAdvisor::TaxServiceSOAP
+module ChannelAdvisor
+module TaxServiceSOAP
 
 class TaxServiceSoap < ::SOAP::RPC::Driver
-  DefaultEndpointUrl = "https://api.channeladvisor.com/ChannelAdvisorAPI/v6/TaxService.asmx"
+  DefaultEndpointUrl = "https://api.channeladvisor.com/ChannelAdvisorAPI/v4/TaxService.asmx"
 
   Methods = [
     [ "http://api.channeladvisor.com/webservices/GetTaxRateList",
       "getTaxRateList",
-      [ ["in", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "GetTaxRateList"]],
-        ["out", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "GetTaxRateListResponse"]] ],
+      [ [:in, "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "GetTaxRateList"]],
+        [:out, "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "GetTaxRateListResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
         :faults => {} }
     ],
     [ "http://api.channeladvisor.com/webservices/Ping",
       "ping",
-      [ ["in", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "Ping"]],
-        ["out", "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "PingResponse"]] ],
+      [ [:in, "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "Ping"]],
+        [:out, "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "PingResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
         :faults => {} }
@@ -26,8 +27,8 @@ class TaxServiceSoap < ::SOAP::RPC::Driver
   def initialize(endpoint_url = nil)
     endpoint_url ||= DefaultEndpointUrl
     super(endpoint_url, nil)
-    self.mapping_registry = DefaultMappingRegistry::EncodedRegistry
-    self.literal_mapping_registry = DefaultMappingRegistry::LiteralRegistry
+    self.mapping_registry = ::ChannelAdvisor::DefaultMappingRegistry::EncodedRegistry
+    self.literal_mapping_registry = ::ChannelAdvisor::DefaultMappingRegistry::LiteralRegistry
     init_methods
   end
 
@@ -53,4 +54,5 @@ private
 end
 
 
+end
 end

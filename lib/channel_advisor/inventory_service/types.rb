@@ -119,7 +119,7 @@ end
 #   supplierCode - SOAP::SOAPString
 #   warehouseLocation - SOAP::SOAPString
 #   taxProductCode - SOAP::SOAPString
-#   flagStyle - SOAP::SOAPString
+#   flagStyle - ChannelAdvisor::InventoryServiceSOAP::FlagType
 #   flagDescription - SOAP::SOAPString
 #   isBlocked - SOAP::SOAPBoolean
 #   blockComment - SOAP::SOAPString
@@ -398,16 +398,13 @@ end
 
 # {http://api.channeladvisor.com/webservices/}ShippingInfo
 #   distributionCenterCode - SOAP::SOAPString
-#   isFBA - SOAP::SOAPBoolean
 #   shippingRateList - ChannelAdvisor::InventoryServiceSOAP::ArrayOfShippingRateInfo
 class ShippingInfo
   attr_accessor :distributionCenterCode
-  attr_accessor :isFBA
   attr_accessor :shippingRateList
 
-  def initialize(distributionCenterCode = nil, isFBA = nil, shippingRateList = nil)
+  def initialize(distributionCenterCode = nil, shippingRateList = nil)
     @distributionCenterCode = distributionCenterCode
-    @isFBA = isFBA
     @shippingRateList = shippingRateList
   end
 end
@@ -425,10 +422,10 @@ end
 #   firstItemHandlingRate - SOAP::SOAPDecimal
 #   additionalItemHandlingRate - SOAP::SOAPDecimal
 #   freeShippingIfBuyItNow - SOAP::SOAPBoolean
-#   firstItemRateAttribute - SOAP::SOAPString
-#   firstItemHandlingRateAttribute - SOAP::SOAPString
-#   additionalItemRateAttribute - SOAP::SOAPString
-#   additionalItemHandlingRateAttribute - SOAP::SOAPString
+#   firstItemRateAttribute - ChannelAdvisor::InventoryServiceSOAP::ShippingRateAttribute
+#   firstItemHandlingRateAttribute - ChannelAdvisor::InventoryServiceSOAP::HandlingRateAttribute
+#   additionalItemRateAttribute - ChannelAdvisor::InventoryServiceSOAP::ShippingRateAttribute
+#   additionalItemHandlingRateAttribute - ChannelAdvisor::InventoryServiceSOAP::HandlingRateAttribute
 class ShippingRateInfo
   attr_accessor :destinationZoneName
   attr_accessor :carrierCode
@@ -460,7 +457,7 @@ class ShippingRateInfo
 end
 
 # {http://api.channeladvisor.com/webservices/}InventoryItemCriteria
-#   dateRangeField - SOAP::SOAPString
+#   dateRangeField - ChannelAdvisor::InventoryServiceSOAP::InventoryItemDateRangeField
 #   dateRangeStartGMT - SOAP::SOAPDateTime
 #   dateRangeEndGMT - SOAP::SOAPDateTime
 #   partialSku - SOAP::SOAPString
@@ -468,8 +465,8 @@ end
 #   skuEndsWith - SOAP::SOAPString
 #   classificationName - SOAP::SOAPString
 #   labelName - SOAP::SOAPString
-#   quantityCheckField - SOAP::SOAPString
-#   quantityCheckType - SOAP::SOAPString
+#   quantityCheckField - ChannelAdvisor::InventoryServiceSOAP::InventoryItemQuantityField
+#   quantityCheckType - ChannelAdvisor::InventoryServiceSOAP::NumericFilterType
 #   quantityCheckValue - SOAP::SOAPInt
 #   pageNumber - SOAP::SOAPInt
 #   pageSize - SOAP::SOAPInt
@@ -785,7 +782,7 @@ end
 # {http://api.channeladvisor.com/webservices/}InventoryQuantityResponse
 #   sKU - SOAP::SOAPString
 #   quantity - SOAP::SOAPInt
-#   messageCode - SOAP::SOAPInt
+#   messageCode - ChannelAdvisor::InventoryServiceSOAP::ErrorCode
 #   message - SOAP::SOAPString
 class InventoryQuantityResponse
   attr_accessor :sKU
@@ -811,7 +808,7 @@ end
 #   supplierCode - SOAP::SOAPString
 #   warehouseLocation - SOAP::SOAPString
 #   taxProductCode - SOAP::SOAPString
-#   flagStyle - SOAP::SOAPString
+#   flagStyle - ChannelAdvisor::InventoryServiceSOAP::FlagType
 #   flagDescription - SOAP::SOAPString
 #   isBlocked - SOAP::SOAPBoolean
 #   blockComment - SOAP::SOAPString
@@ -926,7 +923,7 @@ class InventoryItemSubmit
 end
 
 # {http://api.channeladvisor.com/webservices/}QuantityInfoSubmit
-#   updateType - SOAP::SOAPString
+#   updateType - ChannelAdvisor::InventoryServiceSOAP::InventoryQuantityUpdateType
 #   total - SOAP::SOAPInt
 class QuantityInfoSubmit
   attr_accessor :updateType
@@ -1218,8 +1215,155 @@ end
 
 # {http://api.channeladvisor.com/webservices/}ResultStatus
 class ResultStatus < ::String
-  Failure = ResultStatus.new("Failure")
-  Success = ResultStatus.new("Success")
+  Failure = new("Failure")
+  Success = new("Success")
+end
+
+# {http://api.channeladvisor.com/webservices/}FlagType
+class FlagType < ::String
+  BlueFlag = new("BlueFlag")
+  ExclamationPoint = new("ExclamationPoint")
+  GreenFlag = new("GreenFlag")
+  ItemCopied = new("ItemCopied")
+  NoFlag = new("NoFlag")
+  NotAvailable = new("NotAvailable")
+  Price = new("Price")
+  QuestionMark = new("QuestionMark")
+  RedFlag = new("RedFlag")
+  YellowFlag = new("YellowFlag")
+end
+
+# {http://api.channeladvisor.com/webservices/}ShippingRateAttribute
+class ShippingRateAttribute < ::String
+  NotAvailable = new("NotAvailable")
+  Price = new("Price")
+  TBD = new("TBD")
+end
+
+# {http://api.channeladvisor.com/webservices/}HandlingRateAttribute
+class HandlingRateAttribute < ::String
+  NotAvailable = new("NotAvailable")
+  Price = new("Price")
+end
+
+# {http://api.channeladvisor.com/webservices/}InventoryItemDateRangeField
+class InventoryItemDateRangeField < ::String
+  CreateDate = new("CreateDate")
+  LastUpdateDate = new("LastUpdateDate")
+  QtyLastModifiedDate = new("QtyLastModifiedDate")
+end
+
+# {http://api.channeladvisor.com/webservices/}InventoryItemQuantityField
+class InventoryItemQuantityField < ::String
+  Available = new("Available")
+  Open = new("Open")
+  PendingCheckout = new("PendingCheckout")
+  PendingPayment = new("PendingPayment")
+  PendingShipment = new("PendingShipment")
+  Total = new("Total")
+end
+
+# {http://api.channeladvisor.com/webservices/}NumericFilterType
+class NumericFilterType < ::String
+  EqualTo = new("EqualTo")
+  GreaterThan = new("GreaterThan")
+  GreaterThanOrEqualTo = new("GreaterThanOrEqualTo")
+  LessThan = new("LessThan")
+  LessThanOrEqualTo = new("LessThanOrEqualTo")
+end
+
+# {http://api.channeladvisor.com/webservices/}InventoryItemSortField
+class InventoryItemSortField < ::String
+  Sku = new("Sku")
+  Title = new("Title")
+end
+
+# {http://api.channeladvisor.com/webservices/}SortDirection
+class SortDirection < ::String
+  Ascending = new("Ascending")
+  Descending = new("Descending")
+end
+
+# {http://api.channeladvisor.com/webservices/}ErrorCode
+class ErrorCode < ::String
+  AccountIDIsBlank = new("AccountIDIsBlank")
+  AccountIDIsNull = new("AccountIDIsNull")
+  AccountIDNotExists = new("AccountIDNotExists")
+  CartIDNull = new("CartIDNull")
+  CartNotFound = new("CartNotFound")
+  DataIntegrityViolation = new("DataIntegrityViolation")
+  EMailAddressBadFormat = new("EMailAddressBadFormat")
+  EmptyCartSubmit = new("EmptyCartSubmit")
+  ErrorInvoiceCreation = new("ErrorInvoiceCreation")
+  Error_AuctionWinnerValidation = new("Error_AuctionWinnerValidation")
+  Error_NotValidCartID = new("Error_NotValidCartID")
+  Error_PromotionNotFound = new("Error_PromotionNotFound")
+  Error_SKUDuplicated = new("Error_SKUDuplicated")
+  Error_SavingBillingData = new("Error_SavingBillingData")
+  Error_SavingOrderShippingData = new("Error_SavingOrderShippingData")
+  FetchFilterInfoNull = new("FetchFilterInfoNull")
+  InvalidArguments = new("InvalidArguments")
+  InvalidCartID = new("InvalidCartID")
+  InvalidSaleSource = new("InvalidSaleSource")
+  Invalid_AddressLength = new("Invalid_AddressLength")
+  Invalid_BundleSKU = new("Invalid_BundleSKU")
+  Invalid_CCLast4 = new("Invalid_CCLast4")
+  Invalid_CarrierClassData = new("Invalid_CarrierClassData")
+  Invalid_CityLength = new("Invalid_CityLength")
+  Invalid_CompanyNameLength = new("Invalid_CompanyNameLength")
+  Invalid_CountryLength = new("Invalid_CountryLength")
+  Invalid_CustomFieldValue = new("Invalid_CustomFieldValue")
+  Invalid_FirstNameLength = new("Invalid_FirstNameLength")
+  Invalid_JobTitleLength = new("Invalid_JobTitleLength")
+  Invalid_LastNameLength = new("Invalid_LastNameLength")
+  Invalid_OrderId = new("Invalid_OrderId")
+  Invalid_OrderNumberLength = new("Invalid_OrderNumberLength")
+  Invalid_OrderStatus = new("Invalid_OrderStatus")
+  Invalid_PhoneLength = new("Invalid_PhoneLength")
+  Invalid_PostalCodeLength = new("Invalid_PostalCodeLength")
+  Invalid_ShippingInstructionsLgth = new("Invalid_ShippingInstructionsLgth")
+  Invalid_SuffixLength = new("Invalid_SuffixLength")
+  Invalid_TitleLength = new("Invalid_TitleLength")
+  Invalid_TrackingNumberLgth = new("Invalid_TrackingNumberLgth")
+  Invalid_WithdrawReason = new("Invalid_WithdrawReason")
+  LineItemIDNotFound = new("LineItemIDNotFound")
+  LineItemOrSKUEmpty = new("LineItemOrSKUEmpty")
+  MissingEmailAddress = new("MissingEmailAddress")
+  MultiplePromoCodesSpecified = new("MultiplePromoCodesSpecified")
+  NegativeQuantity = new("NegativeQuantity")
+  NotMultiSellerDCCompatible = new("NotMultiSellerDCCompatible")
+  OrderCollectionNull = new("OrderCollectionNull")
+  OrderIdIsNullOrEmpty = new("OrderIdIsNullOrEmpty")
+  PromoAmountOutOfRange = new("PromoAmountOutOfRange")
+  QuantityNotEnough = new("QuantityNotEnough")
+  RoverRegionNotFound = new("RoverRegionNotFound")
+  SKUNotFound = new("SKUNotFound")
+  ShippingCostNegative = new("ShippingCostNegative")
+  SkuIsBlank = new("SkuIsBlank")
+  SkuIsNull = new("SkuIsNull")
+  Success = new("Success")
+  TooManyGiftWrapAmounts = new("TooManyGiftWrapAmounts")
+  TooManyInsuranceAmounts = new("TooManyInsuranceAmounts")
+  TooManySKUsRequested = new("TooManySKUsRequested")
+  TooManyShippingAmounts = new("TooManyShippingAmounts")
+  TooManyTaxAmounts = new("TooManyTaxAmounts")
+  TooManyVATGiftWrapAmounts = new("TooManyVATGiftWrapAmounts")
+  TooManyVATShippingAmounts = new("TooManyVATShippingAmounts")
+  Unexpected = new("Unexpected")
+  VATRangeOutOfRange = new("VATRangeOutOfRange")
+  WrongAccountSettings = new("WrongAccountSettings")
+  WrongCountryInfo = new("WrongCountryInfo")
+  WrongStateInfo = new("WrongStateInfo")
+  ZeroQuantity = new("ZeroQuantity")
+end
+
+# {http://api.channeladvisor.com/webservices/}InventoryQuantityUpdateType
+class InventoryQuantityUpdateType < ::String
+  Absolute = new("Absolute")
+  Available = new("Available")
+  InStock = new("InStock")
+  Relative = new("Relative")
+  UnShipped = new("UnShipped")
 end
 
 # {http://api.channeladvisor.com/webservices/}DoesSkuExist
@@ -1308,8 +1452,8 @@ end
 #   accountID - SOAP::SOAPString
 #   itemCriteria - ChannelAdvisor::InventoryServiceSOAP::InventoryItemCriteria
 #   detailLevel - ChannelAdvisor::InventoryServiceSOAP::InventoryItemDetailLevel
-#   sortField - SOAP::SOAPString
-#   sortDirection - SOAP::SOAPString
+#   sortField - ChannelAdvisor::InventoryServiceSOAP::InventoryItemSortField
+#   sortDirection - ChannelAdvisor::InventoryServiceSOAP::SortDirection
 class GetFilteredInventoryItemList
   attr_accessor :accountID
   attr_accessor :itemCriteria
@@ -1339,8 +1483,8 @@ end
 # {http://api.channeladvisor.com/webservices/}GetFilteredSkuList
 #   accountID - SOAP::SOAPString
 #   itemCriteria - ChannelAdvisor::InventoryServiceSOAP::InventoryItemCriteria
-#   sortField - SOAP::SOAPString
-#   sortDirection - SOAP::SOAPString
+#   sortField - ChannelAdvisor::InventoryServiceSOAP::InventoryItemSortField
+#   sortDirection - ChannelAdvisor::InventoryServiceSOAP::SortDirection
 class GetFilteredSkuList
   attr_accessor :accountID
   attr_accessor :itemCriteria

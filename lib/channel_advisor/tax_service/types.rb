@@ -26,7 +26,7 @@ end
 
 # {http://api.channeladvisor.com/webservices/}TaxRateResult
 #   taxAmount - SOAP::SOAPDecimal
-#   taxType - SOAP::SOAPString
+#   taxType - ChannelAdvisor::TaxServiceSOAP::TaxTypeCode
 #   itemDetailList - ChannelAdvisor::TaxServiceSOAP::ArrayOfTaxItemBase
 class TaxRateResult
   attr_accessor :taxAmount
@@ -48,7 +48,7 @@ end
 # abstract
 #   taxAmount - SOAP::SOAPDecimal
 #   taxRate - SOAP::SOAPDouble
-#   taxType - SOAP::SOAPString
+#   taxType - ChannelAdvisor::TaxServiceSOAP::TaxTypeCode
 class TaxItemBase
   attr_accessor :taxAmount
   attr_accessor :taxRate
@@ -64,7 +64,7 @@ end
 # {http://api.channeladvisor.com/webservices/}TaxItemVatShipping
 #   taxAmount - SOAP::SOAPDecimal
 #   taxRate - SOAP::SOAPDouble
-#   taxType - SOAP::SOAPString
+#   taxType - ChannelAdvisor::TaxServiceSOAP::TaxTypeCode
 #   shippingCost - SOAP::SOAPDecimal
 class TaxItemVatShipping < TaxItemBase
   attr_accessor :taxAmount
@@ -83,7 +83,7 @@ end
 # {http://api.channeladvisor.com/webservices/}TaxItemProduct
 #   taxAmount - SOAP::SOAPDecimal
 #   taxRate - SOAP::SOAPDouble
-#   taxType - SOAP::SOAPString
+#   taxType - ChannelAdvisor::TaxServiceSOAP::TaxTypeCode
 #   quantity - SOAP::SOAPInt
 #   unitPrice - SOAP::SOAPDecimal
 #   lineItemID - SOAP::SOAPInt
@@ -148,8 +148,17 @@ end
 
 # {http://api.channeladvisor.com/webservices/}ResultStatus
 class ResultStatus < ::String
-  Failure = ResultStatus.new("Failure")
-  Success = ResultStatus.new("Success")
+  Failure = new("Failure")
+  Success = new("Success")
+end
+
+# {http://api.channeladvisor.com/webservices/}TaxTypeCode
+class TaxTypeCode < ::String
+  NoChange = new("NoChange")
+  NoTax = new("NoTax")
+  TaxUS = new("TaxUS")
+  VatExclusive = new("VatExclusive")
+  VatInclusive = new("VatInclusive")
 end
 
 # {http://api.channeladvisor.com/webservices/}GetTaxRateList

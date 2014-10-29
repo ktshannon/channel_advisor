@@ -63,17 +63,25 @@ class APIResultOfString
   end
 end
 
+# {http://api.channeladvisor.com/webservices/}WithdrawReason
+class WithdrawReason < ::String
+  ErrorInMinimumBidOrReserve = new("ErrorInMinimumBidOrReserve")
+  ErrorInTheListing = new("ErrorInTheListing")
+  ItemNoLongerAvailableForSale = new("ItemNoLongerAvailableForSale")
+  ItemWasLostOrBroken = new("ItemWasLostOrBroken")
+end
+
 # {http://api.channeladvisor.com/webservices/}ResultStatus
 class ResultStatus < ::String
-  Failure = ResultStatus.new("Failure")
-  Success = ResultStatus.new("Success")
+  Failure = new("Failure")
+  Success = new("Success")
 end
 
 # {http://api.channeladvisor.com/webservices/}WithdrawListings
 #   accountID - SOAP::SOAPString
 #   skuList - ChannelAdvisor::ListingServiceSOAP::ArrayOfString
 #   listingIDList - ChannelAdvisor::ListingServiceSOAP::ArrayOfString
-#   withdrawReason - SOAP::SOAPString
+#   withdrawReason - ChannelAdvisor::ListingServiceSOAP::WithdrawReason
 class WithdrawListings
   attr_accessor :accountID
   attr_accessor :skuList

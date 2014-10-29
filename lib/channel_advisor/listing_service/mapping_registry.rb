@@ -48,6 +48,11 @@ module DefaultMappingRegistry
   )
 
   EncodedRegistry.register(
+    :class => ChannelAdvisor::ListingServiceSOAP::WithdrawReason,
+    :schema_type => XSD::QName.new(NsWebservices, "WithdrawReason")
+  )
+
+  EncodedRegistry.register(
     :class => ChannelAdvisor::ListingServiceSOAP::ResultStatus,
     :schema_type => XSD::QName.new(NsWebservices, "ResultStatus")
   )
@@ -94,6 +99,11 @@ module DefaultMappingRegistry
   )
 
   LiteralRegistry.register(
+    :class => ChannelAdvisor::ListingServiceSOAP::WithdrawReason,
+    :schema_type => XSD::QName.new(NsWebservices, "WithdrawReason")
+  )
+
+  LiteralRegistry.register(
     :class => ChannelAdvisor::ListingServiceSOAP::ResultStatus,
     :schema_type => XSD::QName.new(NsWebservices, "ResultStatus")
   )
@@ -102,10 +112,10 @@ module DefaultMappingRegistry
     :class => ChannelAdvisor::ListingServiceSOAP::WithdrawListings,
     :schema_name => XSD::QName.new(NsWebservices, "WithdrawListings"),
     :schema_element => [
-      ["accountID", "SOAP::SOAPString"],
+      ["accountID", "SOAP::SOAPString", [0, 1]],
       ["skuList", "ChannelAdvisor::ListingServiceSOAP::ArrayOfString", [0, 1]],
       ["listingIDList", "ChannelAdvisor::ListingServiceSOAP::ArrayOfString", [0, 1]],
-      ["withdrawReason", "SOAP::SOAPString", [0, 1]]
+      ["withdrawReason", "ChannelAdvisor::ListingServiceSOAP::WithdrawReason"]
     ]
   )
 
