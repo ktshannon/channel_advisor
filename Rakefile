@@ -1,4 +1,3 @@
-require 'rubygems'
 require 'bundler'
 begin
   Bundler.setup(:default, :development)
@@ -9,61 +8,7 @@ rescue Bundler::BundlerError => e
 end
 require 'rake'
 
-require 'jeweler'
-Jeweler::Tasks.new do |gem|
-  # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "channel_advisor"
-  gem.homepage = "http://github.com/secondrotation/channel_advisor/"
-  gem.license = "MIT"
-  gem.summary = "channel_advisor"
-  gem.description = "channel_advisor was developed by: Second Rotation, Inc."
-  gem.email = "jason@gazelle.com"
-  gem.authors = ["Second Rotation, Inc."]
-  # Gem dependencies are declared in the gem file
-end
-Jeweler::RubygemsDotOrgTasks.new
-
-require 'rspec/core'
-require 'rspec/core/rake_task'
-RSpec::Core::RakeTask.new(:spec) do |spec|
-  spec.pattern = FileList['spec/**/*_spec.rb']
-end
-
-RSpec::Core::RakeTask.new(:rcov) do |spec|
-  spec.pattern = 'spec/**/*_spec.rb'
-  spec.rcov = true
-end
-
-task :default => :spec
-
-require 'yard'
-YARD::Rake::YardocTask.new
-
-# Custom Tasks Beyond This Point
-
-namespace :spec do
-  desc "Integration Spec. USE WITH CAUTION AS IT PUSHES TO CHANNEL ADVISOR"
-  RSpec::Core::RakeTask.new(:integration) do |spec|
-    spec.pattern = 'spec/integration/**/*_spec.rb'
-  end
-end
-
-desc "Run the automated hudson build"
-task :hudson do
-  puts "Starting build..."
-
-  Rake::Task['rcov'].invoke
-
-  require 'metric_fu'
-  MetricFu::Configuration.run do |fu|
-    fu.metrics -= [:rcov] # running rcov seperately
-    fu.metrics -= [:saikuro] # running rcov seperately
-    fu.graphs -= [:rcov, :saikuro]
-  end
-  Rake::Task['metrics:all'].invoke
-
-  puts "Done."
-end
+Bundler::GemHelper.install_tasks
 
 desc "Generate CA Service Definitions"
 task :generate do
