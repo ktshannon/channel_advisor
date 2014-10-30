@@ -11,14 +11,17 @@ require 'rake'
 Bundler::GemHelper.install_tasks
 
 require 'gemfury'
+require 'bump'
 namespace :fury do
   def build_gem
+    Bump::Bump.run("patch", commit: true, bundle: true, tag: true)
     Bundler::GemHelper.new.build_gem
   end
 
   def push(gem_path)
     client = Gemfury::Client.new(user_api_key: ENV['GEMFURY_API_KEY'], account: 'gazelleinc')
     client.push_gem(File.new(gem_path))
+    `git push origin master --tags`
   end
 
   task :build_and_push do
