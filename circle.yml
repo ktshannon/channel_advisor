@@ -6,5 +6,4 @@ deployment:
   gemserver:
     branch: master
     commands:
-      - bundle exec rake install
-      - bundle exec rake fury:upload
+      - bundle exec rake fury:build_and_push
