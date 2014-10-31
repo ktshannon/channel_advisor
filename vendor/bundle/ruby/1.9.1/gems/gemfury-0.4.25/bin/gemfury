@@ -1,2 +1,0 @@
-#!/usr/bin/env ruby
-exec(File.expand_path('../fury', __FILE__), *ARGV)
