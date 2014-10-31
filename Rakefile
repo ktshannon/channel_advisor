@@ -14,14 +14,22 @@ require 'gemfury'
 require 'bump'
 namespace :fury do
   def build_gem
-    #Bump::Bump.run("patch", commit: true, bundle: true, tag: true)
+    version = Bump::Bump.run("patch", commit: false, bundle: false, tag: false)
     Bundler::GemHelper.new.build_gem
+  end
+
+  def tag_and_commit
+    version = Bump::Bump.current
+    system("git add .  ")
+    system("git commit -m 'v#{version} [ci skip]'")
+    system("git tag -a -m 'Bump to v#{version}' v#{version}")
+    system("git push origin master --tags")
   end
 
   def push(gem_path)
     client = Gemfury::Client.new(user_api_key: ENV['GEMFURY_API_KEY'], account: 'gazelleinc')
     client.push_gem(File.new(gem_path))
-    #`git push origin master --tags`
+    tag_and_commit
   end
 
   task :build_and_push do
