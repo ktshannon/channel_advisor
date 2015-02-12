@@ -1,3 +1,6 @@
+require_relative 'types'
+require_relative 'mapping_registry'
+require 'soap/rpc/driver'
 
 module ChannelAdvisor
 module AdminServiceSOAP
@@ -35,8 +38,8 @@ class AdminServiceSoap < ::SOAP::RPC::Driver
   def initialize(endpoint_url = nil)
     endpoint_url ||= DefaultEndpointUrl
     super(endpoint_url, nil)
-    self.mapping_registry = ::ChannelAdvisor::DefaultMappingRegistry::EncodedRegistry
-    self.literal_mapping_registry = ::ChannelAdvisor::DefaultMappingRegistry::LiteralRegistry
+    self.mapping_registry = ::ChannelAdvisor::AdminServiceSOAP::DefaultMappingRegistry::EncodedRegistry
+    self.literal_mapping_registry = ::ChannelAdvisor::AdminServiceSOAP::DefaultMappingRegistry::LiteralRegistry
     init_methods
   end
 

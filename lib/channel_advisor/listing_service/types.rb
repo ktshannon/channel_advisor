@@ -1,3 +1,4 @@
+require 'xsd/qname'
 
 module ChannelAdvisor; module ListingServiceSOAP
 

@@ -45,6 +45,14 @@ RSpec::Core::RakeTask.new(:rcov) do |spec|
   spec.rcov_opts = ['--exclude', 'gems/*,spec/*']
 end
 
+def replace(matcher, replacement, file)
+  contents = File.read(file)
+
+  contents.gsub!(matcher, replacement)
+
+  File.write(file, contents)
+end
+
 desc "Generate CA Service Definitions"
 task :generate do
   services = %w(admin_service cart_service inventory_service listing_service marketplace_ad_service order_service shipping_service store_service tax_service)
@@ -69,10 +77,11 @@ task :generate do
     `mv #{File.join(service_dir, 'default')}.rb #{File.join(service_dir, 'types')}.rb`
     `mv #{File.join(service_dir, 'defaultDriver')}.rb #{File.join(service_dir, 'client')}.rb`
 
-    # Remove the unnecessary "require" lines from the generated code
-    `sed -i~ '/require/ d' "#{File.join(service_dir, 'client')}.rb"`
-    `sed -i~ '/require/ d' "#{File.join(service_dir, 'types')}.rb"`
-    `sed -i~ '/require/ d' "#{File.join(service_dir, 'mapping_registry')}.rb"`
+    # Fix references to files and constants
+    replace(/require 'default.rb'/, "require_relative 'types'", File.join(service_dir, 'client.rb'))
+    replace(/require 'defaultMappingRegistry.rb'/, "require_relative 'mapping_registry'", File.join(service_dir, 'client.rb'))
+    replace(/::ChannelAdvisor::DefaultMappingRegistry/, "::ChannelAdvisor::#{camel_name}SOAP::DefaultMappingRegistry", File.join(service_dir, 'client.rb'))
+    replace(/require 'default.rb'/, "require_relative 'types'", File.join(service_dir, 'mapping_registry.rb'))
 
     # Remove the temp files created by sed
     `rm "#{File.join(service_dir, 'client')}.rb~"`
