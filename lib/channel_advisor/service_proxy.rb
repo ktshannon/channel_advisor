@@ -39,9 +39,6 @@ module ChannelAdvisor
             end
             args = args.unshift(options[:account_id])
             client = self.init_client(options[:developer_key], options[:password])
-            
-            verify_mode = configatron.channel_advisor.ssl_config.retrieve('verify_mode', OpenSSL::SSL::VERIFY_PEER)
-            client.streamhandler.client.ssl_config.verify_mode = verify_mode
 
             request_class = service_module.const_get(class_name)
             request = request_class.new(*args)

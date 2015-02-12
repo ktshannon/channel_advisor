@@ -20,31 +20,6 @@ describe ChannelAdvisor::ServiceProxy do
       ChannelAdvisor::InventoryServiceSOAP::InventoryServiceSoap.should_receive(:new).and_return(@client)
     end
 
-    describe 'SSL config' do
-      before(:each) do
-        double_result = double(Object, :status => 'Success', :resultData => {})
-        response = double(ChannelAdvisor::InventoryServiceSOAP::GetFilteredSkuListResponse,
-          :getFilteredSkuListResult => double_result
-        )
-        @client.should_receive(:getFilteredSkuList).and_return(response)
-      end
-
-      it "sets the default SSL verify mode to VERIFY_PEER" do
-        @ssl_config.should_receive(:verify_mode=).with(OpenSSL::SSL::VERIFY_PEER)
-        inventory = ChannelAdvisor::InventoryService.new
-        inventory.getFilteredSkuList
-      end
-
-      it "sets the SSL verify mode from a configatron parameter" do
-        configatron.temp do
-          configatron.channel_advisor.ssl_config.verify_mode = OpenSSL::SSL::VERIFY_NONE
-          @ssl_config.should_receive(:verify_mode=).with(OpenSSL::SSL::VERIFY_NONE)
-          inventory = ChannelAdvisor::InventoryService.new
-          inventory.getFilteredSkuList
-        end
-      end
-    end
-
     it "handles getFilteredSkuList request" do
       criteria = ChannelAdvisor::InventoryServiceSOAP::InventoryItemCriteria.new
       criteria.skuStartsWith = 'SR123'
