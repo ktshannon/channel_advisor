@@ -1,3 +1,6 @@
+require_relative 'types'
+require_relative 'mapping_registry'
+require 'soap/rpc/driver'
 
 module ChannelAdvisor
 module MarketplaceAdServiceSOAP
@@ -43,8 +46,8 @@ class MarketplaceAdServiceSoap < ::SOAP::RPC::Driver
   def initialize(endpoint_url = nil)
     endpoint_url ||= DefaultEndpointUrl
     super(endpoint_url, nil)
-    self.mapping_registry = ::ChannelAdvisor::DefaultMappingRegistry::EncodedRegistry
-    self.literal_mapping_registry = ::ChannelAdvisor::DefaultMappingRegistry::LiteralRegistry
+    self.mapping_registry = ::ChannelAdvisor::MarketplaceAdServiceSOAP::DefaultMappingRegistry::EncodedRegistry
+    self.literal_mapping_registry = ::ChannelAdvisor::MarketplaceAdServiceSOAP::DefaultMappingRegistry::LiteralRegistry
     init_methods
   end
 

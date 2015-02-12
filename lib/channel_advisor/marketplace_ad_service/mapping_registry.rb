@@ -1,3 +1,5 @@
+require_relative 'types'
+require 'soap/mapping'
 
 module ChannelAdvisor; module MarketplaceAdServiceSOAP
 
