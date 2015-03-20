@@ -126,7 +126,7 @@ end
 #   title - SOAP::SOAPString
 #   lineItemID - SOAP::SOAPInt
 #   quantity - SOAP::SOAPInt
-#   itemSaleSource - ChannelAdvisor::CartServiceSOAP::SiteToken
+#   itemSaleSource - SOAP::SOAPString
 #   unitPrice - SOAP::SOAPDecimal
 class CartItem < InventoryItemBase
   attr_accessor :sKU
@@ -151,7 +151,7 @@ end
 #   title - SOAP::SOAPString
 #   lineItemID - SOAP::SOAPInt
 #   quantity - SOAP::SOAPInt
-#   itemSaleSource - ChannelAdvisor::CartServiceSOAP::SiteToken
+#   itemSaleSource - SOAP::SOAPString
 #   unitPrice - SOAP::SOAPDecimal
 #   currencyCode - SOAP::SOAPString
 #   unitWeight - ChannelAdvisor::CartServiceSOAP::ItemWeight
@@ -182,7 +182,7 @@ end
 #   title - SOAP::SOAPString
 #   lineItemID - SOAP::SOAPInt
 #   quantity - SOAP::SOAPInt
-#   itemSaleSource - ChannelAdvisor::CartServiceSOAP::SiteToken
+#   itemSaleSource - SOAP::SOAPString
 #   unitPrice - SOAP::SOAPDecimal
 #   allowNegativeQuantity - SOAP::SOAPBoolean
 class CartItemRequest < CartItem
@@ -232,41 +232,6 @@ end
 class ResultStatus < ::String
   Failure = new("Failure")
   Success = new("Success")
-end
-
-# {http://api.channeladvisor.com/datacontracts/orders}SiteToken
-class SiteToken < ::String
-  AMAZON_AUCTIONS = new("AMAZON_AUCTIONS")
-  AMAZON_DE = new("AMAZON_DE")
-  AMAZON_FR = new("AMAZON_FR")
-  AMAZON_MARKETPLACE = new("AMAZON_MARKETPLACE")
-  AMAZON_MERCHANTSAT = new("AMAZON_MERCHANTSAT")
-  AMAZON_UK = new("AMAZON_UK")
-  AMAZON_US = new("AMAZON_US")
-  BUY_DOT_COM = new("BUY_DOT_COM")
-  CHANNELADVISOR_STORE = new("CHANNELADVISOR_STORE")
-  DEMANDWARE_STORE = new("DEMANDWARE_STORE")
-  DIRECT_SALE = new("DIRECT_SALE")
-  EBAY_AU = new("EBAY_AU")
-  EBAY_CA = new("EBAY_CA")
-  EBAY_DE = new("EBAY_DE")
-  EBAY_ES = new("EBAY_ES")
-  EBAY_FR = new("EBAY_FR")
-  EBAY_IE = new("EBAY_IE")
-  EBAY_IT = new("EBAY_IT")
-  EBAY_MOTORS = new("EBAY_MOTORS")
-  EBAY_MOTORS_FIXED_PRICE = new("EBAY_MOTORS_FIXED_PRICE")
-  EBAY_STORES = new("EBAY_STORES")
-  EBAY_UK = new("EBAY_UK")
-  EBAY_US = new("EBAY_US")
-  OVERSTOCK = new("OVERSTOCK")
-  OVERSTOCK_SHOPPING = new("OVERSTOCK_SHOPPING")
-  PIXMANIA = new("PIXMANIA")
-  STOREADVISOR_PREMIUM = new("STOREADVISOR_PREMIUM")
-  TRADING_POST = new("TRADING_POST")
-  UNKNOWN = new("UNKNOWN")
-  YAHOO = new("YAHOO")
-  YAHOO_STORES = new("YAHOO_STORES")
 end
 
 # {http://api.channeladvisor.com/webservices/}GetCart
@@ -345,18 +310,18 @@ end
 #   accountID - SOAP::SOAPString
 #   cartID - SOAP::SOAPInt
 #   buyerEmail - SOAP::SOAPString
-#   lineItem - ChannelAdvisor::CartServiceSOAP::ArrayOfCartItemRequest
+#   lineItemList - ChannelAdvisor::CartServiceSOAP::ArrayOfCartItemRequest
 class ModifyCart
   attr_accessor :accountID
   attr_accessor :cartID
   attr_accessor :buyerEmail
-  attr_accessor :lineItem
+  attr_accessor :lineItemList
 
-  def initialize(accountID = nil, cartID = nil, buyerEmail = nil, lineItem = nil)
+  def initialize(accountID = nil, cartID = nil, buyerEmail = nil, lineItemList = nil)
     @accountID = accountID
     @cartID = cartID
     @buyerEmail = buyerEmail
-    @lineItem = lineItem
+    @lineItemList = lineItemList
   end
 end
 

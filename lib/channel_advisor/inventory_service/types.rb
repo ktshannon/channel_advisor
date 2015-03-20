@@ -116,11 +116,11 @@ end
 #   subtitle - SOAP::SOAPString
 #   shortDescription - SOAP::SOAPString
 #   description - SOAP::SOAPString
-#   weight - SOAP::SOAPDouble
+#   weight - SOAP::SOAPDecimal
 #   supplierCode - SOAP::SOAPString
 #   warehouseLocation - SOAP::SOAPString
 #   taxProductCode - SOAP::SOAPString
-#   flagStyle - ChannelAdvisor::InventoryServiceSOAP::FlagType
+#   flagStyle - SOAP::SOAPString
 #   flagDescription - SOAP::SOAPString
 #   isBlocked - SOAP::SOAPBoolean
 #   blockComment - SOAP::SOAPString
@@ -135,19 +135,18 @@ end
 #   warranty - SOAP::SOAPString
 #   productMargin - SOAP::SOAPDecimal
 #   supplierPO - SOAP::SOAPString
-#   receivedInInventory - SOAP::SOAPDateTime
 #   harmonizedCode - SOAP::SOAPString
 #   height - SOAP::SOAPDecimal
 #   length - SOAP::SOAPDecimal
 #   width - SOAP::SOAPDecimal
 #   classification - SOAP::SOAPString
-#   quantityInfo - ChannelAdvisor::InventoryServiceSOAP::QuantityInfoResponse
+#   distributionCenterList - ChannelAdvisor::InventoryServiceSOAP::ArrayOfDistributionCenterInfoResponse
+#   quantity - ChannelAdvisor::InventoryServiceSOAP::QuantityInfoResponse
 #   priceInfo - ChannelAdvisor::InventoryServiceSOAP::PriceInfo
 #   attributeList - ChannelAdvisor::InventoryServiceSOAP::ArrayOfAttributeInfo
 #   variationInfo - ChannelAdvisor::InventoryServiceSOAP::VariationInfo
 #   storeInfo - ChannelAdvisor::InventoryServiceSOAP::StoreInfo
 #   imageList - ChannelAdvisor::InventoryServiceSOAP::ArrayOfImageInfoResponse
-#   shippingInfo - ChannelAdvisor::InventoryServiceSOAP::ShippingInfo
 #   metaDescription - SOAP::SOAPString
 class InventoryItemResponse
   attr_accessor :sku
@@ -174,22 +173,21 @@ class InventoryItemResponse
   attr_accessor :warranty
   attr_accessor :productMargin
   attr_accessor :supplierPO
-  attr_accessor :receivedInInventory
   attr_accessor :harmonizedCode
   attr_accessor :height
   attr_accessor :length
   attr_accessor :width
   attr_accessor :classification
-  attr_accessor :quantityInfo
+  attr_accessor :distributionCenterList
+  attr_accessor :quantity
   attr_accessor :priceInfo
   attr_accessor :attributeList
   attr_accessor :variationInfo
   attr_accessor :storeInfo
   attr_accessor :imageList
-  attr_accessor :shippingInfo
   attr_accessor :metaDescription
 
-  def initialize(sku = nil, title = nil, subtitle = nil, shortDescription = nil, description = nil, weight = nil, supplierCode = nil, warehouseLocation = nil, taxProductCode = nil, flagStyle = nil, flagDescription = nil, isBlocked = nil, blockComment = nil, aSIN = nil, iSBN = nil, uPC = nil, mPN = nil, eAN = nil, manufacturer = nil, brand = nil, condition = nil, warranty = nil, productMargin = nil, supplierPO = nil, receivedInInventory = nil, harmonizedCode = nil, height = nil, length = nil, width = nil, classification = nil, quantityInfo = nil, priceInfo = nil, attributeList = nil, variationInfo = nil, storeInfo = nil, imageList = nil, shippingInfo = nil, metaDescription = nil)
+  def initialize(sku = nil, title = nil, subtitle = nil, shortDescription = nil, description = nil, weight = nil, supplierCode = nil, warehouseLocation = nil, taxProductCode = nil, flagStyle = nil, flagDescription = nil, isBlocked = nil, blockComment = nil, aSIN = nil, iSBN = nil, uPC = nil, mPN = nil, eAN = nil, manufacturer = nil, brand = nil, condition = nil, warranty = nil, productMargin = nil, supplierPO = nil, harmonizedCode = nil, height = nil, length = nil, width = nil, classification = nil, distributionCenterList = nil, quantity = nil, priceInfo = nil, attributeList = nil, variationInfo = nil, storeInfo = nil, imageList = nil, metaDescription = nil)
     @sku = sku
     @title = title
     @subtitle = subtitle
@@ -214,59 +212,140 @@ class InventoryItemResponse
     @warranty = warranty
     @productMargin = productMargin
     @supplierPO = supplierPO
-    @receivedInInventory = receivedInInventory
     @harmonizedCode = harmonizedCode
     @height = height
     @length = length
     @width = width
     @classification = classification
-    @quantityInfo = quantityInfo
+    @distributionCenterList = distributionCenterList
+    @quantity = quantity
     @priceInfo = priceInfo
     @attributeList = attributeList
     @variationInfo = variationInfo
     @storeInfo = storeInfo
     @imageList = imageList
-    @shippingInfo = shippingInfo
     @metaDescription = metaDescription
   end
 end
 
+# {http://api.channeladvisor.com/webservices/}ArrayOfDistributionCenterInfoResponse
+class ArrayOfDistributionCenterInfoResponse < ::Array
+end
+
+# {http://api.channeladvisor.com/webservices/}DistributionCenterInfoResponse
+#   distributionCenterCode - SOAP::SOAPString
+#   availableQuantity - SOAP::SOAPInt
+#   openAllocatedQuantity - SOAP::SOAPInt
+#   openAllocatedPooledQuantity - SOAP::SOAPInt
+#   warehouseLocation - SOAP::SOAPString
+#   receivedInInventory - SOAP::SOAPDateTime
+#   shippingRateList - ChannelAdvisor::InventoryServiceSOAP::ArrayOfShippingRateInfo
+class DistributionCenterInfoResponse
+  attr_accessor :distributionCenterCode
+  attr_accessor :availableQuantity
+  attr_accessor :openAllocatedQuantity
+  attr_accessor :openAllocatedPooledQuantity
+  attr_accessor :warehouseLocation
+  attr_accessor :receivedInInventory
+  attr_accessor :shippingRateList
+
+  def initialize(distributionCenterCode = nil, availableQuantity = nil, openAllocatedQuantity = nil, openAllocatedPooledQuantity = nil, warehouseLocation = nil, receivedInInventory = nil, shippingRateList = nil)
+    @distributionCenterCode = distributionCenterCode
+    @availableQuantity = availableQuantity
+    @openAllocatedQuantity = openAllocatedQuantity
+    @openAllocatedPooledQuantity = openAllocatedPooledQuantity
+    @warehouseLocation = warehouseLocation
+    @receivedInInventory = receivedInInventory
+    @shippingRateList = shippingRateList
+  end
+end
+
+# {http://api.channeladvisor.com/webservices/}ArrayOfShippingRateInfo
+class ArrayOfShippingRateInfo < ::Array
+end
+
+# {http://api.channeladvisor.com/webservices/}ShippingRateInfo
+#   destinationZoneName - SOAP::SOAPString
+#   carrierCode - SOAP::SOAPString
+#   classCode - SOAP::SOAPString
+#   firstItemRate - SOAP::SOAPDecimal
+#   additionalItemRate - SOAP::SOAPDecimal
+#   firstItemHandlingRate - SOAP::SOAPDecimal
+#   additionalItemHandlingRate - SOAP::SOAPDecimal
+#   freeShippingIfBuyItNow - SOAP::SOAPBoolean
+#   firstItemRateAttribute - SOAP::SOAPString
+#   firstItemHandlingRateAttribute - SOAP::SOAPString
+#   additionalItemRateAttribute - SOAP::SOAPString
+#   additionalItemHandlingRateAttribute - SOAP::SOAPString
+class ShippingRateInfo
+  attr_accessor :destinationZoneName
+  attr_accessor :carrierCode
+  attr_accessor :classCode
+  attr_accessor :firstItemRate
+  attr_accessor :additionalItemRate
+  attr_accessor :firstItemHandlingRate
+  attr_accessor :additionalItemHandlingRate
+  attr_accessor :freeShippingIfBuyItNow
+  attr_accessor :firstItemRateAttribute
+  attr_accessor :firstItemHandlingRateAttribute
+  attr_accessor :additionalItemRateAttribute
+  attr_accessor :additionalItemHandlingRateAttribute
+
+  def initialize(destinationZoneName = nil, carrierCode = nil, classCode = nil, firstItemRate = nil, additionalItemRate = nil, firstItemHandlingRate = nil, additionalItemHandlingRate = nil, freeShippingIfBuyItNow = nil, firstItemRateAttribute = nil, firstItemHandlingRateAttribute = nil, additionalItemRateAttribute = nil, additionalItemHandlingRateAttribute = nil)
+    @destinationZoneName = destinationZoneName
+    @carrierCode = carrierCode
+    @classCode = classCode
+    @firstItemRate = firstItemRate
+    @additionalItemRate = additionalItemRate
+    @firstItemHandlingRate = firstItemHandlingRate
+    @additionalItemHandlingRate = additionalItemHandlingRate
+    @freeShippingIfBuyItNow = freeShippingIfBuyItNow
+    @firstItemRateAttribute = firstItemRateAttribute
+    @firstItemHandlingRateAttribute = firstItemHandlingRateAttribute
+    @additionalItemRateAttribute = additionalItemRateAttribute
+    @additionalItemHandlingRateAttribute = additionalItemHandlingRateAttribute
+  end
+end
+
 # {http://api.channeladvisor.com/webservices/}QuantityInfoResponse
-#   total - SOAP::SOAPInt
 #   available - SOAP::SOAPInt
-#   open - SOAP::SOAPInt
+#   openAllocated - SOAP::SOAPInt
+#   openUnallocated - SOAP::SOAPInt
 #   pendingCheckout - SOAP::SOAPInt
 #   pendingPayment - SOAP::SOAPInt
 #   pendingShipment - SOAP::SOAPInt
-#   isScheduled - SOAP::SOAPBoolean
-#   openPooled - SOAP::SOAPInt
+#   total - SOAP::SOAPInt
+#   openAllocatedPooled - SOAP::SOAPInt
+#   openUnallocatedPooled - SOAP::SOAPInt
 #   pendingCheckoutPooled - SOAP::SOAPInt
 #   pendingPaymentPooled - SOAP::SOAPInt
 #   pendingShipmentPooled - SOAP::SOAPInt
 #   totalPooled - SOAP::SOAPInt
 class QuantityInfoResponse
-  attr_accessor :total
   attr_accessor :available
-  attr_accessor :open
+  attr_accessor :openAllocated
+  attr_accessor :openUnallocated
   attr_accessor :pendingCheckout
   attr_accessor :pendingPayment
   attr_accessor :pendingShipment
-  attr_accessor :isScheduled
-  attr_accessor :openPooled
+  attr_accessor :total
+  attr_accessor :openAllocatedPooled
+  attr_accessor :openUnallocatedPooled
   attr_accessor :pendingCheckoutPooled
   attr_accessor :pendingPaymentPooled
   attr_accessor :pendingShipmentPooled
   attr_accessor :totalPooled
 
-  def initialize(total = nil, available = nil, open = nil, pendingCheckout = nil, pendingPayment = nil, pendingShipment = nil, isScheduled = nil, openPooled = nil, pendingCheckoutPooled = nil, pendingPaymentPooled = nil, pendingShipmentPooled = nil, totalPooled = nil)
-    @total = total
+  def initialize(available = nil, openAllocated = nil, openUnallocated = nil, pendingCheckout = nil, pendingPayment = nil, pendingShipment = nil, total = nil, openAllocatedPooled = nil, openUnallocatedPooled = nil, pendingCheckoutPooled = nil, pendingPaymentPooled = nil, pendingShipmentPooled = nil, totalPooled = nil)
     @available = available
-    @open = open
+    @openAllocated = openAllocated
+    @openUnallocated = openUnallocated
     @pendingCheckout = pendingCheckout
     @pendingPayment = pendingPayment
     @pendingShipment = pendingShipment
-    @isScheduled = isScheduled
-    @openPooled = openPooled
+    @total = total
+    @openAllocatedPooled = openAllocatedPooled
+    @openUnallocatedPooled = openUnallocatedPooled
     @pendingCheckoutPooled = pendingCheckoutPooled
     @pendingPaymentPooled = pendingPaymentPooled
     @pendingShipmentPooled = pendingShipmentPooled
@@ -397,68 +476,8 @@ class ImageThumbInfo
   end
 end
 
-# {http://api.channeladvisor.com/webservices/}ShippingInfo
-#   distributionCenterCode - SOAP::SOAPString
-#   shippingRateList - ChannelAdvisor::InventoryServiceSOAP::ArrayOfShippingRateInfo
-class ShippingInfo
-  attr_accessor :distributionCenterCode
-  attr_accessor :shippingRateList
-
-  def initialize(distributionCenterCode = nil, shippingRateList = nil)
-    @distributionCenterCode = distributionCenterCode
-    @shippingRateList = shippingRateList
-  end
-end
-
-# {http://api.channeladvisor.com/webservices/}ArrayOfShippingRateInfo
-class ArrayOfShippingRateInfo < ::Array
-end
-
-# {http://api.channeladvisor.com/webservices/}ShippingRateInfo
-#   destinationZoneName - SOAP::SOAPString
-#   carrierCode - SOAP::SOAPString
-#   classCode - SOAP::SOAPString
-#   firstItemRate - SOAP::SOAPDecimal
-#   additionalItemRate - SOAP::SOAPDecimal
-#   firstItemHandlingRate - SOAP::SOAPDecimal
-#   additionalItemHandlingRate - SOAP::SOAPDecimal
-#   freeShippingIfBuyItNow - SOAP::SOAPBoolean
-#   firstItemRateAttribute - ChannelAdvisor::InventoryServiceSOAP::ShippingRateAttribute
-#   firstItemHandlingRateAttribute - ChannelAdvisor::InventoryServiceSOAP::HandlingRateAttribute
-#   additionalItemRateAttribute - ChannelAdvisor::InventoryServiceSOAP::ShippingRateAttribute
-#   additionalItemHandlingRateAttribute - ChannelAdvisor::InventoryServiceSOAP::HandlingRateAttribute
-class ShippingRateInfo
-  attr_accessor :destinationZoneName
-  attr_accessor :carrierCode
-  attr_accessor :classCode
-  attr_accessor :firstItemRate
-  attr_accessor :additionalItemRate
-  attr_accessor :firstItemHandlingRate
-  attr_accessor :additionalItemHandlingRate
-  attr_accessor :freeShippingIfBuyItNow
-  attr_accessor :firstItemRateAttribute
-  attr_accessor :firstItemHandlingRateAttribute
-  attr_accessor :additionalItemRateAttribute
-  attr_accessor :additionalItemHandlingRateAttribute
-
-  def initialize(destinationZoneName = nil, carrierCode = nil, classCode = nil, firstItemRate = nil, additionalItemRate = nil, firstItemHandlingRate = nil, additionalItemHandlingRate = nil, freeShippingIfBuyItNow = nil, firstItemRateAttribute = nil, firstItemHandlingRateAttribute = nil, additionalItemRateAttribute = nil, additionalItemHandlingRateAttribute = nil)
-    @destinationZoneName = destinationZoneName
-    @carrierCode = carrierCode
-    @classCode = classCode
-    @firstItemRate = firstItemRate
-    @additionalItemRate = additionalItemRate
-    @firstItemHandlingRate = firstItemHandlingRate
-    @additionalItemHandlingRate = additionalItemHandlingRate
-    @freeShippingIfBuyItNow = freeShippingIfBuyItNow
-    @firstItemRateAttribute = firstItemRateAttribute
-    @firstItemHandlingRateAttribute = firstItemHandlingRateAttribute
-    @additionalItemRateAttribute = additionalItemRateAttribute
-    @additionalItemHandlingRateAttribute = additionalItemHandlingRateAttribute
-  end
-end
-
 # {http://api.channeladvisor.com/webservices/}InventoryItemCriteria
-#   dateRangeField - ChannelAdvisor::InventoryServiceSOAP::InventoryItemDateRangeField
+#   dateRangeField - SOAP::SOAPString
 #   dateRangeStartGMT - SOAP::SOAPDateTime
 #   dateRangeEndGMT - SOAP::SOAPDateTime
 #   partialSku - SOAP::SOAPString
@@ -466,8 +485,8 @@ end
 #   skuEndsWith - SOAP::SOAPString
 #   classificationName - SOAP::SOAPString
 #   labelName - SOAP::SOAPString
-#   quantityCheckField - ChannelAdvisor::InventoryServiceSOAP::InventoryItemQuantityField
-#   quantityCheckType - ChannelAdvisor::InventoryServiceSOAP::NumericFilterType
+#   quantityCheckField - SOAP::SOAPString
+#   quantityCheckType - SOAP::SOAPString
 #   quantityCheckValue - SOAP::SOAPInt
 #   pageNumber - SOAP::SOAPInt
 #   pageSize - SOAP::SOAPInt
@@ -541,13 +560,13 @@ class APIResultOfArrayOfString
   end
 end
 
-# {http://api.channeladvisor.com/webservices/}APIResultOfArrayOfShippingRateInfo
+# {http://api.channeladvisor.com/webservices/}APIResultOfArrayOfDistributionCenterInfoResponse
 #   status - ChannelAdvisor::InventoryServiceSOAP::ResultStatus
 #   messageCode - SOAP::SOAPInt
 #   message - SOAP::SOAPString
 #   data - SOAP::SOAPString
-#   resultData - ChannelAdvisor::InventoryServiceSOAP::ArrayOfShippingRateInfo
-class APIResultOfArrayOfShippingRateInfo
+#   resultData - ChannelAdvisor::InventoryServiceSOAP::ArrayOfDistributionCenterInfoResponse
+class APIResultOfArrayOfDistributionCenterInfoResponse
   attr_accessor :status
   attr_accessor :messageCode
   attr_accessor :message
@@ -783,7 +802,7 @@ end
 # {http://api.channeladvisor.com/webservices/}InventoryQuantityResponse
 #   sKU - SOAP::SOAPString
 #   quantity - SOAP::SOAPInt
-#   messageCode - ChannelAdvisor::InventoryServiceSOAP::ErrorCode
+#   messageCode - SOAP::SOAPInt
 #   message - SOAP::SOAPString
 class InventoryQuantityResponse
   attr_accessor :sKU
@@ -799,20 +818,102 @@ class InventoryQuantityResponse
   end
 end
 
+# {http://api.channeladvisor.com/webservices/}APIResultOfArrayOfDistributionCenterResponse
+#   status - ChannelAdvisor::InventoryServiceSOAP::ResultStatus
+#   messageCode - SOAP::SOAPInt
+#   message - SOAP::SOAPString
+#   data - SOAP::SOAPString
+#   resultData - ChannelAdvisor::InventoryServiceSOAP::ArrayOfDistributionCenterResponse
+class APIResultOfArrayOfDistributionCenterResponse
+  attr_accessor :status
+  attr_accessor :messageCode
+  attr_accessor :message
+  attr_accessor :data
+  attr_accessor :resultData
+
+  def initialize(status = nil, messageCode = nil, message = nil, data = nil, resultData = nil)
+    @status = status
+    @messageCode = messageCode
+    @message = message
+    @data = data
+    @resultData = resultData
+  end
+end
+
+# {http://api.channeladvisor.com/webservices/}ArrayOfDistributionCenterResponse
+class ArrayOfDistributionCenterResponse < ::Array
+end
+
+# {http://api.channeladvisor.com/webservices/}DistributionCenterResponse
+#   distributionCenterCode - SOAP::SOAPString
+#   distributionCenterName - SOAP::SOAPString
+#   distributionCenterType - SOAP::SOAPString
+#   contactName - SOAP::SOAPString
+#   contactEmail - SOAP::SOAPString
+#   contactPhone - SOAP::SOAPString
+#   address1 - SOAP::SOAPString
+#   address2 - SOAP::SOAPString
+#   city - SOAP::SOAPString
+#   regionName - SOAP::SOAPString
+#   countryName - SOAP::SOAPString
+#   postalCode - SOAP::SOAPString
+#   isDefault - SOAP::SOAPBoolean
+#   isExternallyManaged - SOAP::SOAPBoolean
+#   isPickupLocation - SOAP::SOAPBoolean
+#   isShipLocation - SOAP::SOAPBoolean
+class DistributionCenterResponse
+  attr_accessor :distributionCenterCode
+  attr_accessor :distributionCenterName
+  attr_accessor :distributionCenterType
+  attr_accessor :contactName
+  attr_accessor :contactEmail
+  attr_accessor :contactPhone
+  attr_accessor :address1
+  attr_accessor :address2
+  attr_accessor :city
+  attr_accessor :regionName
+  attr_accessor :countryName
+  attr_accessor :postalCode
+  attr_accessor :isDefault
+  attr_accessor :isExternallyManaged
+  attr_accessor :isPickupLocation
+  attr_accessor :isShipLocation
+
+  def initialize(distributionCenterCode = nil, distributionCenterName = nil, distributionCenterType = nil, contactName = nil, contactEmail = nil, contactPhone = nil, address1 = nil, address2 = nil, city = nil, regionName = nil, countryName = nil, postalCode = nil, isDefault = nil, isExternallyManaged = nil, isPickupLocation = nil, isShipLocation = nil)
+    @distributionCenterCode = distributionCenterCode
+    @distributionCenterName = distributionCenterName
+    @distributionCenterType = distributionCenterType
+    @contactName = contactName
+    @contactEmail = contactEmail
+    @contactPhone = contactPhone
+    @address1 = address1
+    @address2 = address2
+    @city = city
+    @regionName = regionName
+    @countryName = countryName
+    @postalCode = postalCode
+    @isDefault = isDefault
+    @isExternallyManaged = isExternallyManaged
+    @isPickupLocation = isPickupLocation
+    @isShipLocation = isShipLocation
+  end
+end
+
 # {http://api.channeladvisor.com/webservices/}InventoryItemSubmit
 #   sku - SOAP::SOAPString
 #   title - SOAP::SOAPString
 #   subtitle - SOAP::SOAPString
 #   shortDescription - SOAP::SOAPString
 #   description - SOAP::SOAPString
-#   weight - SOAP::SOAPDouble
+#   weight - SOAP::SOAPDecimal
 #   supplierCode - SOAP::SOAPString
 #   warehouseLocation - SOAP::SOAPString
 #   taxProductCode - SOAP::SOAPString
-#   flagStyle - ChannelAdvisor::InventoryServiceSOAP::FlagType
+#   flagStyle - SOAP::SOAPString
 #   flagDescription - SOAP::SOAPString
 #   isBlocked - SOAP::SOAPBoolean
 #   blockComment - SOAP::SOAPString
+#   blockExternalQuantity - SOAP::SOAPBoolean
 #   aSIN - SOAP::SOAPString
 #   iSBN - SOAP::SOAPString
 #   uPC - SOAP::SOAPString
@@ -824,19 +925,18 @@ end
 #   warranty - SOAP::SOAPString
 #   productMargin - SOAP::SOAPDecimal
 #   supplierPO - SOAP::SOAPString
-#   receivedInInventory - SOAP::SOAPDateTime
 #   harmonizedCode - SOAP::SOAPString
 #   height - SOAP::SOAPDecimal
 #   length - SOAP::SOAPDecimal
 #   width - SOAP::SOAPDecimal
 #   classification - SOAP::SOAPString
-#   quantityInfo - ChannelAdvisor::InventoryServiceSOAP::QuantityInfoSubmit
+#   dCQuantityUpdateType - SOAP::SOAPString
+#   distributionCenterList - ChannelAdvisor::InventoryServiceSOAP::ArrayOfDistributionCenterInfoSubmit
 #   priceInfo - ChannelAdvisor::InventoryServiceSOAP::PriceInfo
 #   attributeList - ChannelAdvisor::InventoryServiceSOAP::ArrayOfAttributeInfo
 #   variationInfo - ChannelAdvisor::InventoryServiceSOAP::VariationInfo
 #   storeInfo - ChannelAdvisor::InventoryServiceSOAP::StoreInfo
 #   imageList - ChannelAdvisor::InventoryServiceSOAP::ArrayOfImageInfoSubmit
-#   shippingInfo - ChannelAdvisor::InventoryServiceSOAP::ShippingInfo
 #   labelList - ChannelAdvisor::InventoryServiceSOAP::ArrayOfString
 #   metaDescription - SOAP::SOAPString
 class InventoryItemSubmit
@@ -853,6 +953,7 @@ class InventoryItemSubmit
   attr_accessor :flagDescription
   attr_accessor :isBlocked
   attr_accessor :blockComment
+  attr_accessor :blockExternalQuantity
   attr_accessor :aSIN
   attr_accessor :iSBN
   attr_accessor :uPC
@@ -864,23 +965,22 @@ class InventoryItemSubmit
   attr_accessor :warranty
   attr_accessor :productMargin
   attr_accessor :supplierPO
-  attr_accessor :receivedInInventory
   attr_accessor :harmonizedCode
   attr_accessor :height
   attr_accessor :length
   attr_accessor :width
   attr_accessor :classification
-  attr_accessor :quantityInfo
+  attr_accessor :dCQuantityUpdateType
+  attr_accessor :distributionCenterList
   attr_accessor :priceInfo
   attr_accessor :attributeList
   attr_accessor :variationInfo
   attr_accessor :storeInfo
   attr_accessor :imageList
-  attr_accessor :shippingInfo
   attr_accessor :labelList
   attr_accessor :metaDescription
 
-  def initialize(sku = nil, title = nil, subtitle = nil, shortDescription = nil, description = nil, weight = nil, supplierCode = nil, warehouseLocation = nil, taxProductCode = nil, flagStyle = nil, flagDescription = nil, isBlocked = nil, blockComment = nil, aSIN = nil, iSBN = nil, uPC = nil, mPN = nil, eAN = nil, manufacturer = nil, brand = nil, condition = nil, warranty = nil, productMargin = nil, supplierPO = nil, receivedInInventory = nil, harmonizedCode = nil, height = nil, length = nil, width = nil, classification = nil, quantityInfo = nil, priceInfo = nil, attributeList = nil, variationInfo = nil, storeInfo = nil, imageList = nil, shippingInfo = nil, labelList = nil, metaDescription = nil)
+  def initialize(sku = nil, title = nil, subtitle = nil, shortDescription = nil, description = nil, weight = nil, supplierCode = nil, warehouseLocation = nil, taxProductCode = nil, flagStyle = nil, flagDescription = nil, isBlocked = nil, blockComment = nil, blockExternalQuantity = nil, aSIN = nil, iSBN = nil, uPC = nil, mPN = nil, eAN = nil, manufacturer = nil, brand = nil, condition = nil, warranty = nil, productMargin = nil, supplierPO = nil, harmonizedCode = nil, height = nil, length = nil, width = nil, classification = nil, dCQuantityUpdateType = nil, distributionCenterList = nil, priceInfo = nil, attributeList = nil, variationInfo = nil, storeInfo = nil, imageList = nil, labelList = nil, metaDescription = nil)
     @sku = sku
     @title = title
     @subtitle = subtitle
@@ -894,6 +994,7 @@ class InventoryItemSubmit
     @flagDescription = flagDescription
     @isBlocked = isBlocked
     @blockComment = blockComment
+    @blockExternalQuantity = blockExternalQuantity
     @aSIN = aSIN
     @iSBN = iSBN
     @uPC = uPC
@@ -905,34 +1006,49 @@ class InventoryItemSubmit
     @warranty = warranty
     @productMargin = productMargin
     @supplierPO = supplierPO
-    @receivedInInventory = receivedInInventory
     @harmonizedCode = harmonizedCode
     @height = height
     @length = length
     @width = width
     @classification = classification
-    @quantityInfo = quantityInfo
+    @dCQuantityUpdateType = dCQuantityUpdateType
+    @distributionCenterList = distributionCenterList
     @priceInfo = priceInfo
     @attributeList = attributeList
     @variationInfo = variationInfo
     @storeInfo = storeInfo
     @imageList = imageList
-    @shippingInfo = shippingInfo
     @labelList = labelList
     @metaDescription = metaDescription
   end
 end
 
-# {http://api.channeladvisor.com/webservices/}QuantityInfoSubmit
-#   updateType - ChannelAdvisor::InventoryServiceSOAP::InventoryQuantityUpdateType
-#   total - SOAP::SOAPInt
-class QuantityInfoSubmit
-  attr_accessor :updateType
-  attr_accessor :total
+# {http://api.channeladvisor.com/webservices/}ArrayOfDistributionCenterInfoSubmit
+class ArrayOfDistributionCenterInfoSubmit < ::Array
+end
 
-  def initialize(updateType = nil, total = nil)
-    @updateType = updateType
-    @total = total
+# {http://api.channeladvisor.com/webservices/}DistributionCenterInfoSubmit
+#   distributionCenterCode - SOAP::SOAPString
+#   quantity - SOAP::SOAPInt
+#   quantityUpdateType - SOAP::SOAPString
+#   warehouseLocation - SOAP::SOAPString
+#   receivedInInventory - SOAP::SOAPDateTime
+#   shippingRateList - ChannelAdvisor::InventoryServiceSOAP::ArrayOfShippingRateInfo
+class DistributionCenterInfoSubmit
+  attr_accessor :distributionCenterCode
+  attr_accessor :quantity
+  attr_accessor :quantityUpdateType
+  attr_accessor :warehouseLocation
+  attr_accessor :receivedInInventory
+  attr_accessor :shippingRateList
+
+  def initialize(distributionCenterCode = nil, quantity = nil, quantityUpdateType = nil, warehouseLocation = nil, receivedInInventory = nil, shippingRateList = nil)
+    @distributionCenterCode = distributionCenterCode
+    @quantity = quantity
+    @quantityUpdateType = quantityUpdateType
+    @warehouseLocation = warehouseLocation
+    @receivedInInventory = receivedInInventory
+    @shippingRateList = shippingRateList
   end
 end
 
@@ -1004,16 +1120,22 @@ end
 
 # {http://api.channeladvisor.com/webservices/}InventoryItemQuantityAndPrice
 #   sku - SOAP::SOAPString
-#   quantityInfo - ChannelAdvisor::InventoryServiceSOAP::QuantityInfoSubmit
+#   distributionCenterCode - SOAP::SOAPString
+#   quantity - SOAP::SOAPInt
+#   updateType - SOAP::SOAPString
 #   priceInfo - ChannelAdvisor::InventoryServiceSOAP::PriceInfo
 class InventoryItemQuantityAndPrice
   attr_accessor :sku
-  attr_accessor :quantityInfo
+  attr_accessor :distributionCenterCode
+  attr_accessor :quantity
+  attr_accessor :updateType
   attr_accessor :priceInfo
 
-  def initialize(sku = nil, quantityInfo = nil, priceInfo = nil)
+  def initialize(sku = nil, distributionCenterCode = nil, quantity = nil, updateType = nil, priceInfo = nil)
     @sku = sku
-    @quantityInfo = quantityInfo
+    @distributionCenterCode = distributionCenterCode
+    @quantity = quantity
+    @updateType = updateType
     @priceInfo = priceInfo
   end
 end
@@ -1220,165 +1342,6 @@ class ResultStatus < ::String
   Success = new("Success")
 end
 
-# {http://api.channeladvisor.com/webservices/}FlagType
-class FlagType < ::String
-  BlueFlag = new("BlueFlag")
-  ExclamationPoint = new("ExclamationPoint")
-  GreenFlag = new("GreenFlag")
-  ItemCopied = new("ItemCopied")
-  NoFlag = new("NoFlag")
-  NotAvailable = new("NotAvailable")
-  Price = new("Price")
-  QuestionMark = new("QuestionMark")
-  RedFlag = new("RedFlag")
-  YellowFlag = new("YellowFlag")
-end
-
-# {http://api.channeladvisor.com/webservices/}ShippingRateAttribute
-class ShippingRateAttribute < ::String
-  NotAvailable = new("NotAvailable")
-  Price = new("Price")
-  TBD = new("TBD")
-end
-
-# {http://api.channeladvisor.com/webservices/}HandlingRateAttribute
-class HandlingRateAttribute < ::String
-  NotAvailable = new("NotAvailable")
-  Price = new("Price")
-end
-
-# {http://api.channeladvisor.com/webservices/}InventoryItemDateRangeField
-class InventoryItemDateRangeField < ::String
-  CreateDate = new("CreateDate")
-  LastUpdateDate = new("LastUpdateDate")
-  QtyLastModifiedDate = new("QtyLastModifiedDate")
-end
-
-# {http://api.channeladvisor.com/webservices/}InventoryItemQuantityField
-class InventoryItemQuantityField < ::String
-  Available = new("Available")
-  Open = new("Open")
-  PendingCheckout = new("PendingCheckout")
-  PendingPayment = new("PendingPayment")
-  PendingShipment = new("PendingShipment")
-  Total = new("Total")
-end
-
-# {http://api.channeladvisor.com/webservices/}NumericFilterType
-class NumericFilterType < ::String
-  EqualTo = new("EqualTo")
-  GreaterThan = new("GreaterThan")
-  GreaterThanOrEqualTo = new("GreaterThanOrEqualTo")
-  LessThan = new("LessThan")
-  LessThanOrEqualTo = new("LessThanOrEqualTo")
-end
-
-# {http://api.channeladvisor.com/webservices/}InventoryItemSortField
-class InventoryItemSortField < ::String
-  Sku = new("Sku")
-  Title = new("Title")
-end
-
-# {http://api.channeladvisor.com/webservices/}SortDirection
-class SortDirection < ::String
-  Ascending = new("Ascending")
-  Descending = new("Descending")
-end
-
-# {http://api.channeladvisor.com/webservices/}ErrorCode
-class ErrorCode < ::String
-  AccountIDIsBlank = new("AccountIDIsBlank")
-  AccountIDIsNull = new("AccountIDIsNull")
-  AccountIDNotExists = new("AccountIDNotExists")
-  CartIDNull = new("CartIDNull")
-  CartNotFound = new("CartNotFound")
-  DataIntegrityViolation = new("DataIntegrityViolation")
-  EMailAddressBadFormat = new("EMailAddressBadFormat")
-  EmptyCartSubmit = new("EmptyCartSubmit")
-  ErrorInvoiceCreation = new("ErrorInvoiceCreation")
-  Error_AuctionWinnerValidation = new("Error_AuctionWinnerValidation")
-  Error_NotValidCartID = new("Error_NotValidCartID")
-  Error_ProcessingASale = new("Error_ProcessingASale")
-  Error_PromotionNotFound = new("Error_PromotionNotFound")
-  Error_SKUDuplicated = new("Error_SKUDuplicated")
-  Error_SavingBillingData = new("Error_SavingBillingData")
-  Error_SavingOrderShippingData = new("Error_SavingOrderShippingData")
-  Error_SavingTaxInformation = new("Error_SavingTaxInformation")
-  FetchFilterInfoNull = new("FetchFilterInfoNull")
-  InvalidArguments = new("InvalidArguments")
-  InvalidCartID = new("InvalidCartID")
-  InvalidSaleSource = new("InvalidSaleSource")
-  Invalid_AddressLength = new("Invalid_AddressLength")
-  Invalid_BlockedSku = new("Invalid_BlockedSku")
-  Invalid_BundleSKU = new("Invalid_BundleSKU")
-  Invalid_CCLast4 = new("Invalid_CCLast4")
-  Invalid_CarrierClassData = new("Invalid_CarrierClassData")
-  Invalid_CityLength = new("Invalid_CityLength")
-  Invalid_CompanyNameLength = new("Invalid_CompanyNameLength")
-  Invalid_CountryLength = new("Invalid_CountryLength")
-  Invalid_CustomFieldValue = new("Invalid_CustomFieldValue")
-  Invalid_FirstNameLength = new("Invalid_FirstNameLength")
-  Invalid_JobTitleLength = new("Invalid_JobTitleLength")
-  Invalid_LastNameLength = new("Invalid_LastNameLength")
-  Invalid_OrderId = new("Invalid_OrderId")
-  Invalid_OrderNumberLength = new("Invalid_OrderNumberLength")
-  Invalid_OrderStatus = new("Invalid_OrderStatus")
-  Invalid_PhoneLength = new("Invalid_PhoneLength")
-  Invalid_PostalCodeLength = new("Invalid_PostalCodeLength")
-  Invalid_ShippingInstructionsLgth = new("Invalid_ShippingInstructionsLgth")
-  Invalid_SuffixLength = new("Invalid_SuffixLength")
-  Invalid_TitleLength = new("Invalid_TitleLength")
-  Invalid_TrackingNumberLgth = new("Invalid_TrackingNumberLgth")
-  Invalid_WithdrawReason = new("Invalid_WithdrawReason")
-  LineItemIDNotFound = new("LineItemIDNotFound")
-  LineItemOrSKUEmpty = new("LineItemOrSKUEmpty")
-  MergeInvoice_CheckoutNotOpen = new("MergeInvoice_CheckoutNotOpen")
-  MergeInvoice_DiffTaxModule = new("MergeInvoice_DiffTaxModule")
-  MergeInvoice_Error = new("MergeInvoice_Error")
-  MergeInvoice_SameInvoice = new("MergeInvoice_SameInvoice")
-  MissingEmailAddress = new("MissingEmailAddress")
-  MultiplePromoCodesSpecified = new("MultiplePromoCodesSpecified")
-  NegativeQuantity = new("NegativeQuantity")
-  NotMultiSellerDCCompatible = new("NotMultiSellerDCCompatible")
-  OrderCollectionNull = new("OrderCollectionNull")
-  OrderIdIsNullOrEmpty = new("OrderIdIsNullOrEmpty")
-  PromoAmountOutOfRange = new("PromoAmountOutOfRange")
-  QuantityNotEnough = new("QuantityNotEnough")
-  RoverRegionNotFound = new("RoverRegionNotFound")
-  SKUNotFound = new("SKUNotFound")
-  ShippingCostNegative = new("ShippingCostNegative")
-  SkuIsBlank = new("SkuIsBlank")
-  SkuIsNull = new("SkuIsNull")
-  SplitInvoice_CheckoutNotOpen = new("SplitInvoice_CheckoutNotOpen")
-  SplitInvoice_Error = new("SplitInvoice_Error")
-  SplitInvoice_NoLineItems = new("SplitInvoice_NoLineItems")
-  SplitInvoice_NotEnoughLineItems = new("SplitInvoice_NotEnoughLineItems")
-  Success = new("Success")
-  TooManyGiftWrapAmounts = new("TooManyGiftWrapAmounts")
-  TooManyInsuranceAmounts = new("TooManyInsuranceAmounts")
-  TooManyRecyclingFeeAmounts = new("TooManyRecyclingFeeAmounts")
-  TooManySKUsRequested = new("TooManySKUsRequested")
-  TooManyShippingAmounts = new("TooManyShippingAmounts")
-  TooManyTaxAmounts = new("TooManyTaxAmounts")
-  TooManyVATGiftWrapAmounts = new("TooManyVATGiftWrapAmounts")
-  TooManyVATShippingAmounts = new("TooManyVATShippingAmounts")
-  Unexpected = new("Unexpected")
-  VATRangeOutOfRange = new("VATRangeOutOfRange")
-  WrongAccountSettings = new("WrongAccountSettings")
-  WrongCountryInfo = new("WrongCountryInfo")
-  WrongStateInfo = new("WrongStateInfo")
-  ZeroQuantity = new("ZeroQuantity")
-end
-
-# {http://api.channeladvisor.com/webservices/}InventoryQuantityUpdateType
-class InventoryQuantityUpdateType < ::String
-  Absolute = new("Absolute")
-  Available = new("Available")
-  InStock = new("InStock")
-  Relative = new("Relative")
-  UnShipped = new("UnShipped")
-end
-
 # {http://api.channeladvisor.com/webservices/}DoesSkuExist
 #   accountID - SOAP::SOAPString
 #   sku - SOAP::SOAPString
@@ -1465,8 +1428,8 @@ end
 #   accountID - SOAP::SOAPString
 #   itemCriteria - ChannelAdvisor::InventoryServiceSOAP::InventoryItemCriteria
 #   detailLevel - ChannelAdvisor::InventoryServiceSOAP::InventoryItemDetailLevel
-#   sortField - ChannelAdvisor::InventoryServiceSOAP::InventoryItemSortField
-#   sortDirection - ChannelAdvisor::InventoryServiceSOAP::SortDirection
+#   sortField - SOAP::SOAPString
+#   sortDirection - SOAP::SOAPString
 class GetFilteredInventoryItemList
   attr_accessor :accountID
   attr_accessor :itemCriteria
@@ -1496,8 +1459,8 @@ end
 # {http://api.channeladvisor.com/webservices/}GetFilteredSkuList
 #   accountID - SOAP::SOAPString
 #   itemCriteria - ChannelAdvisor::InventoryServiceSOAP::InventoryItemCriteria
-#   sortField - ChannelAdvisor::InventoryServiceSOAP::InventoryItemSortField
-#   sortDirection - ChannelAdvisor::InventoryServiceSOAP::SortDirection
+#   sortField - SOAP::SOAPString
+#   sortDirection - SOAP::SOAPString
 class GetFilteredSkuList
   attr_accessor :accountID
   attr_accessor :itemCriteria
@@ -1536,7 +1499,7 @@ class GetInventoryItemShippingInfo
 end
 
 # {http://api.channeladvisor.com/webservices/}GetInventoryItemShippingInfoResponse
-#   getInventoryItemShippingInfoResult - ChannelAdvisor::InventoryServiceSOAP::APIResultOfArrayOfShippingRateInfo
+#   getInventoryItemShippingInfoResult - ChannelAdvisor::InventoryServiceSOAP::APIResultOfArrayOfDistributionCenterInfoResponse
 class GetInventoryItemShippingInfoResponse
   attr_accessor :getInventoryItemShippingInfoResult
 
@@ -1723,6 +1686,26 @@ class GetInventoryQuantityListResponse
 
   def initialize(getInventoryQuantityListResult = nil)
     @getInventoryQuantityListResult = getInventoryQuantityListResult
+  end
+end
+
+# {http://api.channeladvisor.com/webservices/}GetDistributionCenterList
+#   accountID - SOAP::SOAPString
+class GetDistributionCenterList
+  attr_accessor :accountID
+
+  def initialize(accountID = nil)
+    @accountID = accountID
+  end
+end
+
+# {http://api.channeladvisor.com/webservices/}GetDistributionCenterListResponse
+#   getDistributionCenterListResult - ChannelAdvisor::InventoryServiceSOAP::APIResultOfArrayOfDistributionCenterResponse
+class GetDistributionCenterListResponse
+  attr_accessor :getDistributionCenterListResult
+
+  def initialize(getDistributionCenterListResult = nil)
+    @getDistributionCenterListResult = getDistributionCenterListResult
   end
 end
 

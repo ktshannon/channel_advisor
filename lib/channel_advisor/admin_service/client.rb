@@ -6,7 +6,7 @@ module ChannelAdvisor
 module AdminServiceSOAP
 
 class AdminServiceSoap < ::SOAP::RPC::Driver
-  DefaultEndpointUrl = "https://api.channeladvisor.com/ChannelAdvisorAPI/v4/AdminService.asmx"
+  DefaultEndpointUrl = "https://api.channeladvisor.com/ChannelAdvisorAPI/v7/AdminService.asmx"
 
   Methods = [
     [ "http://api.channeladvisor.com/webservices/GetAuthorizationList",

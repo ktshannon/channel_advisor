@@ -6,7 +6,7 @@ module ChannelAdvisor
 module CartServiceSOAP
 
 class CartServiceSoap < ::SOAP::RPC::Driver
-  DefaultEndpointUrl = "https://api.channeladvisor.com/ChannelAdvisorAPI/v4/CartService.asmx"
+  DefaultEndpointUrl = "https://api.channeladvisor.com/ChannelAdvisorAPI/v7/CartService.asmx"
 
   Methods = [
     [ "http://api.channeladvisor.com/webservices/GetCart",
