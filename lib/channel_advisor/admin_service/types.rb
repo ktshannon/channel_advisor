@@ -118,7 +118,7 @@ class ResultStatus < ::String
 end
 
 # {http://api.channeladvisor.com/webservices/}GetAuthorizationList
-#   localID - SOAP::SOAPInt
+#   localID - SOAP::SOAPInteger
 class GetAuthorizationList
   attr_accessor :localID
 

@@ -6,7 +6,7 @@ module ChannelAdvisor
 module MarketplaceAdServiceSOAP
 
 class MarketplaceAdServiceSoap < ::SOAP::RPC::Driver
-  DefaultEndpointUrl = "https://api.channeladvisor.com/ChannelAdvisorAPI/v4/MarketplaceAdService.asmx"
+  DefaultEndpointUrl = "https://api.channeladvisor.com/ChannelAdvisorAPI/v7/MarketplaceAdService.asmx"
 
   Methods = [
     [ "http://api.channeladvisor.com/webservices/AddMarketplaceAd",
@@ -29,6 +29,14 @@ class MarketplaceAdServiceSoap < ::SOAP::RPC::Driver
       "deleteMarketplaceAd",
       [ [:in, "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "DeleteMarketplaceAd"]],
         [:out, "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "DeleteMarketplaceAdResponse"]] ],
+      { :request_style =>  :document, :request_use =>  :literal,
+        :response_style => :document, :response_use => :literal,
+        :faults => {} }
+    ],
+    [ "http://api.channeladvisor.com/webservices/DeleteMarketplaceAdList",
+      "deleteMarketplaceAdList",
+      [ [:in, "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "DeleteMarketplaceAdList"]],
+        [:out, "parameters", ["::SOAP::SOAPElement", "http://api.channeladvisor.com/webservices/", "DeleteMarketplaceAdListResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
         :faults => {} }

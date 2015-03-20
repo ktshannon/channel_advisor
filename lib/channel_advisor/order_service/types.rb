@@ -3,8 +3,111 @@ require 'xsd/qname'
 module ChannelAdvisor; module OrderServiceSOAP
 
 
+# {http://api.channeladvisor.com/webservices/}ArrayOfInt
+class ArrayOfInt < ::Array
+end
+
 # {http://api.channeladvisor.com/webservices/}ArrayOfString
 class ArrayOfString < ::Array
+end
+
+# {http://api.channeladvisor.com/webservices/}APIResultOfArrayOfSetExportStatusResponse
+#   status - ChannelAdvisor::OrderServiceSOAP::ResultStatus
+#   messageCode - SOAP::SOAPInt
+#   message - SOAP::SOAPString
+#   data - SOAP::SOAPString
+#   resultData - ChannelAdvisor::OrderServiceSOAP::ArrayOfSetExportStatusResponse
+class APIResultOfArrayOfSetExportStatusResponse
+  attr_accessor :status
+  attr_accessor :messageCode
+  attr_accessor :message
+  attr_accessor :data
+  attr_accessor :resultData
+
+  def initialize(status = nil, messageCode = nil, message = nil, data = nil, resultData = nil)
+    @status = status
+    @messageCode = messageCode
+    @message = message
+    @data = data
+    @resultData = resultData
+  end
+end
+
+# {http://api.channeladvisor.com/webservices/}ArrayOfSetExportStatusResponse
+class ArrayOfSetExportStatusResponse < ::Array
+end
+
+# {http://api.channeladvisor.com/webservices/}SetExportStatusResponse
+#   orderID - SOAP::SOAPInt
+#   clientOrderIdentifier - SOAP::SOAPString
+#   success - SOAP::SOAPBoolean
+class SetExportStatusResponse
+  attr_accessor :orderID
+  attr_accessor :clientOrderIdentifier
+  attr_accessor :success
+
+  def initialize(orderID = nil, clientOrderIdentifier = nil, success = nil)
+    @orderID = orderID
+    @clientOrderIdentifier = clientOrderIdentifier
+    @success = success
+  end
+end
+
+# {http://api.channeladvisor.com/webservices/}APICredentials
+#   developerKey - SOAP::SOAPString
+#   password - SOAP::SOAPString
+class APICredentials
+  attr_accessor :developerKey
+  attr_accessor :password
+
+  def initialize(developerKey = nil, password = nil)
+    @developerKey = developerKey
+    @password = password
+  end
+end
+
+# {http://api.channeladvisor.com/webservices/}APIResultOfRefundOrderResponse
+#   status - ChannelAdvisor::OrderServiceSOAP::ResultStatus
+#   messageCode - SOAP::SOAPInt
+#   message - SOAP::SOAPString
+#   data - SOAP::SOAPString
+#   resultData - ChannelAdvisor::OrderServiceSOAP::RefundOrderResponse
+class APIResultOfRefundOrderResponse
+  attr_accessor :status
+  attr_accessor :messageCode
+  attr_accessor :message
+  attr_accessor :data
+  attr_accessor :resultData
+
+  def initialize(status = nil, messageCode = nil, message = nil, data = nil, resultData = nil)
+    @status = status
+    @messageCode = messageCode
+    @message = message
+    @data = data
+    @resultData = resultData
+  end
+end
+
+# {http://api.channeladvisor.com/webservices/}APIResultOfArrayOfInt32
+#   status - ChannelAdvisor::OrderServiceSOAP::ResultStatus
+#   messageCode - SOAP::SOAPInt
+#   message - SOAP::SOAPString
+#   data - SOAP::SOAPString
+#   resultData - ChannelAdvisor::OrderServiceSOAP::ArrayOfInt
+class APIResultOfArrayOfInt32
+  attr_accessor :status
+  attr_accessor :messageCode
+  attr_accessor :message
+  attr_accessor :data
+  attr_accessor :resultData
+
+  def initialize(status = nil, messageCode = nil, message = nil, data = nil, resultData = nil)
+    @status = status
+    @messageCode = messageCode
+    @message = message
+    @data = data
+    @resultData = resultData
+  end
 end
 
 # {http://api.channeladvisor.com/webservices/}APIResultOfArrayOfBoolean
@@ -33,26 +136,200 @@ end
 class ArrayOfBoolean < ::Array
 end
 
-# {http://api.channeladvisor.com/webservices/}APICredentials
-#   developerKey - SOAP::SOAPString
-#   password - SOAP::SOAPString
-class APICredentials
-  attr_accessor :developerKey
-  attr_accessor :password
-
-  def initialize(developerKey = nil, password = nil)
-    @developerKey = developerKey
-    @password = password
-  end
-end
-
-# {http://api.channeladvisor.com/webservices/}APIResultOfRefundOrderResponse
+# {http://api.channeladvisor.com/webservices/}APIResultOfOrderRefundHistoryResponse
 #   status - ChannelAdvisor::OrderServiceSOAP::ResultStatus
 #   messageCode - SOAP::SOAPInt
 #   message - SOAP::SOAPString
 #   data - SOAP::SOAPString
-#   resultData - ChannelAdvisor::OrderServiceSOAP::RefundOrderResponse
-class APIResultOfRefundOrderResponse
+#   resultData - ChannelAdvisor::OrderServiceSOAP::OrderRefundHistoryResponse
+class APIResultOfOrderRefundHistoryResponse
+  attr_accessor :status
+  attr_accessor :messageCode
+  attr_accessor :message
+  attr_accessor :data
+  attr_accessor :resultData
+
+  def initialize(status = nil, messageCode = nil, message = nil, data = nil, resultData = nil)
+    @status = status
+    @messageCode = messageCode
+    @message = message
+    @data = data
+    @resultData = resultData
+  end
+end
+
+# {http://api.channeladvisor.com/webservices/}ArrayOfOrderUpdateSubmit
+class ArrayOfOrderUpdateSubmit < ::Array
+end
+
+# {http://api.channeladvisor.com/webservices/}OrderUpdateSubmit
+#   orderID - SOAP::SOAPInt
+#   newClientOrderIdentifier - SOAP::SOAPString
+#   flagStyle - SOAP::SOAPString
+#   flagDescription - SOAP::SOAPString
+#   transactionNotes - ChannelAdvisor::OrderServiceSOAP::TransactionNoteSubmit
+#   orderStatusUpdate - ChannelAdvisor::OrderServiceSOAP::OrderStatusUpdateSubmit
+#   billingInfo - ChannelAdvisor::OrderServiceSOAP::BillingInfoUpdateSubmit
+#   shippingInfo - ChannelAdvisor::OrderServiceSOAP::ShippingInfoUpdateSubmit
+#   paymentInfo - ChannelAdvisor::OrderServiceSOAP::PaymentInfoUpdateSubmit
+#   requestedShippingMethodInfo - ChannelAdvisor::OrderServiceSOAP::ShippingMethodInfoUpdateSubmit
+class OrderUpdateSubmit
+  attr_accessor :orderID
+  attr_accessor :newClientOrderIdentifier
+  attr_accessor :flagStyle
+  attr_accessor :flagDescription
+  attr_accessor :transactionNotes
+  attr_accessor :orderStatusUpdate
+  attr_accessor :billingInfo
+  attr_accessor :shippingInfo
+  attr_accessor :paymentInfo
+  attr_accessor :requestedShippingMethodInfo
+
+  def initialize(orderID = nil, newClientOrderIdentifier = nil, flagStyle = nil, flagDescription = nil, transactionNotes = nil, orderStatusUpdate = nil, billingInfo = nil, shippingInfo = nil, paymentInfo = nil, requestedShippingMethodInfo = nil)
+    @orderID = orderID
+    @newClientOrderIdentifier = newClientOrderIdentifier
+    @flagStyle = flagStyle
+    @flagDescription = flagDescription
+    @transactionNotes = transactionNotes
+    @orderStatusUpdate = orderStatusUpdate
+    @billingInfo = billingInfo
+    @shippingInfo = shippingInfo
+    @paymentInfo = paymentInfo
+    @requestedShippingMethodInfo = requestedShippingMethodInfo
+  end
+end
+
+# {http://api.channeladvisor.com/webservices/}TransactionNoteSubmit
+#   note - SOAP::SOAPString
+#   shouldOverwrite - SOAP::SOAPBoolean
+class TransactionNoteSubmit
+  attr_accessor :note
+  attr_accessor :shouldOverwrite
+
+  def initialize(note = nil, shouldOverwrite = nil)
+    @note = note
+    @shouldOverwrite = shouldOverwrite
+  end
+end
+
+# {http://api.channeladvisor.com/webservices/}OrderStatusUpdateSubmit
+#   checkoutPaymentStatus - SOAP::SOAPString
+#   shippingStatus - SOAP::SOAPString
+class OrderStatusUpdateSubmit
+  attr_accessor :checkoutPaymentStatus
+  attr_accessor :shippingStatus
+
+  def initialize(checkoutPaymentStatus = nil, shippingStatus = nil)
+    @checkoutPaymentStatus = checkoutPaymentStatus
+    @shippingStatus = shippingStatus
+  end
+end
+
+# {http://api.channeladvisor.com/webservices/}ShippingMethodInfoUpdateSubmit
+#   carrierCode - SOAP::SOAPString
+#   classCode - SOAP::SOAPString
+class ShippingMethodInfoUpdateSubmit
+  attr_accessor :carrierCode
+  attr_accessor :classCode
+
+  def initialize(carrierCode = nil, classCode = nil)
+    @carrierCode = carrierCode
+    @classCode = classCode
+  end
+end
+
+# {http://api.channeladvisor.com/webservices/}APIResultOfArrayOfOrderUpdateResponse
+#   status - ChannelAdvisor::OrderServiceSOAP::ResultStatus
+#   messageCode - SOAP::SOAPInt
+#   message - SOAP::SOAPString
+#   data - SOAP::SOAPString
+#   resultData - ChannelAdvisor::OrderServiceSOAP::ArrayOfOrderUpdateResponse
+class APIResultOfArrayOfOrderUpdateResponse
+  attr_accessor :status
+  attr_accessor :messageCode
+  attr_accessor :message
+  attr_accessor :data
+  attr_accessor :resultData
+
+  def initialize(status = nil, messageCode = nil, message = nil, data = nil, resultData = nil)
+    @status = status
+    @messageCode = messageCode
+    @message = message
+    @data = data
+    @resultData = resultData
+  end
+end
+
+# {http://api.channeladvisor.com/webservices/}ArrayOfOrderUpdateResponse
+class ArrayOfOrderUpdateResponse < ::Array
+end
+
+# {http://api.channeladvisor.com/webservices/}OrderUpdateResponse
+#   flagAndNotesSuccess - SOAP::SOAPBoolean
+#   flagAndNotesMessage - SOAP::SOAPString
+#   orderStatusSuccess - SOAP::SOAPBoolean
+#   orderStatusMessage - SOAP::SOAPString
+#   shippingAndCOIDSuccess - SOAP::SOAPBoolean
+#   shippingAndCOIDMessage - SOAP::SOAPString
+#   billingAndPaymentSuccess - SOAP::SOAPBoolean
+#   billingAndPaymentMessage - SOAP::SOAPString
+#   requestedShippingMethodSuccess - SOAP::SOAPBoolean
+#   requestedShippingMethodMessage - SOAP::SOAPString
+class OrderUpdateResponse
+  attr_accessor :flagAndNotesSuccess
+  attr_accessor :flagAndNotesMessage
+  attr_accessor :orderStatusSuccess
+  attr_accessor :orderStatusMessage
+  attr_accessor :shippingAndCOIDSuccess
+  attr_accessor :shippingAndCOIDMessage
+  attr_accessor :billingAndPaymentSuccess
+  attr_accessor :billingAndPaymentMessage
+  attr_accessor :requestedShippingMethodSuccess
+  attr_accessor :requestedShippingMethodMessage
+
+  def initialize(flagAndNotesSuccess = nil, flagAndNotesMessage = nil, orderStatusSuccess = nil, orderStatusMessage = nil, shippingAndCOIDSuccess = nil, shippingAndCOIDMessage = nil, billingAndPaymentSuccess = nil, billingAndPaymentMessage = nil, requestedShippingMethodSuccess = nil, requestedShippingMethodMessage = nil)
+    @flagAndNotesSuccess = flagAndNotesSuccess
+    @flagAndNotesMessage = flagAndNotesMessage
+    @orderStatusSuccess = orderStatusSuccess
+    @orderStatusMessage = orderStatusMessage
+    @shippingAndCOIDSuccess = shippingAndCOIDSuccess
+    @shippingAndCOIDMessage = shippingAndCOIDMessage
+    @billingAndPaymentSuccess = billingAndPaymentSuccess
+    @billingAndPaymentMessage = billingAndPaymentMessage
+    @requestedShippingMethodSuccess = requestedShippingMethodSuccess
+    @requestedShippingMethodMessage = requestedShippingMethodMessage
+  end
+end
+
+# {http://api.channeladvisor.com/webservices/}APIResultOfBoolean
+#   status - ChannelAdvisor::OrderServiceSOAP::ResultStatus
+#   messageCode - SOAP::SOAPInt
+#   message - SOAP::SOAPString
+#   data - SOAP::SOAPString
+#   resultData - SOAP::SOAPBoolean
+class APIResultOfBoolean
+  attr_accessor :status
+  attr_accessor :messageCode
+  attr_accessor :message
+  attr_accessor :data
+  attr_accessor :resultData
+
+  def initialize(status = nil, messageCode = nil, message = nil, data = nil, resultData = nil)
+    @status = status
+    @messageCode = messageCode
+    @message = message
+    @data = data
+    @resultData = resultData
+  end
+end
+
+# {http://api.channeladvisor.com/webservices/}APIResultOfInt32
+#   status - ChannelAdvisor::OrderServiceSOAP::ResultStatus
+#   messageCode - SOAP::SOAPInt
+#   message - SOAP::SOAPString
+#   data - SOAP::SOAPString
+#   resultData - SOAP::SOAPInt
+class APIResultOfInt32
   attr_accessor :status
   attr_accessor :messageCode
   attr_accessor :message
@@ -94,173 +371,6 @@ end
 class ArrayOfOrderResponseItem < ::Array
 end
 
-# {http://api.channeladvisor.com/webservices/}APIResultOfInt32
-#   status - ChannelAdvisor::OrderServiceSOAP::ResultStatus
-#   messageCode - SOAP::SOAPInt
-#   message - SOAP::SOAPString
-#   data - SOAP::SOAPString
-#   resultData - SOAP::SOAPInt
-class APIResultOfInt32
-  attr_accessor :status
-  attr_accessor :messageCode
-  attr_accessor :message
-  attr_accessor :data
-  attr_accessor :resultData
-
-  def initialize(status = nil, messageCode = nil, message = nil, data = nil, resultData = nil)
-    @status = status
-    @messageCode = messageCode
-    @message = message
-    @data = data
-    @resultData = resultData
-  end
-end
-
-# {http://api.channeladvisor.com/webservices/}ArrayOfInt
-class ArrayOfInt < ::Array
-end
-
-# {http://api.channeladvisor.com/webservices/}APIResultOfArrayOfInt32
-#   status - ChannelAdvisor::OrderServiceSOAP::ResultStatus
-#   messageCode - SOAP::SOAPInt
-#   message - SOAP::SOAPString
-#   data - SOAP::SOAPString
-#   resultData - ChannelAdvisor::OrderServiceSOAP::ArrayOfInt
-class APIResultOfArrayOfInt32
-  attr_accessor :status
-  attr_accessor :messageCode
-  attr_accessor :message
-  attr_accessor :data
-  attr_accessor :resultData
-
-  def initialize(status = nil, messageCode = nil, message = nil, data = nil, resultData = nil)
-    @status = status
-    @messageCode = messageCode
-    @message = message
-    @data = data
-    @resultData = resultData
-  end
-end
-
-# {http://api.channeladvisor.com/webservices/}APIResultOfOrderRefundHistoryResponse
-#   status - ChannelAdvisor::OrderServiceSOAP::ResultStatus
-#   messageCode - SOAP::SOAPInt
-#   message - SOAP::SOAPString
-#   data - SOAP::SOAPString
-#   resultData - ChannelAdvisor::OrderServiceSOAP::OrderRefundHistoryResponse
-class APIResultOfOrderRefundHistoryResponse
-  attr_accessor :status
-  attr_accessor :messageCode
-  attr_accessor :message
-  attr_accessor :data
-  attr_accessor :resultData
-
-  def initialize(status = nil, messageCode = nil, message = nil, data = nil, resultData = nil)
-    @status = status
-    @messageCode = messageCode
-    @message = message
-    @data = data
-    @resultData = resultData
-  end
-end
-
-# {http://api.channeladvisor.com/webservices/}ArrayOfOrderUpdateSubmit
-class ArrayOfOrderUpdateSubmit < ::Array
-end
-
-# {http://api.channeladvisor.com/webservices/}OrderUpdateSubmit
-#   orderID - SOAP::SOAPInt
-#   flagStyle - ChannelAdvisor::OrderServiceSOAP::FlagType
-#   flagDescription - SOAP::SOAPString
-#   transactionNotes - ChannelAdvisor::OrderServiceSOAP::TransactionNoteSubmit
-#   orderStatusUpdate - ChannelAdvisor::OrderServiceSOAP::OrderStatusUpdateSubmit
-class OrderUpdateSubmit
-  attr_accessor :orderID
-  attr_accessor :flagStyle
-  attr_accessor :flagDescription
-  attr_accessor :transactionNotes
-  attr_accessor :orderStatusUpdate
-
-  def initialize(orderID = nil, flagStyle = nil, flagDescription = nil, transactionNotes = nil, orderStatusUpdate = nil)
-    @orderID = orderID
-    @flagStyle = flagStyle
-    @flagDescription = flagDescription
-    @transactionNotes = transactionNotes
-    @orderStatusUpdate = orderStatusUpdate
-  end
-end
-
-# {http://api.channeladvisor.com/webservices/}TransactionNoteSubmit
-#   note - SOAP::SOAPString
-#   shouldOverwrite - SOAP::SOAPBoolean
-class TransactionNoteSubmit
-  attr_accessor :note
-  attr_accessor :shouldOverwrite
-
-  def initialize(note = nil, shouldOverwrite = nil)
-    @note = note
-    @shouldOverwrite = shouldOverwrite
-  end
-end
-
-# {http://api.channeladvisor.com/webservices/}OrderStatusUpdateSubmit
-#   checkoutPaymentStatus - ChannelAdvisor::OrderServiceSOAP::CheckoutPaymentStatusCode
-#   shippingStatus - ChannelAdvisor::OrderServiceSOAP::ShippingStatusCode
-class OrderStatusUpdateSubmit
-  attr_accessor :checkoutPaymentStatus
-  attr_accessor :shippingStatus
-
-  def initialize(checkoutPaymentStatus = nil, shippingStatus = nil)
-    @checkoutPaymentStatus = checkoutPaymentStatus
-    @shippingStatus = shippingStatus
-  end
-end
-
-# {http://api.channeladvisor.com/webservices/}APIResultOfArrayOfOrderUpdateResponse
-#   status - ChannelAdvisor::OrderServiceSOAP::ResultStatus
-#   messageCode - SOAP::SOAPInt
-#   message - SOAP::SOAPString
-#   data - SOAP::SOAPString
-#   resultData - ChannelAdvisor::OrderServiceSOAP::ArrayOfOrderUpdateResponse
-class APIResultOfArrayOfOrderUpdateResponse
-  attr_accessor :status
-  attr_accessor :messageCode
-  attr_accessor :message
-  attr_accessor :data
-  attr_accessor :resultData
-
-  def initialize(status = nil, messageCode = nil, message = nil, data = nil, resultData = nil)
-    @status = status
-    @messageCode = messageCode
-    @message = message
-    @data = data
-    @resultData = resultData
-  end
-end
-
-# {http://api.channeladvisor.com/webservices/}ArrayOfOrderUpdateResponse
-class ArrayOfOrderUpdateResponse < ::Array
-end
-
-# {http://api.channeladvisor.com/webservices/}OrderUpdateResponse
-#   flagAndNotesSuccess - SOAP::SOAPBoolean
-#   flagAndNotesMessage - SOAP::SOAPString
-#   orderStatusSuccess - SOAP::SOAPBoolean
-#   orderStatusMessage - SOAP::SOAPString
-class OrderUpdateResponse
-  attr_accessor :flagAndNotesSuccess
-  attr_accessor :flagAndNotesMessage
-  attr_accessor :orderStatusSuccess
-  attr_accessor :orderStatusMessage
-
-  def initialize(flagAndNotesSuccess = nil, flagAndNotesMessage = nil, orderStatusSuccess = nil, orderStatusMessage = nil)
-    @flagAndNotesSuccess = flagAndNotesSuccess
-    @flagAndNotesMessage = flagAndNotesMessage
-    @orderStatusSuccess = orderStatusSuccess
-    @orderStatusMessage = orderStatusMessage
-  end
-end
-
 # {http://api.channeladvisor.com/webservices/}APIResultOfString
 #   status - ChannelAdvisor::OrderServiceSOAP::ResultStatus
 #   messageCode - SOAP::SOAPInt
@@ -287,7 +397,7 @@ end
 #   clientOrderIdentifier - SOAP::SOAPString
 #   orderID - SOAP::SOAPInt
 #   amount - SOAP::SOAPDecimal
-#   adjustmentReason - ChannelAdvisor::OrderServiceSOAP::RefundAdjustmentReason
+#   adjustmentReason - SOAP::SOAPString
 #   sellerRefundID - SOAP::SOAPString
 #   refundItems - ChannelAdvisor::OrderServiceSOAP::ArrayOfRefundItem
 class RefundOrderRequest
@@ -320,12 +430,14 @@ end
 #   taxAmount - SOAP::SOAPDecimal
 #   giftWrapAmount - SOAP::SOAPDecimal
 #   giftWrapTaxAmount - SOAP::SOAPDecimal
+#   recyclingFee - SOAP::SOAPDecimal
 #   quantity - SOAP::SOAPInt
 #   refundRequestID - SOAP::SOAPInt
 #   refundRequested - SOAP::SOAPBoolean
 #   restockQuantity - SOAP::SOAPBoolean
-#   adjustmentReason - ChannelAdvisor::OrderServiceSOAP::RefundAdjustmentReason
+#   adjustmentReason - SOAP::SOAPString
 #   sellerRefundID - SOAP::SOAPString
+#   lineItemID - SOAP::SOAPInt
 class RefundItem
   attr_accessor :sKU
   attr_accessor :amount
@@ -334,14 +446,16 @@ class RefundItem
   attr_accessor :taxAmount
   attr_accessor :giftWrapAmount
   attr_accessor :giftWrapTaxAmount
+  attr_accessor :recyclingFee
   attr_accessor :quantity
   attr_accessor :refundRequestID
   attr_accessor :refundRequested
   attr_accessor :restockQuantity
   attr_accessor :adjustmentReason
   attr_accessor :sellerRefundID
+  attr_accessor :lineItemID
 
-  def initialize(sKU = nil, amount = nil, shippingAmount = nil, shippingTaxAmount = nil, taxAmount = nil, giftWrapAmount = nil, giftWrapTaxAmount = nil, quantity = nil, refundRequestID = nil, refundRequested = nil, restockQuantity = nil, adjustmentReason = nil, sellerRefundID = nil)
+  def initialize(sKU = nil, amount = nil, shippingAmount = nil, shippingTaxAmount = nil, taxAmount = nil, giftWrapAmount = nil, giftWrapTaxAmount = nil, recyclingFee = nil, quantity = nil, refundRequestID = nil, refundRequested = nil, restockQuantity = nil, adjustmentReason = nil, sellerRefundID = nil, lineItemID = nil)
     @sKU = sKU
     @amount = amount
     @shippingAmount = shippingAmount
@@ -349,12 +463,14 @@ class RefundItem
     @taxAmount = taxAmount
     @giftWrapAmount = giftWrapAmount
     @giftWrapTaxAmount = giftWrapTaxAmount
+    @recyclingFee = recyclingFee
     @quantity = quantity
     @refundRequestID = refundRequestID
     @refundRequested = refundRequested
     @restockQuantity = restockQuantity
     @adjustmentReason = adjustmentReason
     @sellerRefundID = sellerRefundID
+    @lineItemID = lineItemID
   end
 end
 
@@ -366,17 +482,19 @@ end
 #   taxAmount - SOAP::SOAPDecimal
 #   giftWrapAmount - SOAP::SOAPDecimal
 #   giftWrapTaxAmount - SOAP::SOAPDecimal
+#   recyclingFee - SOAP::SOAPDecimal
 #   quantity - SOAP::SOAPInt
 #   refundRequestID - SOAP::SOAPInt
 #   refundRequested - SOAP::SOAPBoolean
 #   restockQuantity - SOAP::SOAPBoolean
-#   adjustmentReason - ChannelAdvisor::OrderServiceSOAP::RefundAdjustmentReason
+#   adjustmentReason - SOAP::SOAPString
 #   sellerRefundID - SOAP::SOAPString
+#   lineItemID - SOAP::SOAPInt
 #   invoiceItemID - SOAP::SOAPInt
-#   itemSaleSource - ChannelAdvisor::OrderServiceSOAP::SiteToken
-#   refundRequestStatus - ChannelAdvisor::OrderServiceSOAP::AsyncStatusCode
+#   itemSaleSource - SOAP::SOAPString
+#   refundRequestStatus - SOAP::SOAPString
 #   refundPaymentInfo - ChannelAdvisor::OrderServiceSOAP::PaymentInfo
-#   restockStatus - ChannelAdvisor::OrderServiceSOAP::AsyncStatusCode
+#   restockStatus - SOAP::SOAPString
 #   refundCreateDateGMT - SOAP::SOAPDateTime
 class OrderLineItemRefundHistoryResponse < RefundItem
   attr_accessor :sKU
@@ -386,12 +504,14 @@ class OrderLineItemRefundHistoryResponse < RefundItem
   attr_accessor :taxAmount
   attr_accessor :giftWrapAmount
   attr_accessor :giftWrapTaxAmount
+  attr_accessor :recyclingFee
   attr_accessor :quantity
   attr_accessor :refundRequestID
   attr_accessor :refundRequested
   attr_accessor :restockQuantity
   attr_accessor :adjustmentReason
   attr_accessor :sellerRefundID
+  attr_accessor :lineItemID
   attr_accessor :invoiceItemID
   attr_accessor :itemSaleSource
   attr_accessor :refundRequestStatus
@@ -399,7 +519,7 @@ class OrderLineItemRefundHistoryResponse < RefundItem
   attr_accessor :restockStatus
   attr_accessor :refundCreateDateGMT
 
-  def initialize(sKU = nil, amount = nil, shippingAmount = nil, shippingTaxAmount = nil, taxAmount = nil, giftWrapAmount = nil, giftWrapTaxAmount = nil, quantity = nil, refundRequestID = nil, refundRequested = nil, restockQuantity = nil, adjustmentReason = nil, sellerRefundID = nil, invoiceItemID = nil, itemSaleSource = nil, refundRequestStatus = nil, refundPaymentInfo = nil, restockStatus = nil, refundCreateDateGMT = nil)
+  def initialize(sKU = nil, amount = nil, shippingAmount = nil, shippingTaxAmount = nil, taxAmount = nil, giftWrapAmount = nil, giftWrapTaxAmount = nil, recyclingFee = nil, quantity = nil, refundRequestID = nil, refundRequested = nil, restockQuantity = nil, adjustmentReason = nil, sellerRefundID = nil, lineItemID = nil, invoiceItemID = nil, itemSaleSource = nil, refundRequestStatus = nil, refundPaymentInfo = nil, restockStatus = nil, refundCreateDateGMT = nil)
     @sKU = sKU
     @amount = amount
     @shippingAmount = shippingAmount
@@ -407,12 +527,14 @@ class OrderLineItemRefundHistoryResponse < RefundItem
     @taxAmount = taxAmount
     @giftWrapAmount = giftWrapAmount
     @giftWrapTaxAmount = giftWrapTaxAmount
+    @recyclingFee = recyclingFee
     @quantity = quantity
     @refundRequestID = refundRequestID
     @refundRequested = refundRequested
     @restockQuantity = restockQuantity
     @adjustmentReason = adjustmentReason
     @sellerRefundID = sellerRefundID
+    @lineItemID = lineItemID
     @invoiceItemID = invoiceItemID
     @itemSaleSource = itemSaleSource
     @refundRequestStatus = refundRequestStatus
@@ -429,6 +551,28 @@ end
 #   merchantReferenceNumber - SOAP::SOAPString
 #   paymentTransactionID - SOAP::SOAPString
 class PaymentInfo
+  attr_accessor :paymentType
+  attr_accessor :creditCardLast4
+  attr_accessor :payPalID
+  attr_accessor :merchantReferenceNumber
+  attr_accessor :paymentTransactionID
+
+  def initialize(paymentType = nil, creditCardLast4 = nil, payPalID = nil, merchantReferenceNumber = nil, paymentTransactionID = nil)
+    @paymentType = paymentType
+    @creditCardLast4 = creditCardLast4
+    @payPalID = payPalID
+    @merchantReferenceNumber = merchantReferenceNumber
+    @paymentTransactionID = paymentTransactionID
+  end
+end
+
+# {http://api.channeladvisor.com/datacontracts/orders}PaymentInfoUpdateSubmit
+#   paymentType - SOAP::SOAPString
+#   creditCardLast4 - SOAP::SOAPString
+#   payPalID - SOAP::SOAPString
+#   merchantReferenceNumber - SOAP::SOAPString
+#   paymentTransactionID - SOAP::SOAPString
+class PaymentInfoUpdateSubmit < PaymentInfo
   attr_accessor :paymentType
   attr_accessor :creditCardLast4
   attr_accessor :payPalID
@@ -488,331 +632,565 @@ class RefundOrderResponse
   end
 end
 
-# {http://api.channeladvisor.com/datacontracts/orders}OrderCriteria
-#   orderCreationFilterBeginTimeGMT - SOAP::SOAPDateTime
-#   orderCreationFilterEndTimeGMT - SOAP::SOAPDateTime
-#   statusUpdateFilterBeginTimeGMT - SOAP::SOAPDateTime
-#   statusUpdateFilterEndTimeGMT - SOAP::SOAPDateTime
-#   joinDateFiltersWithOr - SOAP::SOAPBoolean
-#   detailLevel - ChannelAdvisor::OrderServiceSOAP::DetailLevelType
-#   exportState - ChannelAdvisor::OrderServiceSOAP::ExportStateType
-#   orderIDList - ChannelAdvisor::OrderServiceSOAP::ArrayOfInt_
-#   orderStateFilter - ChannelAdvisor::OrderServiceSOAP::OrderStateCode
-#   paymentStatusFilter - ChannelAdvisor::OrderServiceSOAP::PaymentStatusCode
-#   checkoutStatusFilter - ChannelAdvisor::OrderServiceSOAP::CheckoutStatusCode
-#   shippingStatusFilter - ChannelAdvisor::OrderServiceSOAP::ShippingStatusCode
-#   distributionCenterCode - SOAP::SOAPString
-#   pageNumberFilter - SOAP::SOAPInt
-#   pageSize - SOAP::SOAPInt
-class OrderCriteria
-  attr_accessor :orderCreationFilterBeginTimeGMT
-  attr_accessor :orderCreationFilterEndTimeGMT
-  attr_accessor :statusUpdateFilterBeginTimeGMT
-  attr_accessor :statusUpdateFilterEndTimeGMT
-  attr_accessor :joinDateFiltersWithOr
-  attr_accessor :detailLevel
-  attr_accessor :exportState
-  attr_accessor :orderIDList
-  attr_accessor :orderStateFilter
-  attr_accessor :paymentStatusFilter
-  attr_accessor :checkoutStatusFilter
-  attr_accessor :shippingStatusFilter
-  attr_accessor :distributionCenterCode
-  attr_accessor :pageNumberFilter
-  attr_accessor :pageSize
+# {http://api.channeladvisor.com/datacontracts/orders}OrderRefundHistoryResponse
+#   orderID - SOAP::SOAPInt
+#   clientOrderIdentifier - SOAP::SOAPString
+#   refundStatus - SOAP::SOAPString
+#   lineItemRefunds - ChannelAdvisor::OrderServiceSOAP::ArrayOfOrderLineItemRefundHistoryResponse
+class OrderRefundHistoryResponse
+  attr_accessor :orderID
+  attr_accessor :clientOrderIdentifier
+  attr_accessor :refundStatus
+  attr_accessor :lineItemRefunds
 
-  def initialize(orderCreationFilterBeginTimeGMT = nil, orderCreationFilterEndTimeGMT = nil, statusUpdateFilterBeginTimeGMT = nil, statusUpdateFilterEndTimeGMT = nil, joinDateFiltersWithOr = nil, detailLevel = nil, exportState = nil, orderIDList = nil, orderStateFilter = nil, paymentStatusFilter = nil, checkoutStatusFilter = nil, shippingStatusFilter = nil, distributionCenterCode = nil, pageNumberFilter = nil, pageSize = nil)
-    @orderCreationFilterBeginTimeGMT = orderCreationFilterBeginTimeGMT
-    @orderCreationFilterEndTimeGMT = orderCreationFilterEndTimeGMT
-    @statusUpdateFilterBeginTimeGMT = statusUpdateFilterBeginTimeGMT
-    @statusUpdateFilterEndTimeGMT = statusUpdateFilterEndTimeGMT
-    @joinDateFiltersWithOr = joinDateFiltersWithOr
-    @detailLevel = detailLevel
-    @exportState = exportState
-    @orderIDList = orderIDList
-    @orderStateFilter = orderStateFilter
-    @paymentStatusFilter = paymentStatusFilter
-    @checkoutStatusFilter = checkoutStatusFilter
-    @shippingStatusFilter = shippingStatusFilter
-    @distributionCenterCode = distributionCenterCode
-    @pageNumberFilter = pageNumberFilter
-    @pageSize = pageSize
+  def initialize(orderID = nil, clientOrderIdentifier = nil, refundStatus = nil, lineItemRefunds = nil)
+    @orderID = orderID
+    @clientOrderIdentifier = clientOrderIdentifier
+    @refundStatus = refundStatus
+    @lineItemRefunds = lineItemRefunds
   end
 end
 
-# {http://api.channeladvisor.com/datacontracts/orders}ArrayOfInt
-class ArrayOfInt_ < ::Array
+# {http://api.channeladvisor.com/datacontracts/orders}ArrayOfOrderLineItemRefundHistoryResponse
+class ArrayOfOrderLineItemRefundHistoryResponse < ::Array
 end
 
-# {http://api.channeladvisor.com/datacontracts/orders}OrderResponseItem
+# {http://api.channeladvisor.com/datacontracts/orders}AddressInfo
+#   addressLine1 - SOAP::SOAPString
+#   addressLine2 - SOAP::SOAPString
+#   city - SOAP::SOAPString
+#   region - SOAP::SOAPString
+#   regionDescription - SOAP::SOAPString
+#   postalCode - SOAP::SOAPString
+#   countryCode - SOAP::SOAPString
+class AddressInfo
+  attr_accessor :addressLine1
+  attr_accessor :addressLine2
+  attr_accessor :city
+  attr_accessor :region
+  attr_accessor :regionDescription
+  attr_accessor :postalCode
+  attr_accessor :countryCode
+
+  def initialize(addressLine1 = nil, addressLine2 = nil, city = nil, region = nil, regionDescription = nil, postalCode = nil, countryCode = nil)
+    @addressLine1 = addressLine1
+    @addressLine2 = addressLine2
+    @city = city
+    @region = region
+    @regionDescription = regionDescription
+    @postalCode = postalCode
+    @countryCode = countryCode
+  end
+end
+
+# {http://api.channeladvisor.com/datacontracts/orders}ContactComplete
+#   addressLine1 - SOAP::SOAPString
+#   addressLine2 - SOAP::SOAPString
+#   city - SOAP::SOAPString
+#   region - SOAP::SOAPString
+#   regionDescription - SOAP::SOAPString
+#   postalCode - SOAP::SOAPString
+#   countryCode - SOAP::SOAPString
+#   companyName - SOAP::SOAPString
+#   jobTitle - SOAP::SOAPString
+#   title - SOAP::SOAPString
+#   firstName - SOAP::SOAPString
+#   lastName - SOAP::SOAPString
+#   suffix - SOAP::SOAPString
+#   phoneNumberDay - SOAP::SOAPString
+#   phoneNumberEvening - SOAP::SOAPString
+class ContactComplete < AddressInfo
+  attr_accessor :addressLine1
+  attr_accessor :addressLine2
+  attr_accessor :city
+  attr_accessor :region
+  attr_accessor :regionDescription
+  attr_accessor :postalCode
+  attr_accessor :countryCode
+  attr_accessor :companyName
+  attr_accessor :jobTitle
+  attr_accessor :title
+  attr_accessor :firstName
+  attr_accessor :lastName
+  attr_accessor :suffix
+  attr_accessor :phoneNumberDay
+  attr_accessor :phoneNumberEvening
+
+  def initialize(addressLine1 = nil, addressLine2 = nil, city = nil, region = nil, regionDescription = nil, postalCode = nil, countryCode = nil, companyName = nil, jobTitle = nil, title = nil, firstName = nil, lastName = nil, suffix = nil, phoneNumberDay = nil, phoneNumberEvening = nil)
+    @addressLine1 = addressLine1
+    @addressLine2 = addressLine2
+    @city = city
+    @region = region
+    @regionDescription = regionDescription
+    @postalCode = postalCode
+    @countryCode = countryCode
+    @companyName = companyName
+    @jobTitle = jobTitle
+    @title = title
+    @firstName = firstName
+    @lastName = lastName
+    @suffix = suffix
+    @phoneNumberDay = phoneNumberDay
+    @phoneNumberEvening = phoneNumberEvening
+  end
+end
+
+# {http://api.channeladvisor.com/datacontracts/orders}BillingInfo
+#   addressLine1 - SOAP::SOAPString
+#   addressLine2 - SOAP::SOAPString
+#   city - SOAP::SOAPString
+#   region - SOAP::SOAPString
+#   regionDescription - SOAP::SOAPString
+#   postalCode - SOAP::SOAPString
+#   countryCode - SOAP::SOAPString
+#   companyName - SOAP::SOAPString
+#   jobTitle - SOAP::SOAPString
+#   title - SOAP::SOAPString
+#   firstName - SOAP::SOAPString
+#   lastName - SOAP::SOAPString
+#   suffix - SOAP::SOAPString
+#   phoneNumberDay - SOAP::SOAPString
+#   phoneNumberEvening - SOAP::SOAPString
+class BillingInfo < ContactComplete
+  attr_accessor :addressLine1
+  attr_accessor :addressLine2
+  attr_accessor :city
+  attr_accessor :region
+  attr_accessor :regionDescription
+  attr_accessor :postalCode
+  attr_accessor :countryCode
+  attr_accessor :companyName
+  attr_accessor :jobTitle
+  attr_accessor :title
+  attr_accessor :firstName
+  attr_accessor :lastName
+  attr_accessor :suffix
+  attr_accessor :phoneNumberDay
+  attr_accessor :phoneNumberEvening
+
+  def initialize(addressLine1 = nil, addressLine2 = nil, city = nil, region = nil, regionDescription = nil, postalCode = nil, countryCode = nil, companyName = nil, jobTitle = nil, title = nil, firstName = nil, lastName = nil, suffix = nil, phoneNumberDay = nil, phoneNumberEvening = nil)
+    @addressLine1 = addressLine1
+    @addressLine2 = addressLine2
+    @city = city
+    @region = region
+    @regionDescription = regionDescription
+    @postalCode = postalCode
+    @countryCode = countryCode
+    @companyName = companyName
+    @jobTitle = jobTitle
+    @title = title
+    @firstName = firstName
+    @lastName = lastName
+    @suffix = suffix
+    @phoneNumberDay = phoneNumberDay
+    @phoneNumberEvening = phoneNumberEvening
+  end
+end
+
+# {http://api.channeladvisor.com/datacontracts/orders}BillingInfoUpdateSubmit
+#   addressLine1 - SOAP::SOAPString
+#   addressLine2 - SOAP::SOAPString
+#   city - SOAP::SOAPString
+#   region - SOAP::SOAPString
+#   regionDescription - SOAP::SOAPString
+#   postalCode - SOAP::SOAPString
+#   countryCode - SOAP::SOAPString
+#   companyName - SOAP::SOAPString
+#   jobTitle - SOAP::SOAPString
+#   title - SOAP::SOAPString
+#   firstName - SOAP::SOAPString
+#   lastName - SOAP::SOAPString
+#   suffix - SOAP::SOAPString
+#   phoneNumberDay - SOAP::SOAPString
+#   phoneNumberEvening - SOAP::SOAPString
+#   emailAddress - SOAP::SOAPString
+class BillingInfoUpdateSubmit < BillingInfo
+  attr_accessor :addressLine1
+  attr_accessor :addressLine2
+  attr_accessor :city
+  attr_accessor :region
+  attr_accessor :regionDescription
+  attr_accessor :postalCode
+  attr_accessor :countryCode
+  attr_accessor :companyName
+  attr_accessor :jobTitle
+  attr_accessor :title
+  attr_accessor :firstName
+  attr_accessor :lastName
+  attr_accessor :suffix
+  attr_accessor :phoneNumberDay
+  attr_accessor :phoneNumberEvening
+  attr_accessor :emailAddress
+
+  def initialize(addressLine1 = nil, addressLine2 = nil, city = nil, region = nil, regionDescription = nil, postalCode = nil, countryCode = nil, companyName = nil, jobTitle = nil, title = nil, firstName = nil, lastName = nil, suffix = nil, phoneNumberDay = nil, phoneNumberEvening = nil, emailAddress = nil)
+    @addressLine1 = addressLine1
+    @addressLine2 = addressLine2
+    @city = city
+    @region = region
+    @regionDescription = regionDescription
+    @postalCode = postalCode
+    @countryCode = countryCode
+    @companyName = companyName
+    @jobTitle = jobTitle
+    @title = title
+    @firstName = firstName
+    @lastName = lastName
+    @suffix = suffix
+    @phoneNumberDay = phoneNumberDay
+    @phoneNumberEvening = phoneNumberEvening
+    @emailAddress = emailAddress
+  end
+end
+
+# {http://api.channeladvisor.com/datacontracts/orders}ShippingInfoUpdateSubmit
+#   addressLine1 - SOAP::SOAPString
+#   addressLine2 - SOAP::SOAPString
+#   city - SOAP::SOAPString
+#   region - SOAP::SOAPString
+#   regionDescription - SOAP::SOAPString
+#   postalCode - SOAP::SOAPString
+#   countryCode - SOAP::SOAPString
+#   companyName - SOAP::SOAPString
+#   jobTitle - SOAP::SOAPString
+#   title - SOAP::SOAPString
+#   firstName - SOAP::SOAPString
+#   lastName - SOAP::SOAPString
+#   suffix - SOAP::SOAPString
+#   phoneNumberDay - SOAP::SOAPString
+#   phoneNumberEvening - SOAP::SOAPString
+#   emailAddress - SOAP::SOAPString
+#   shippingInstructions - SOAP::SOAPString
+#   estimatedShipDate - SOAP::SOAPDateTime
+#   deliveryDate - SOAP::SOAPDateTime
+class ShippingInfoUpdateSubmit < ContactComplete
+  attr_accessor :addressLine1
+  attr_accessor :addressLine2
+  attr_accessor :city
+  attr_accessor :region
+  attr_accessor :regionDescription
+  attr_accessor :postalCode
+  attr_accessor :countryCode
+  attr_accessor :companyName
+  attr_accessor :jobTitle
+  attr_accessor :title
+  attr_accessor :firstName
+  attr_accessor :lastName
+  attr_accessor :suffix
+  attr_accessor :phoneNumberDay
+  attr_accessor :phoneNumberEvening
+  attr_accessor :emailAddress
+  attr_accessor :shippingInstructions
+  attr_accessor :estimatedShipDate
+  attr_accessor :deliveryDate
+
+  def initialize(addressLine1 = nil, addressLine2 = nil, city = nil, region = nil, regionDescription = nil, postalCode = nil, countryCode = nil, companyName = nil, jobTitle = nil, title = nil, firstName = nil, lastName = nil, suffix = nil, phoneNumberDay = nil, phoneNumberEvening = nil, emailAddress = nil, shippingInstructions = nil, estimatedShipDate = nil, deliveryDate = nil)
+    @addressLine1 = addressLine1
+    @addressLine2 = addressLine2
+    @city = city
+    @region = region
+    @regionDescription = regionDescription
+    @postalCode = postalCode
+    @countryCode = countryCode
+    @companyName = companyName
+    @jobTitle = jobTitle
+    @title = title
+    @firstName = firstName
+    @lastName = lastName
+    @suffix = suffix
+    @phoneNumberDay = phoneNumberDay
+    @phoneNumberEvening = phoneNumberEvening
+    @emailAddress = emailAddress
+    @shippingInstructions = shippingInstructions
+    @estimatedShipDate = estimatedShipDate
+    @deliveryDate = deliveryDate
+  end
+end
+
+# {http://api.channeladvisor.com/datacontracts/orders}ShippingInfo
 # abstract
-#   numberOfMatches - SOAP::SOAPInt
-#   orderTimeGMT - SOAP::SOAPDateTime
-#   lastUpdateDate - SOAP::SOAPDateTime
-#   totalOrderAmount - SOAP::SOAPDecimal
-#   orderState - ChannelAdvisor::OrderServiceSOAP::OrderStateCode
-#   dateCancelledGMT - SOAP::SOAPDateTime
-#   orderID - SOAP::SOAPInt
-#   clientOrderIdentifier - SOAP::SOAPString
-#   flagStyle - ChannelAdvisor::OrderServiceSOAP::FlagType
-class OrderResponseItem
-  attr_accessor :numberOfMatches
-  attr_accessor :orderTimeGMT
-  attr_accessor :lastUpdateDate
-  attr_accessor :totalOrderAmount
-  attr_accessor :orderState
-  attr_accessor :dateCancelledGMT
-  attr_accessor :orderID
-  attr_accessor :clientOrderIdentifier
-  attr_accessor :flagStyle
+#   addressLine1 - SOAP::SOAPString
+#   addressLine2 - SOAP::SOAPString
+#   city - SOAP::SOAPString
+#   region - SOAP::SOAPString
+#   regionDescription - SOAP::SOAPString
+#   postalCode - SOAP::SOAPString
+#   countryCode - SOAP::SOAPString
+#   companyName - SOAP::SOAPString
+#   jobTitle - SOAP::SOAPString
+#   title - SOAP::SOAPString
+#   firstName - SOAP::SOAPString
+#   lastName - SOAP::SOAPString
+#   suffix - SOAP::SOAPString
+#   phoneNumberDay - SOAP::SOAPString
+#   phoneNumberEvening - SOAP::SOAPString
+#   shipmentList - ChannelAdvisor::OrderServiceSOAP::ArrayOfShipment
+#   shippingInstructions - SOAP::SOAPString
+#   estimatedShipDate - SOAP::SOAPDateTime
+#   deliveryDate - SOAP::SOAPDateTime
+class ShippingInfo < ContactComplete
+  attr_accessor :addressLine1
+  attr_accessor :addressLine2
+  attr_accessor :city
+  attr_accessor :region
+  attr_accessor :regionDescription
+  attr_accessor :postalCode
+  attr_accessor :countryCode
+  attr_accessor :companyName
+  attr_accessor :jobTitle
+  attr_accessor :title
+  attr_accessor :firstName
+  attr_accessor :lastName
+  attr_accessor :suffix
+  attr_accessor :phoneNumberDay
+  attr_accessor :phoneNumberEvening
+  attr_accessor :shipmentList
+  attr_accessor :shippingInstructions
+  attr_accessor :estimatedShipDate
+  attr_accessor :deliveryDate
 
-  def initialize(numberOfMatches = nil, orderTimeGMT = nil, lastUpdateDate = nil, totalOrderAmount = nil, orderState = nil, dateCancelledGMT = nil, orderID = nil, clientOrderIdentifier = nil, flagStyle = nil)
-    @numberOfMatches = numberOfMatches
-    @orderTimeGMT = orderTimeGMT
-    @lastUpdateDate = lastUpdateDate
-    @totalOrderAmount = totalOrderAmount
-    @orderState = orderState
-    @dateCancelledGMT = dateCancelledGMT
-    @orderID = orderID
-    @clientOrderIdentifier = clientOrderIdentifier
-    @flagStyle = flagStyle
+  def initialize(addressLine1 = nil, addressLine2 = nil, city = nil, region = nil, regionDescription = nil, postalCode = nil, countryCode = nil, companyName = nil, jobTitle = nil, title = nil, firstName = nil, lastName = nil, suffix = nil, phoneNumberDay = nil, phoneNumberEvening = nil, shipmentList = nil, shippingInstructions = nil, estimatedShipDate = nil, deliveryDate = nil)
+    @addressLine1 = addressLine1
+    @addressLine2 = addressLine2
+    @city = city
+    @region = region
+    @regionDescription = regionDescription
+    @postalCode = postalCode
+    @countryCode = countryCode
+    @companyName = companyName
+    @jobTitle = jobTitle
+    @title = title
+    @firstName = firstName
+    @lastName = lastName
+    @suffix = suffix
+    @phoneNumberDay = phoneNumberDay
+    @phoneNumberEvening = phoneNumberEvening
+    @shipmentList = shipmentList
+    @shippingInstructions = shippingInstructions
+    @estimatedShipDate = estimatedShipDate
+    @deliveryDate = deliveryDate
   end
 end
 
-# {http://api.channeladvisor.com/datacontracts/orders}OrderResponseDetailLow
-#   numberOfMatches - SOAP::SOAPInt
-#   orderTimeGMT - SOAP::SOAPDateTime
-#   lastUpdateDate - SOAP::SOAPDateTime
-#   totalOrderAmount - SOAP::SOAPDecimal
-#   orderState - ChannelAdvisor::OrderServiceSOAP::OrderStateCode
-#   dateCancelledGMT - SOAP::SOAPDateTime
-#   orderID - SOAP::SOAPInt
-#   clientOrderIdentifier - SOAP::SOAPString
-#   flagStyle - ChannelAdvisor::OrderServiceSOAP::FlagType
-#   orderStatus - ChannelAdvisor::OrderServiceSOAP::OrderStatus
-class OrderResponseDetailLow < OrderResponseItem
-  attr_accessor :numberOfMatches
-  attr_accessor :orderTimeGMT
-  attr_accessor :lastUpdateDate
-  attr_accessor :totalOrderAmount
-  attr_accessor :orderState
-  attr_accessor :dateCancelledGMT
-  attr_accessor :orderID
-  attr_accessor :clientOrderIdentifier
-  attr_accessor :flagStyle
-  attr_accessor :orderStatus
+# {http://api.channeladvisor.com/datacontracts/orders}ShippingInfoSubmit
+#   addressLine1 - SOAP::SOAPString
+#   addressLine2 - SOAP::SOAPString
+#   city - SOAP::SOAPString
+#   region - SOAP::SOAPString
+#   regionDescription - SOAP::SOAPString
+#   postalCode - SOAP::SOAPString
+#   countryCode - SOAP::SOAPString
+#   companyName - SOAP::SOAPString
+#   jobTitle - SOAP::SOAPString
+#   title - SOAP::SOAPString
+#   firstName - SOAP::SOAPString
+#   lastName - SOAP::SOAPString
+#   suffix - SOAP::SOAPString
+#   phoneNumberDay - SOAP::SOAPString
+#   phoneNumberEvening - SOAP::SOAPString
+#   shipmentList - ChannelAdvisor::OrderServiceSOAP::ArrayOfShipment
+#   shippingInstructions - SOAP::SOAPString
+#   estimatedShipDate - SOAP::SOAPDateTime
+#   deliveryDate - SOAP::SOAPDateTime
+class ShippingInfoSubmit < ShippingInfo
+  attr_accessor :addressLine1
+  attr_accessor :addressLine2
+  attr_accessor :city
+  attr_accessor :region
+  attr_accessor :regionDescription
+  attr_accessor :postalCode
+  attr_accessor :countryCode
+  attr_accessor :companyName
+  attr_accessor :jobTitle
+  attr_accessor :title
+  attr_accessor :firstName
+  attr_accessor :lastName
+  attr_accessor :suffix
+  attr_accessor :phoneNumberDay
+  attr_accessor :phoneNumberEvening
+  attr_accessor :shipmentList
+  attr_accessor :shippingInstructions
+  attr_accessor :estimatedShipDate
+  attr_accessor :deliveryDate
 
-  def initialize(numberOfMatches = nil, orderTimeGMT = nil, lastUpdateDate = nil, totalOrderAmount = nil, orderState = nil, dateCancelledGMT = nil, orderID = nil, clientOrderIdentifier = nil, flagStyle = nil, orderStatus = nil)
-    @numberOfMatches = numberOfMatches
-    @orderTimeGMT = orderTimeGMT
-    @lastUpdateDate = lastUpdateDate
-    @totalOrderAmount = totalOrderAmount
-    @orderState = orderState
-    @dateCancelledGMT = dateCancelledGMT
-    @orderID = orderID
-    @clientOrderIdentifier = clientOrderIdentifier
-    @flagStyle = flagStyle
-    @orderStatus = orderStatus
+  def initialize(addressLine1 = nil, addressLine2 = nil, city = nil, region = nil, regionDescription = nil, postalCode = nil, countryCode = nil, companyName = nil, jobTitle = nil, title = nil, firstName = nil, lastName = nil, suffix = nil, phoneNumberDay = nil, phoneNumberEvening = nil, shipmentList = nil, shippingInstructions = nil, estimatedShipDate = nil, deliveryDate = nil)
+    @addressLine1 = addressLine1
+    @addressLine2 = addressLine2
+    @city = city
+    @region = region
+    @regionDescription = regionDescription
+    @postalCode = postalCode
+    @countryCode = countryCode
+    @companyName = companyName
+    @jobTitle = jobTitle
+    @title = title
+    @firstName = firstName
+    @lastName = lastName
+    @suffix = suffix
+    @phoneNumberDay = phoneNumberDay
+    @phoneNumberEvening = phoneNumberEvening
+    @shipmentList = shipmentList
+    @shippingInstructions = shippingInstructions
+    @estimatedShipDate = estimatedShipDate
+    @deliveryDate = deliveryDate
   end
 end
 
-# {http://api.channeladvisor.com/datacontracts/orders}OrderResponseDetailMedium
-#   numberOfMatches - SOAP::SOAPInt
+# {http://api.channeladvisor.com/datacontracts/orders}ShippingInfoResponse
+#   addressLine1 - SOAP::SOAPString
+#   addressLine2 - SOAP::SOAPString
+#   city - SOAP::SOAPString
+#   region - SOAP::SOAPString
+#   regionDescription - SOAP::SOAPString
+#   postalCode - SOAP::SOAPString
+#   countryCode - SOAP::SOAPString
+#   companyName - SOAP::SOAPString
+#   jobTitle - SOAP::SOAPString
+#   title - SOAP::SOAPString
+#   firstName - SOAP::SOAPString
+#   lastName - SOAP::SOAPString
+#   suffix - SOAP::SOAPString
+#   phoneNumberDay - SOAP::SOAPString
+#   phoneNumberEvening - SOAP::SOAPString
+#   shipmentList - ChannelAdvisor::OrderServiceSOAP::ArrayOfShipment
+#   shippingInstructions - SOAP::SOAPString
+#   estimatedShipDate - SOAP::SOAPDateTime
+#   deliveryDate - SOAP::SOAPDateTime
+class ShippingInfoResponse < ShippingInfo
+  attr_accessor :addressLine1
+  attr_accessor :addressLine2
+  attr_accessor :city
+  attr_accessor :region
+  attr_accessor :regionDescription
+  attr_accessor :postalCode
+  attr_accessor :countryCode
+  attr_accessor :companyName
+  attr_accessor :jobTitle
+  attr_accessor :title
+  attr_accessor :firstName
+  attr_accessor :lastName
+  attr_accessor :suffix
+  attr_accessor :phoneNumberDay
+  attr_accessor :phoneNumberEvening
+  attr_accessor :shipmentList
+  attr_accessor :shippingInstructions
+  attr_accessor :estimatedShipDate
+  attr_accessor :deliveryDate
+
+  def initialize(addressLine1 = nil, addressLine2 = nil, city = nil, region = nil, regionDescription = nil, postalCode = nil, countryCode = nil, companyName = nil, jobTitle = nil, title = nil, firstName = nil, lastName = nil, suffix = nil, phoneNumberDay = nil, phoneNumberEvening = nil, shipmentList = nil, shippingInstructions = nil, estimatedShipDate = nil, deliveryDate = nil)
+    @addressLine1 = addressLine1
+    @addressLine2 = addressLine2
+    @city = city
+    @region = region
+    @regionDescription = regionDescription
+    @postalCode = postalCode
+    @countryCode = countryCode
+    @companyName = companyName
+    @jobTitle = jobTitle
+    @title = title
+    @firstName = firstName
+    @lastName = lastName
+    @suffix = suffix
+    @phoneNumberDay = phoneNumberDay
+    @phoneNumberEvening = phoneNumberEvening
+    @shipmentList = shipmentList
+    @shippingInstructions = shippingInstructions
+    @estimatedShipDate = estimatedShipDate
+    @deliveryDate = deliveryDate
+  end
+end
+
+# {http://api.channeladvisor.com/datacontracts/orders}Order
+# abstract
 #   orderTimeGMT - SOAP::SOAPDateTime
-#   lastUpdateDate - SOAP::SOAPDateTime
-#   totalOrderAmount - SOAP::SOAPDecimal
-#   orderState - ChannelAdvisor::OrderServiceSOAP::OrderStateCode
-#   dateCancelledGMT - SOAP::SOAPDateTime
-#   orderID - SOAP::SOAPInt
 #   clientOrderIdentifier - SOAP::SOAPString
-#   flagStyle - ChannelAdvisor::OrderServiceSOAP::FlagType
+#   sellerOrderID - SOAP::SOAPString
 #   orderStatus - ChannelAdvisor::OrderServiceSOAP::OrderStatus
-#   resellerID - SOAP::SOAPString
 #   buyerEmailAddress - SOAP::SOAPString
 #   emailOptIn - SOAP::SOAPBoolean
-#   paymentInfo - ChannelAdvisor::OrderServiceSOAP::PaymentInfoResponse
-#   shippingInfo - ChannelAdvisor::OrderServiceSOAP::ShippingInfoResponse
-#   billingInfo - ChannelAdvisor::OrderServiceSOAP::BillingInfo
-#   flagDescription - SOAP::SOAPString
-class OrderResponseDetailMedium < OrderResponseDetailLow
-  attr_accessor :numberOfMatches
-  attr_accessor :orderTimeGMT
-  attr_accessor :lastUpdateDate
-  attr_accessor :totalOrderAmount
-  attr_accessor :orderState
-  attr_accessor :dateCancelledGMT
-  attr_accessor :orderID
-  attr_accessor :clientOrderIdentifier
-  attr_accessor :flagStyle
-  attr_accessor :orderStatus
-  attr_accessor :resellerID
-  attr_accessor :buyerEmailAddress
-  attr_accessor :emailOptIn
-  attr_accessor :paymentInfo
-  attr_accessor :shippingInfo
-  attr_accessor :billingInfo
-  attr_accessor :flagDescription
-
-  def initialize(numberOfMatches = nil, orderTimeGMT = nil, lastUpdateDate = nil, totalOrderAmount = nil, orderState = nil, dateCancelledGMT = nil, orderID = nil, clientOrderIdentifier = nil, flagStyle = nil, orderStatus = nil, resellerID = nil, buyerEmailAddress = nil, emailOptIn = nil, paymentInfo = nil, shippingInfo = nil, billingInfo = nil, flagDescription = nil)
-    @numberOfMatches = numberOfMatches
-    @orderTimeGMT = orderTimeGMT
-    @lastUpdateDate = lastUpdateDate
-    @totalOrderAmount = totalOrderAmount
-    @orderState = orderState
-    @dateCancelledGMT = dateCancelledGMT
-    @orderID = orderID
-    @clientOrderIdentifier = clientOrderIdentifier
-    @flagStyle = flagStyle
-    @orderStatus = orderStatus
-    @resellerID = resellerID
-    @buyerEmailAddress = buyerEmailAddress
-    @emailOptIn = emailOptIn
-    @paymentInfo = paymentInfo
-    @shippingInfo = shippingInfo
-    @billingInfo = billingInfo
-    @flagDescription = flagDescription
-  end
-end
-
-# {http://api.channeladvisor.com/datacontracts/orders}OrderResponseDetailHigh
-#   numberOfMatches - SOAP::SOAPInt
-#   orderTimeGMT - SOAP::SOAPDateTime
-#   lastUpdateDate - SOAP::SOAPDateTime
-#   totalOrderAmount - SOAP::SOAPDecimal
-#   orderState - ChannelAdvisor::OrderServiceSOAP::OrderStateCode
-#   dateCancelledGMT - SOAP::SOAPDateTime
-#   orderID - SOAP::SOAPInt
-#   clientOrderIdentifier - SOAP::SOAPString
-#   flagStyle - ChannelAdvisor::OrderServiceSOAP::FlagType
-#   orderStatus - ChannelAdvisor::OrderServiceSOAP::OrderStatus
 #   resellerID - SOAP::SOAPString
-#   buyerEmailAddress - SOAP::SOAPString
-#   emailOptIn - SOAP::SOAPBoolean
-#   paymentInfo - ChannelAdvisor::OrderServiceSOAP::PaymentInfoResponse
-#   shippingInfo - ChannelAdvisor::OrderServiceSOAP::ShippingInfoResponse
 #   billingInfo - ChannelAdvisor::OrderServiceSOAP::BillingInfo
-#   flagDescription - SOAP::SOAPString
-#   shoppingCart - ChannelAdvisor::OrderServiceSOAP::OrderCart
-class OrderResponseDetailHigh < OrderResponseDetailMedium
-  attr_accessor :numberOfMatches
-  attr_accessor :orderTimeGMT
-  attr_accessor :lastUpdateDate
-  attr_accessor :totalOrderAmount
-  attr_accessor :orderState
-  attr_accessor :dateCancelledGMT
-  attr_accessor :orderID
-  attr_accessor :clientOrderIdentifier
-  attr_accessor :flagStyle
-  attr_accessor :orderStatus
-  attr_accessor :resellerID
-  attr_accessor :buyerEmailAddress
-  attr_accessor :emailOptIn
-  attr_accessor :paymentInfo
-  attr_accessor :shippingInfo
-  attr_accessor :billingInfo
-  attr_accessor :flagDescription
-  attr_accessor :shoppingCart
-
-  def initialize(numberOfMatches = nil, orderTimeGMT = nil, lastUpdateDate = nil, totalOrderAmount = nil, orderState = nil, dateCancelledGMT = nil, orderID = nil, clientOrderIdentifier = nil, flagStyle = nil, orderStatus = nil, resellerID = nil, buyerEmailAddress = nil, emailOptIn = nil, paymentInfo = nil, shippingInfo = nil, billingInfo = nil, flagDescription = nil, shoppingCart = nil)
-    @numberOfMatches = numberOfMatches
-    @orderTimeGMT = orderTimeGMT
-    @lastUpdateDate = lastUpdateDate
-    @totalOrderAmount = totalOrderAmount
-    @orderState = orderState
-    @dateCancelledGMT = dateCancelledGMT
-    @orderID = orderID
-    @clientOrderIdentifier = clientOrderIdentifier
-    @flagStyle = flagStyle
-    @orderStatus = orderStatus
-    @resellerID = resellerID
-    @buyerEmailAddress = buyerEmailAddress
-    @emailOptIn = emailOptIn
-    @paymentInfo = paymentInfo
-    @shippingInfo = shippingInfo
-    @billingInfo = billingInfo
-    @flagDescription = flagDescription
-    @shoppingCart = shoppingCart
-  end
-end
-
-# {http://api.channeladvisor.com/datacontracts/orders}OrderResponseDetailComplete
-#   numberOfMatches - SOAP::SOAPInt
-#   orderTimeGMT - SOAP::SOAPDateTime
-#   lastUpdateDate - SOAP::SOAPDateTime
-#   totalOrderAmount - SOAP::SOAPDecimal
-#   orderState - ChannelAdvisor::OrderServiceSOAP::OrderStateCode
-#   dateCancelledGMT - SOAP::SOAPDateTime
-#   orderID - SOAP::SOAPInt
-#   clientOrderIdentifier - SOAP::SOAPString
-#   flagStyle - ChannelAdvisor::OrderServiceSOAP::FlagType
-#   orderStatus - ChannelAdvisor::OrderServiceSOAP::OrderStatus
-#   resellerID - SOAP::SOAPString
-#   buyerEmailAddress - SOAP::SOAPString
-#   emailOptIn - SOAP::SOAPBoolean
-#   paymentInfo - ChannelAdvisor::OrderServiceSOAP::PaymentInfoResponse
-#   shippingInfo - ChannelAdvisor::OrderServiceSOAP::ShippingInfoResponse
-#   billingInfo - ChannelAdvisor::OrderServiceSOAP::BillingInfo
-#   flagDescription - SOAP::SOAPString
+#   paymentInfo - ChannelAdvisor::OrderServiceSOAP::PaymentInfo
 #   shoppingCart - ChannelAdvisor::OrderServiceSOAP::OrderCart
 #   customValueList - ChannelAdvisor::OrderServiceSOAP::ArrayOfCustomValue
-#   buyerIpAddress - SOAP::SOAPString
-#   transactionNotes - SOAP::SOAPString
-class OrderResponseDetailComplete < OrderResponseDetailHigh
-  attr_accessor :numberOfMatches
+class Order
   attr_accessor :orderTimeGMT
-  attr_accessor :lastUpdateDate
-  attr_accessor :totalOrderAmount
-  attr_accessor :orderState
-  attr_accessor :dateCancelledGMT
-  attr_accessor :orderID
   attr_accessor :clientOrderIdentifier
-  attr_accessor :flagStyle
+  attr_accessor :sellerOrderID
   attr_accessor :orderStatus
-  attr_accessor :resellerID
   attr_accessor :buyerEmailAddress
   attr_accessor :emailOptIn
-  attr_accessor :paymentInfo
-  attr_accessor :shippingInfo
+  attr_accessor :resellerID
   attr_accessor :billingInfo
-  attr_accessor :flagDescription
+  attr_accessor :paymentInfo
   attr_accessor :shoppingCart
   attr_accessor :customValueList
-  attr_accessor :buyerIpAddress
-  attr_accessor :transactionNotes
 
-  def initialize(numberOfMatches = nil, orderTimeGMT = nil, lastUpdateDate = nil, totalOrderAmount = nil, orderState = nil, dateCancelledGMT = nil, orderID = nil, clientOrderIdentifier = nil, flagStyle = nil, orderStatus = nil, resellerID = nil, buyerEmailAddress = nil, emailOptIn = nil, paymentInfo = nil, shippingInfo = nil, billingInfo = nil, flagDescription = nil, shoppingCart = nil, customValueList = nil, buyerIpAddress = nil, transactionNotes = nil)
-    @numberOfMatches = numberOfMatches
+  def initialize(orderTimeGMT = nil, clientOrderIdentifier = nil, sellerOrderID = nil, orderStatus = nil, buyerEmailAddress = nil, emailOptIn = nil, resellerID = nil, billingInfo = nil, paymentInfo = nil, shoppingCart = nil, customValueList = nil)
     @orderTimeGMT = orderTimeGMT
-    @lastUpdateDate = lastUpdateDate
-    @totalOrderAmount = totalOrderAmount
-    @orderState = orderState
-    @dateCancelledGMT = dateCancelledGMT
-    @orderID = orderID
     @clientOrderIdentifier = clientOrderIdentifier
-    @flagStyle = flagStyle
+    @sellerOrderID = sellerOrderID
     @orderStatus = orderStatus
-    @resellerID = resellerID
     @buyerEmailAddress = buyerEmailAddress
     @emailOptIn = emailOptIn
-    @paymentInfo = paymentInfo
-    @shippingInfo = shippingInfo
+    @resellerID = resellerID
     @billingInfo = billingInfo
-    @flagDescription = flagDescription
+    @paymentInfo = paymentInfo
     @shoppingCart = shoppingCart
     @customValueList = customValueList
-    @buyerIpAddress = buyerIpAddress
-    @transactionNotes = transactionNotes
+  end
+end
+
+# {http://api.channeladvisor.com/datacontracts/orders}OrderSubmit
+#   orderTimeGMT - SOAP::SOAPDateTime
+#   clientOrderIdentifier - SOAP::SOAPString
+#   sellerOrderID - SOAP::SOAPString
+#   orderStatus - ChannelAdvisor::OrderServiceSOAP::OrderStatus
+#   buyerEmailAddress - SOAP::SOAPString
+#   emailOptIn - SOAP::SOAPBoolean
+#   resellerID - SOAP::SOAPString
+#   billingInfo - ChannelAdvisor::OrderServiceSOAP::BillingInfo
+#   paymentInfo - ChannelAdvisor::OrderServiceSOAP::PaymentInfo
+#   shoppingCart - ChannelAdvisor::OrderServiceSOAP::OrderCart
+#   customValueList - ChannelAdvisor::OrderServiceSOAP::ArrayOfCustomValue
+#   shippingInfo - ChannelAdvisor::OrderServiceSOAP::ShippingInfoSubmit
+class OrderSubmit < Order
+  attr_accessor :orderTimeGMT
+  attr_accessor :clientOrderIdentifier
+  attr_accessor :sellerOrderID
+  attr_accessor :orderStatus
+  attr_accessor :buyerEmailAddress
+  attr_accessor :emailOptIn
+  attr_accessor :resellerID
+  attr_accessor :billingInfo
+  attr_accessor :paymentInfo
+  attr_accessor :shoppingCart
+  attr_accessor :customValueList
+  attr_accessor :shippingInfo
+
+  def initialize(orderTimeGMT = nil, clientOrderIdentifier = nil, sellerOrderID = nil, orderStatus = nil, buyerEmailAddress = nil, emailOptIn = nil, resellerID = nil, billingInfo = nil, paymentInfo = nil, shoppingCart = nil, customValueList = nil, shippingInfo = nil)
+    @orderTimeGMT = orderTimeGMT
+    @clientOrderIdentifier = clientOrderIdentifier
+    @sellerOrderID = sellerOrderID
+    @orderStatus = orderStatus
+    @buyerEmailAddress = buyerEmailAddress
+    @emailOptIn = emailOptIn
+    @resellerID = resellerID
+    @billingInfo = billingInfo
+    @paymentInfo = paymentInfo
+    @shoppingCart = shoppingCart
+    @customValueList = customValueList
+    @shippingInfo = shippingInfo
   end
 end
 
 # {http://api.channeladvisor.com/datacontracts/orders}OrderStatus
-#   checkoutStatus - ChannelAdvisor::OrderServiceSOAP::CheckoutStatusCode
+#   checkoutStatus - SOAP::SOAPString
 #   checkoutDateGMT - SOAP::SOAPDateTime
-#   paymentStatus - ChannelAdvisor::OrderServiceSOAP::PaymentStatusCode
+#   paymentStatus - SOAP::SOAPString
 #   paymentDateGMT - SOAP::SOAPDateTime
-#   shippingStatus - ChannelAdvisor::OrderServiceSOAP::ShippingStatusCode
+#   shippingStatus - SOAP::SOAPString
 #   shippingDateGMT - SOAP::SOAPDateTime
-#   orderRefundStatus - ChannelAdvisor::OrderServiceSOAP::OrderRefundStatusCode
+#   orderRefundStatus - SOAP::SOAPString
 class OrderStatus
   attr_accessor :checkoutStatus
   attr_accessor :checkoutDateGMT
@@ -833,321 +1211,12 @@ class OrderStatus
   end
 end
 
-# {http://api.channeladvisor.com/datacontracts/orders}AddressInfo
-#   addressLine1 - SOAP::SOAPString
-#   addressLine2 - SOAP::SOAPString
-#   city - SOAP::SOAPString
-#   region - SOAP::SOAPString
-#   postalCode - SOAP::SOAPString
-#   countryCode - SOAP::SOAPString
-class AddressInfo
-  attr_accessor :addressLine1
-  attr_accessor :addressLine2
-  attr_accessor :city
-  attr_accessor :region
-  attr_accessor :postalCode
-  attr_accessor :countryCode
-
-  def initialize(addressLine1 = nil, addressLine2 = nil, city = nil, region = nil, postalCode = nil, countryCode = nil)
-    @addressLine1 = addressLine1
-    @addressLine2 = addressLine2
-    @city = city
-    @region = region
-    @postalCode = postalCode
-    @countryCode = countryCode
-  end
-end
-
-# {http://api.channeladvisor.com/datacontracts/orders}ContactComplete
-#   addressLine1 - SOAP::SOAPString
-#   addressLine2 - SOAP::SOAPString
-#   city - SOAP::SOAPString
-#   region - SOAP::SOAPString
-#   postalCode - SOAP::SOAPString
-#   countryCode - SOAP::SOAPString
-#   companyName - SOAP::SOAPString
-#   jobTitle - SOAP::SOAPString
-#   title - SOAP::SOAPString
-#   firstName - SOAP::SOAPString
-#   lastName - SOAP::SOAPString
-#   suffix - SOAP::SOAPString
-#   phoneNumberDay - SOAP::SOAPString
-#   phoneNumberEvening - SOAP::SOAPString
-class ContactComplete < AddressInfo
-  attr_accessor :addressLine1
-  attr_accessor :addressLine2
-  attr_accessor :city
-  attr_accessor :region
-  attr_accessor :postalCode
-  attr_accessor :countryCode
-  attr_accessor :companyName
-  attr_accessor :jobTitle
-  attr_accessor :title
-  attr_accessor :firstName
-  attr_accessor :lastName
-  attr_accessor :suffix
-  attr_accessor :phoneNumberDay
-  attr_accessor :phoneNumberEvening
-
-  def initialize(addressLine1 = nil, addressLine2 = nil, city = nil, region = nil, postalCode = nil, countryCode = nil, companyName = nil, jobTitle = nil, title = nil, firstName = nil, lastName = nil, suffix = nil, phoneNumberDay = nil, phoneNumberEvening = nil)
-    @addressLine1 = addressLine1
-    @addressLine2 = addressLine2
-    @city = city
-    @region = region
-    @postalCode = postalCode
-    @countryCode = countryCode
-    @companyName = companyName
-    @jobTitle = jobTitle
-    @title = title
-    @firstName = firstName
-    @lastName = lastName
-    @suffix = suffix
-    @phoneNumberDay = phoneNumberDay
-    @phoneNumberEvening = phoneNumberEvening
-  end
-end
-
-# {http://api.channeladvisor.com/datacontracts/orders}ShippingInfo
-# abstract
-#   addressLine1 - SOAP::SOAPString
-#   addressLine2 - SOAP::SOAPString
-#   city - SOAP::SOAPString
-#   region - SOAP::SOAPString
-#   postalCode - SOAP::SOAPString
-#   countryCode - SOAP::SOAPString
-#   companyName - SOAP::SOAPString
-#   jobTitle - SOAP::SOAPString
-#   title - SOAP::SOAPString
-#   firstName - SOAP::SOAPString
-#   lastName - SOAP::SOAPString
-#   suffix - SOAP::SOAPString
-#   phoneNumberDay - SOAP::SOAPString
-#   phoneNumberEvening - SOAP::SOAPString
-#   shipmentList - ChannelAdvisor::OrderServiceSOAP::ArrayOfShipment
-#   shippingInstructions - SOAP::SOAPString
-class ShippingInfo < ContactComplete
-  attr_accessor :addressLine1
-  attr_accessor :addressLine2
-  attr_accessor :city
-  attr_accessor :region
-  attr_accessor :postalCode
-  attr_accessor :countryCode
-  attr_accessor :companyName
-  attr_accessor :jobTitle
-  attr_accessor :title
-  attr_accessor :firstName
-  attr_accessor :lastName
-  attr_accessor :suffix
-  attr_accessor :phoneNumberDay
-  attr_accessor :phoneNumberEvening
-  attr_accessor :shipmentList
-  attr_accessor :shippingInstructions
-
-  def initialize(addressLine1 = nil, addressLine2 = nil, city = nil, region = nil, postalCode = nil, countryCode = nil, companyName = nil, jobTitle = nil, title = nil, firstName = nil, lastName = nil, suffix = nil, phoneNumberDay = nil, phoneNumberEvening = nil, shipmentList = nil, shippingInstructions = nil)
-    @addressLine1 = addressLine1
-    @addressLine2 = addressLine2
-    @city = city
-    @region = region
-    @postalCode = postalCode
-    @countryCode = countryCode
-    @companyName = companyName
-    @jobTitle = jobTitle
-    @title = title
-    @firstName = firstName
-    @lastName = lastName
-    @suffix = suffix
-    @phoneNumberDay = phoneNumberDay
-    @phoneNumberEvening = phoneNumberEvening
-    @shipmentList = shipmentList
-    @shippingInstructions = shippingInstructions
-  end
-end
-
-# {http://api.channeladvisor.com/datacontracts/orders}ShippingInfoResponse
-#   addressLine1 - SOAP::SOAPString
-#   addressLine2 - SOAP::SOAPString
-#   city - SOAP::SOAPString
-#   region - SOAP::SOAPString
-#   postalCode - SOAP::SOAPString
-#   countryCode - SOAP::SOAPString
-#   companyName - SOAP::SOAPString
-#   jobTitle - SOAP::SOAPString
-#   title - SOAP::SOAPString
-#   firstName - SOAP::SOAPString
-#   lastName - SOAP::SOAPString
-#   suffix - SOAP::SOAPString
-#   phoneNumberDay - SOAP::SOAPString
-#   phoneNumberEvening - SOAP::SOAPString
-#   shipmentList - ChannelAdvisor::OrderServiceSOAP::ArrayOfShipment
-#   shippingInstructions - SOAP::SOAPString
-class ShippingInfoResponse < ShippingInfo
-  attr_accessor :addressLine1
-  attr_accessor :addressLine2
-  attr_accessor :city
-  attr_accessor :region
-  attr_accessor :postalCode
-  attr_accessor :countryCode
-  attr_accessor :companyName
-  attr_accessor :jobTitle
-  attr_accessor :title
-  attr_accessor :firstName
-  attr_accessor :lastName
-  attr_accessor :suffix
-  attr_accessor :phoneNumberDay
-  attr_accessor :phoneNumberEvening
-  attr_accessor :shipmentList
-  attr_accessor :shippingInstructions
-
-  def initialize(addressLine1 = nil, addressLine2 = nil, city = nil, region = nil, postalCode = nil, countryCode = nil, companyName = nil, jobTitle = nil, title = nil, firstName = nil, lastName = nil, suffix = nil, phoneNumberDay = nil, phoneNumberEvening = nil, shipmentList = nil, shippingInstructions = nil)
-    @addressLine1 = addressLine1
-    @addressLine2 = addressLine2
-    @city = city
-    @region = region
-    @postalCode = postalCode
-    @countryCode = countryCode
-    @companyName = companyName
-    @jobTitle = jobTitle
-    @title = title
-    @firstName = firstName
-    @lastName = lastName
-    @suffix = suffix
-    @phoneNumberDay = phoneNumberDay
-    @phoneNumberEvening = phoneNumberEvening
-    @shipmentList = shipmentList
-    @shippingInstructions = shippingInstructions
-  end
-end
-
-# {http://api.channeladvisor.com/datacontracts/orders}ShippingInfoSubmit
-#   addressLine1 - SOAP::SOAPString
-#   addressLine2 - SOAP::SOAPString
-#   city - SOAP::SOAPString
-#   region - SOAP::SOAPString
-#   postalCode - SOAP::SOAPString
-#   countryCode - SOAP::SOAPString
-#   companyName - SOAP::SOAPString
-#   jobTitle - SOAP::SOAPString
-#   title - SOAP::SOAPString
-#   firstName - SOAP::SOAPString
-#   lastName - SOAP::SOAPString
-#   suffix - SOAP::SOAPString
-#   phoneNumberDay - SOAP::SOAPString
-#   phoneNumberEvening - SOAP::SOAPString
-#   shipmentList - ChannelAdvisor::OrderServiceSOAP::ArrayOfShipment
-#   shippingInstructions - SOAP::SOAPString
-class ShippingInfoSubmit < ShippingInfo
-  attr_accessor :addressLine1
-  attr_accessor :addressLine2
-  attr_accessor :city
-  attr_accessor :region
-  attr_accessor :postalCode
-  attr_accessor :countryCode
-  attr_accessor :companyName
-  attr_accessor :jobTitle
-  attr_accessor :title
-  attr_accessor :firstName
-  attr_accessor :lastName
-  attr_accessor :suffix
-  attr_accessor :phoneNumberDay
-  attr_accessor :phoneNumberEvening
-  attr_accessor :shipmentList
-  attr_accessor :shippingInstructions
-
-  def initialize(addressLine1 = nil, addressLine2 = nil, city = nil, region = nil, postalCode = nil, countryCode = nil, companyName = nil, jobTitle = nil, title = nil, firstName = nil, lastName = nil, suffix = nil, phoneNumberDay = nil, phoneNumberEvening = nil, shipmentList = nil, shippingInstructions = nil)
-    @addressLine1 = addressLine1
-    @addressLine2 = addressLine2
-    @city = city
-    @region = region
-    @postalCode = postalCode
-    @countryCode = countryCode
-    @companyName = companyName
-    @jobTitle = jobTitle
-    @title = title
-    @firstName = firstName
-    @lastName = lastName
-    @suffix = suffix
-    @phoneNumberDay = phoneNumberDay
-    @phoneNumberEvening = phoneNumberEvening
-    @shipmentList = shipmentList
-    @shippingInstructions = shippingInstructions
-  end
-end
-
-# {http://api.channeladvisor.com/datacontracts/orders}BillingInfo
-#   addressLine1 - SOAP::SOAPString
-#   addressLine2 - SOAP::SOAPString
-#   city - SOAP::SOAPString
-#   region - SOAP::SOAPString
-#   postalCode - SOAP::SOAPString
-#   countryCode - SOAP::SOAPString
-#   companyName - SOAP::SOAPString
-#   jobTitle - SOAP::SOAPString
-#   title - SOAP::SOAPString
-#   firstName - SOAP::SOAPString
-#   lastName - SOAP::SOAPString
-#   suffix - SOAP::SOAPString
-#   phoneNumberDay - SOAP::SOAPString
-#   phoneNumberEvening - SOAP::SOAPString
-class BillingInfo < ContactComplete
-  attr_accessor :addressLine1
-  attr_accessor :addressLine2
-  attr_accessor :city
-  attr_accessor :region
-  attr_accessor :postalCode
-  attr_accessor :countryCode
-  attr_accessor :companyName
-  attr_accessor :jobTitle
-  attr_accessor :title
-  attr_accessor :firstName
-  attr_accessor :lastName
-  attr_accessor :suffix
-  attr_accessor :phoneNumberDay
-  attr_accessor :phoneNumberEvening
-
-  def initialize(addressLine1 = nil, addressLine2 = nil, city = nil, region = nil, postalCode = nil, countryCode = nil, companyName = nil, jobTitle = nil, title = nil, firstName = nil, lastName = nil, suffix = nil, phoneNumberDay = nil, phoneNumberEvening = nil)
-    @addressLine1 = addressLine1
-    @addressLine2 = addressLine2
-    @city = city
-    @region = region
-    @postalCode = postalCode
-    @countryCode = countryCode
-    @companyName = companyName
-    @jobTitle = jobTitle
-    @title = title
-    @firstName = firstName
-    @lastName = lastName
-    @suffix = suffix
-    @phoneNumberDay = phoneNumberDay
-    @phoneNumberEvening = phoneNumberEvening
-  end
-end
-
-# {http://api.channeladvisor.com/datacontracts/orders}ArrayOfShipment
-class ArrayOfShipment < ::Array
-end
-
-# {http://api.channeladvisor.com/datacontracts/orders}Shipment
-#   shippingCarrier - SOAP::SOAPString
-#   shippingClass - SOAP::SOAPString
-#   trackingNumber - SOAP::SOAPString
-class Shipment
-  attr_accessor :shippingCarrier
-  attr_accessor :shippingClass
-  attr_accessor :trackingNumber
-
-  def initialize(shippingCarrier = nil, shippingClass = nil, trackingNumber = nil)
-    @shippingCarrier = shippingCarrier
-    @shippingClass = shippingClass
-    @trackingNumber = trackingNumber
-  end
-end
-
 # {http://api.channeladvisor.com/datacontracts/orders}OrderCart
 #   cartID - SOAP::SOAPInt
-#   checkoutSource - ChannelAdvisor::OrderServiceSOAP::CheckoutSourceType
-#   vATTaxCalculationOption - ChannelAdvisor::OrderServiceSOAP::VAT_Calculation_Type
-#   vATShippingOption - ChannelAdvisor::OrderServiceSOAP::VAT_Calculation_Type
-#   vATGiftWrapOption - ChannelAdvisor::OrderServiceSOAP::VAT_Calculation_Type
+#   checkoutSource - SOAP::SOAPString
+#   vATTaxCalculationOption - SOAP::SOAPString
+#   vATShippingOption - SOAP::SOAPString
+#   vATGiftWrapOption - SOAP::SOAPString
 #   lineItemSKUList - ChannelAdvisor::OrderServiceSOAP::ArrayOfOrderLineItemItem
 #   lineItemInvoiceList - ChannelAdvisor::OrderServiceSOAP::ArrayOfOrderLineItemInvoice
 #   lineItemPromoList - ChannelAdvisor::OrderServiceSOAP::ArrayOfOrderLineItemPromo
@@ -1179,7 +1248,7 @@ end
 
 # {http://api.channeladvisor.com/datacontracts/orders}OrderLineItemBase
 # abstract
-#   lineItemType - ChannelAdvisor::OrderServiceSOAP::LineItemTypeCode
+#   lineItemType - SOAP::SOAPString
 #   unitPrice - SOAP::SOAPDecimal
 class OrderLineItemBase
   attr_accessor :lineItemType
@@ -1192,12 +1261,12 @@ class OrderLineItemBase
 end
 
 # {http://api.channeladvisor.com/datacontracts/orders}OrderLineItemItem
-#   lineItemType - ChannelAdvisor::OrderServiceSOAP::LineItemTypeCode
+#   lineItemType - SOAP::SOAPString
 #   unitPrice - SOAP::SOAPDecimal
 #   lineItemID - SOAP::SOAPInt
 #   allowNegativeQuantity - SOAP::SOAPBoolean
 #   quantity - SOAP::SOAPInt
-#   itemSaleSource - ChannelAdvisor::OrderServiceSOAP::SiteToken
+#   itemSaleSource - SOAP::SOAPString
 #   sKU - SOAP::SOAPString
 #   title - SOAP::SOAPString
 #   buyerUserID - SOAP::SOAPString
@@ -1212,6 +1281,8 @@ end
 #   giftMessage - SOAP::SOAPString
 #   giftWrapLevel - SOAP::SOAPString
 #   itemPromoList - ChannelAdvisor::OrderServiceSOAP::ArrayOfOrderLineItemItemPromo
+#   recyclingFee - SOAP::SOAPDecimal
+#   fulfillmentType - SOAP::SOAPString
 class OrderLineItemItem < OrderLineItemBase
   attr_accessor :lineItemType
   attr_accessor :unitPrice
@@ -1233,8 +1304,10 @@ class OrderLineItemItem < OrderLineItemBase
   attr_accessor :giftMessage
   attr_accessor :giftWrapLevel
   attr_accessor :itemPromoList
+  attr_accessor :recyclingFee
+  attr_accessor :fulfillmentType
 
-  def initialize(lineItemType = nil, unitPrice = nil, lineItemID = nil, allowNegativeQuantity = nil, quantity = nil, itemSaleSource = nil, sKU = nil, title = nil, buyerUserID = nil, buyerFeedbackRating = nil, salesSourceID = nil, vATRate = nil, taxCost = nil, shippingCost = nil, shippingTaxCost = nil, giftWrapCost = nil, giftWrapTaxCost = nil, giftMessage = nil, giftWrapLevel = nil, itemPromoList = nil)
+  def initialize(lineItemType = nil, unitPrice = nil, lineItemID = nil, allowNegativeQuantity = nil, quantity = nil, itemSaleSource = nil, sKU = nil, title = nil, buyerUserID = nil, buyerFeedbackRating = nil, salesSourceID = nil, vATRate = nil, taxCost = nil, shippingCost = nil, shippingTaxCost = nil, giftWrapCost = nil, giftWrapTaxCost = nil, giftMessage = nil, giftWrapLevel = nil, itemPromoList = nil, recyclingFee = nil, fulfillmentType = nil)
     @lineItemType = lineItemType
     @unitPrice = unitPrice
     @lineItemID = lineItemID
@@ -1255,16 +1328,18 @@ class OrderLineItemItem < OrderLineItemBase
     @giftMessage = giftMessage
     @giftWrapLevel = giftWrapLevel
     @itemPromoList = itemPromoList
+    @recyclingFee = recyclingFee
+    @fulfillmentType = fulfillmentType
   end
 end
 
 # {http://api.channeladvisor.com/datacontracts/orders}OrderLineItemItemResponse
-#   lineItemType - ChannelAdvisor::OrderServiceSOAP::LineItemTypeCode
+#   lineItemType - SOAP::SOAPString
 #   unitPrice - SOAP::SOAPDecimal
 #   lineItemID - SOAP::SOAPInt
 #   allowNegativeQuantity - SOAP::SOAPBoolean
 #   quantity - SOAP::SOAPInt
-#   itemSaleSource - ChannelAdvisor::OrderServiceSOAP::SiteToken
+#   itemSaleSource - SOAP::SOAPString
 #   sKU - SOAP::SOAPString
 #   title - SOAP::SOAPString
 #   buyerUserID - SOAP::SOAPString
@@ -1279,10 +1354,14 @@ end
 #   giftMessage - SOAP::SOAPString
 #   giftWrapLevel - SOAP::SOAPString
 #   itemPromoList - ChannelAdvisor::OrderServiceSOAP::ArrayOfOrderLineItemItemPromo
+#   recyclingFee - SOAP::SOAPDecimal
+#   fulfillmentType - SOAP::SOAPString
 #   unitWeight - ChannelAdvisor::OrderServiceSOAP::ItemWeight
 #   warehouseLocation - SOAP::SOAPString
 #   userName - SOAP::SOAPString
 #   distributionCenterCode - SOAP::SOAPString
+#   isExternallyFulfilled - SOAP::SOAPBoolean
+#   itemSaleSourceTransactionID - SOAP::SOAPString
 class OrderLineItemItemResponse < OrderLineItemItem
   attr_accessor :lineItemType
   attr_accessor :unitPrice
@@ -1304,12 +1383,16 @@ class OrderLineItemItemResponse < OrderLineItemItem
   attr_accessor :giftMessage
   attr_accessor :giftWrapLevel
   attr_accessor :itemPromoList
+  attr_accessor :recyclingFee
+  attr_accessor :fulfillmentType
   attr_accessor :unitWeight
   attr_accessor :warehouseLocation
   attr_accessor :userName
   attr_accessor :distributionCenterCode
+  attr_accessor :isExternallyFulfilled
+  attr_accessor :itemSaleSourceTransactionID
 
-  def initialize(lineItemType = nil, unitPrice = nil, lineItemID = nil, allowNegativeQuantity = nil, quantity = nil, itemSaleSource = nil, sKU = nil, title = nil, buyerUserID = nil, buyerFeedbackRating = nil, salesSourceID = nil, vATRate = nil, taxCost = nil, shippingCost = nil, shippingTaxCost = nil, giftWrapCost = nil, giftWrapTaxCost = nil, giftMessage = nil, giftWrapLevel = nil, itemPromoList = nil, unitWeight = nil, warehouseLocation = nil, userName = nil, distributionCenterCode = nil)
+  def initialize(lineItemType = nil, unitPrice = nil, lineItemID = nil, allowNegativeQuantity = nil, quantity = nil, itemSaleSource = nil, sKU = nil, title = nil, buyerUserID = nil, buyerFeedbackRating = nil, salesSourceID = nil, vATRate = nil, taxCost = nil, shippingCost = nil, shippingTaxCost = nil, giftWrapCost = nil, giftWrapTaxCost = nil, giftMessage = nil, giftWrapLevel = nil, itemPromoList = nil, recyclingFee = nil, fulfillmentType = nil, unitWeight = nil, warehouseLocation = nil, userName = nil, distributionCenterCode = nil, isExternallyFulfilled = nil, itemSaleSourceTransactionID = nil)
     @lineItemType = lineItemType
     @unitPrice = unitPrice
     @lineItemID = lineItemID
@@ -1330,15 +1413,19 @@ class OrderLineItemItemResponse < OrderLineItemItem
     @giftMessage = giftMessage
     @giftWrapLevel = giftWrapLevel
     @itemPromoList = itemPromoList
+    @recyclingFee = recyclingFee
+    @fulfillmentType = fulfillmentType
     @unitWeight = unitWeight
     @warehouseLocation = warehouseLocation
     @userName = userName
     @distributionCenterCode = distributionCenterCode
+    @isExternallyFulfilled = isExternallyFulfilled
+    @itemSaleSourceTransactionID = itemSaleSourceTransactionID
   end
 end
 
 # {http://api.channeladvisor.com/datacontracts/orders}OrderLineItemPromo
-#   lineItemType - ChannelAdvisor::OrderServiceSOAP::LineItemTypeCode
+#   lineItemType - SOAP::SOAPString
 #   unitPrice - SOAP::SOAPDecimal
 #   promoCode - SOAP::SOAPString
 class OrderLineItemPromo < OrderLineItemBase
@@ -1354,7 +1441,7 @@ class OrderLineItemPromo < OrderLineItemBase
 end
 
 # {http://api.channeladvisor.com/datacontracts/orders}OrderLineItemItemPromo
-#   lineItemType - ChannelAdvisor::OrderServiceSOAP::LineItemTypeCode
+#   lineItemType - SOAP::SOAPString
 #   unitPrice - SOAP::SOAPDecimal
 #   promoCode - SOAP::SOAPString
 #   shippingPrice - SOAP::SOAPDecimal
@@ -1373,7 +1460,7 @@ class OrderLineItemItemPromo < OrderLineItemPromo
 end
 
 # {http://api.channeladvisor.com/datacontracts/orders}OrderLineItemInvoice
-#   lineItemType - ChannelAdvisor::OrderServiceSOAP::LineItemTypeCode
+#   lineItemType - SOAP::SOAPString
 #   unitPrice - SOAP::SOAPDecimal
 class OrderLineItemInvoice < OrderLineItemBase
   attr_accessor :lineItemType
@@ -1437,105 +1524,369 @@ class CustomValue
   end
 end
 
-# {http://api.channeladvisor.com/datacontracts/orders}Order
+# {http://api.channeladvisor.com/datacontracts/orders}ArrayOfShipment
+class ArrayOfShipment < ::Array
+end
+
+# {http://api.channeladvisor.com/datacontracts/orders}Shipment
+#   shippingCarrier - SOAP::SOAPString
+#   shippingClass - SOAP::SOAPString
+#   trackingNumber - SOAP::SOAPString
+class Shipment
+  attr_accessor :shippingCarrier
+  attr_accessor :shippingClass
+  attr_accessor :trackingNumber
+
+  def initialize(shippingCarrier = nil, shippingClass = nil, trackingNumber = nil)
+    @shippingCarrier = shippingCarrier
+    @shippingClass = shippingClass
+    @trackingNumber = trackingNumber
+  end
+end
+
+# {http://api.channeladvisor.com/datacontracts/orders}OrderCriteria
+#   orderCreationFilterBeginTimeGMT - SOAP::SOAPDateTime
+#   orderCreationFilterEndTimeGMT - SOAP::SOAPDateTime
+#   statusUpdateFilterBeginTimeGMT - SOAP::SOAPDateTime
+#   statusUpdateFilterEndTimeGMT - SOAP::SOAPDateTime
+#   joinDateFiltersWithOr - SOAP::SOAPBoolean
+#   detailLevel - SOAP::SOAPString
+#   exportState - SOAP::SOAPString
+#   orderIDList - ChannelAdvisor::OrderServiceSOAP::ArrayOfInt_
+#   clientOrderIdentifierList - ChannelAdvisor::OrderServiceSOAP::ArrayOfString_
+#   orderStateFilter - SOAP::SOAPString
+#   paymentStatusFilter - SOAP::SOAPString
+#   checkoutStatusFilter - SOAP::SOAPString
+#   shippingStatusFilter - SOAP::SOAPString
+#   refundStatusFilter - SOAP::SOAPString
+#   distributionCenterCode - SOAP::SOAPString
+#   fulfillmentTypeFilter - SOAP::SOAPString
+#   pageNumberFilter - SOAP::SOAPInt
+#   pageSize - SOAP::SOAPInt
+class OrderCriteria
+  attr_accessor :orderCreationFilterBeginTimeGMT
+  attr_accessor :orderCreationFilterEndTimeGMT
+  attr_accessor :statusUpdateFilterBeginTimeGMT
+  attr_accessor :statusUpdateFilterEndTimeGMT
+  attr_accessor :joinDateFiltersWithOr
+  attr_accessor :detailLevel
+  attr_accessor :exportState
+  attr_accessor :orderIDList
+  attr_accessor :clientOrderIdentifierList
+  attr_accessor :orderStateFilter
+  attr_accessor :paymentStatusFilter
+  attr_accessor :checkoutStatusFilter
+  attr_accessor :shippingStatusFilter
+  attr_accessor :refundStatusFilter
+  attr_accessor :distributionCenterCode
+  attr_accessor :fulfillmentTypeFilter
+  attr_accessor :pageNumberFilter
+  attr_accessor :pageSize
+
+  def initialize(orderCreationFilterBeginTimeGMT = nil, orderCreationFilterEndTimeGMT = nil, statusUpdateFilterBeginTimeGMT = nil, statusUpdateFilterEndTimeGMT = nil, joinDateFiltersWithOr = nil, detailLevel = nil, exportState = nil, orderIDList = nil, clientOrderIdentifierList = nil, orderStateFilter = nil, paymentStatusFilter = nil, checkoutStatusFilter = nil, shippingStatusFilter = nil, refundStatusFilter = nil, distributionCenterCode = nil, fulfillmentTypeFilter = nil, pageNumberFilter = nil, pageSize = nil)
+    @orderCreationFilterBeginTimeGMT = orderCreationFilterBeginTimeGMT
+    @orderCreationFilterEndTimeGMT = orderCreationFilterEndTimeGMT
+    @statusUpdateFilterBeginTimeGMT = statusUpdateFilterBeginTimeGMT
+    @statusUpdateFilterEndTimeGMT = statusUpdateFilterEndTimeGMT
+    @joinDateFiltersWithOr = joinDateFiltersWithOr
+    @detailLevel = detailLevel
+    @exportState = exportState
+    @orderIDList = orderIDList
+    @clientOrderIdentifierList = clientOrderIdentifierList
+    @orderStateFilter = orderStateFilter
+    @paymentStatusFilter = paymentStatusFilter
+    @checkoutStatusFilter = checkoutStatusFilter
+    @shippingStatusFilter = shippingStatusFilter
+    @refundStatusFilter = refundStatusFilter
+    @distributionCenterCode = distributionCenterCode
+    @fulfillmentTypeFilter = fulfillmentTypeFilter
+    @pageNumberFilter = pageNumberFilter
+    @pageSize = pageSize
+  end
+end
+
+# {http://api.channeladvisor.com/datacontracts/orders}ArrayOfInt
+class ArrayOfInt_ < ::Array
+end
+
+# {http://api.channeladvisor.com/datacontracts/orders}ArrayOfString
+class ArrayOfString_ < ::Array
+end
+
+# {http://api.channeladvisor.com/datacontracts/orders}OrderResponseItem
 # abstract
+#   numberOfMatches - SOAP::SOAPInt
 #   orderTimeGMT - SOAP::SOAPDateTime
-#   clientOrderIdentifier - SOAP::SOAPString
-#   orderStatus - ChannelAdvisor::OrderServiceSOAP::OrderStatus
-#   buyerEmailAddress - SOAP::SOAPString
-#   emailOptIn - SOAP::SOAPBoolean
-#   resellerID - SOAP::SOAPString
-#   billingInfo - ChannelAdvisor::OrderServiceSOAP::BillingInfo
-#   paymentInfo - ChannelAdvisor::OrderServiceSOAP::PaymentInfo
-#   shoppingCart - ChannelAdvisor::OrderServiceSOAP::OrderCart
-#   customValueList - ChannelAdvisor::OrderServiceSOAP::ArrayOfCustomValue
-class Order
-  attr_accessor :orderTimeGMT
-  attr_accessor :clientOrderIdentifier
-  attr_accessor :orderStatus
-  attr_accessor :buyerEmailAddress
-  attr_accessor :emailOptIn
-  attr_accessor :resellerID
-  attr_accessor :billingInfo
-  attr_accessor :paymentInfo
-  attr_accessor :shoppingCart
-  attr_accessor :customValueList
-
-  def initialize(orderTimeGMT = nil, clientOrderIdentifier = nil, orderStatus = nil, buyerEmailAddress = nil, emailOptIn = nil, resellerID = nil, billingInfo = nil, paymentInfo = nil, shoppingCart = nil, customValueList = nil)
-    @orderTimeGMT = orderTimeGMT
-    @clientOrderIdentifier = clientOrderIdentifier
-    @orderStatus = orderStatus
-    @buyerEmailAddress = buyerEmailAddress
-    @emailOptIn = emailOptIn
-    @resellerID = resellerID
-    @billingInfo = billingInfo
-    @paymentInfo = paymentInfo
-    @shoppingCart = shoppingCart
-    @customValueList = customValueList
-  end
-end
-
-# {http://api.channeladvisor.com/datacontracts/orders}OrderSubmit
-#   orderTimeGMT - SOAP::SOAPDateTime
-#   clientOrderIdentifier - SOAP::SOAPString
-#   orderStatus - ChannelAdvisor::OrderServiceSOAP::OrderStatus
-#   buyerEmailAddress - SOAP::SOAPString
-#   emailOptIn - SOAP::SOAPBoolean
-#   resellerID - SOAP::SOAPString
-#   billingInfo - ChannelAdvisor::OrderServiceSOAP::BillingInfo
-#   paymentInfo - ChannelAdvisor::OrderServiceSOAP::PaymentInfo
-#   shoppingCart - ChannelAdvisor::OrderServiceSOAP::OrderCart
-#   customValueList - ChannelAdvisor::OrderServiceSOAP::ArrayOfCustomValue
-#   shippingInfo - ChannelAdvisor::OrderServiceSOAP::ShippingInfoSubmit
-class OrderSubmit < Order
-  attr_accessor :orderTimeGMT
-  attr_accessor :clientOrderIdentifier
-  attr_accessor :orderStatus
-  attr_accessor :buyerEmailAddress
-  attr_accessor :emailOptIn
-  attr_accessor :resellerID
-  attr_accessor :billingInfo
-  attr_accessor :paymentInfo
-  attr_accessor :shoppingCart
-  attr_accessor :customValueList
-  attr_accessor :shippingInfo
-
-  def initialize(orderTimeGMT = nil, clientOrderIdentifier = nil, orderStatus = nil, buyerEmailAddress = nil, emailOptIn = nil, resellerID = nil, billingInfo = nil, paymentInfo = nil, shoppingCart = nil, customValueList = nil, shippingInfo = nil)
-    @orderTimeGMT = orderTimeGMT
-    @clientOrderIdentifier = clientOrderIdentifier
-    @orderStatus = orderStatus
-    @buyerEmailAddress = buyerEmailAddress
-    @emailOptIn = emailOptIn
-    @resellerID = resellerID
-    @billingInfo = billingInfo
-    @paymentInfo = paymentInfo
-    @shoppingCart = shoppingCart
-    @customValueList = customValueList
-    @shippingInfo = shippingInfo
-  end
-end
-
-# {http://api.channeladvisor.com/datacontracts/orders}OrderRefundHistoryResponse
+#   lastUpdateDate - SOAP::SOAPDateTime
+#   totalOrderAmount - SOAP::SOAPDecimal
+#   orderState - SOAP::SOAPString
+#   dateCancelledGMT - SOAP::SOAPDateTime
 #   orderID - SOAP::SOAPInt
 #   clientOrderIdentifier - SOAP::SOAPString
-#   refundStatus - ChannelAdvisor::OrderServiceSOAP::OrderRefundStatusCode
-#   lineItemRefunds - ChannelAdvisor::OrderServiceSOAP::ArrayOfOrderLineItemRefundHistoryResponse
-class OrderRefundHistoryResponse
+#   sellerOrderID - SOAP::SOAPString
+#   flagStyle - SOAP::SOAPString
+class OrderResponseItem
+  attr_accessor :numberOfMatches
+  attr_accessor :orderTimeGMT
+  attr_accessor :lastUpdateDate
+  attr_accessor :totalOrderAmount
+  attr_accessor :orderState
+  attr_accessor :dateCancelledGMT
   attr_accessor :orderID
   attr_accessor :clientOrderIdentifier
-  attr_accessor :refundStatus
-  attr_accessor :lineItemRefunds
+  attr_accessor :sellerOrderID
+  attr_accessor :flagStyle
 
-  def initialize(orderID = nil, clientOrderIdentifier = nil, refundStatus = nil, lineItemRefunds = nil)
+  def initialize(numberOfMatches = nil, orderTimeGMT = nil, lastUpdateDate = nil, totalOrderAmount = nil, orderState = nil, dateCancelledGMT = nil, orderID = nil, clientOrderIdentifier = nil, sellerOrderID = nil, flagStyle = nil)
+    @numberOfMatches = numberOfMatches
+    @orderTimeGMT = orderTimeGMT
+    @lastUpdateDate = lastUpdateDate
+    @totalOrderAmount = totalOrderAmount
+    @orderState = orderState
+    @dateCancelledGMT = dateCancelledGMT
     @orderID = orderID
     @clientOrderIdentifier = clientOrderIdentifier
-    @refundStatus = refundStatus
-    @lineItemRefunds = lineItemRefunds
+    @sellerOrderID = sellerOrderID
+    @flagStyle = flagStyle
   end
 end
 
-# {http://api.channeladvisor.com/datacontracts/orders}ArrayOfOrderLineItemRefundHistoryResponse
-class ArrayOfOrderLineItemRefundHistoryResponse < ::Array
+# {http://api.channeladvisor.com/datacontracts/orders}OrderResponseDetailLow
+#   numberOfMatches - SOAP::SOAPInt
+#   orderTimeGMT - SOAP::SOAPDateTime
+#   lastUpdateDate - SOAP::SOAPDateTime
+#   totalOrderAmount - SOAP::SOAPDecimal
+#   orderState - SOAP::SOAPString
+#   dateCancelledGMT - SOAP::SOAPDateTime
+#   orderID - SOAP::SOAPInt
+#   clientOrderIdentifier - SOAP::SOAPString
+#   sellerOrderID - SOAP::SOAPString
+#   flagStyle - SOAP::SOAPString
+#   orderStatus - ChannelAdvisor::OrderServiceSOAP::OrderStatus
+class OrderResponseDetailLow < OrderResponseItem
+  attr_accessor :numberOfMatches
+  attr_accessor :orderTimeGMT
+  attr_accessor :lastUpdateDate
+  attr_accessor :totalOrderAmount
+  attr_accessor :orderState
+  attr_accessor :dateCancelledGMT
+  attr_accessor :orderID
+  attr_accessor :clientOrderIdentifier
+  attr_accessor :sellerOrderID
+  attr_accessor :flagStyle
+  attr_accessor :orderStatus
+
+  def initialize(numberOfMatches = nil, orderTimeGMT = nil, lastUpdateDate = nil, totalOrderAmount = nil, orderState = nil, dateCancelledGMT = nil, orderID = nil, clientOrderIdentifier = nil, sellerOrderID = nil, flagStyle = nil, orderStatus = nil)
+    @numberOfMatches = numberOfMatches
+    @orderTimeGMT = orderTimeGMT
+    @lastUpdateDate = lastUpdateDate
+    @totalOrderAmount = totalOrderAmount
+    @orderState = orderState
+    @dateCancelledGMT = dateCancelledGMT
+    @orderID = orderID
+    @clientOrderIdentifier = clientOrderIdentifier
+    @sellerOrderID = sellerOrderID
+    @flagStyle = flagStyle
+    @orderStatus = orderStatus
+  end
+end
+
+# {http://api.channeladvisor.com/datacontracts/orders}OrderResponseDetailMedium
+#   numberOfMatches - SOAP::SOAPInt
+#   orderTimeGMT - SOAP::SOAPDateTime
+#   lastUpdateDate - SOAP::SOAPDateTime
+#   totalOrderAmount - SOAP::SOAPDecimal
+#   orderState - SOAP::SOAPString
+#   dateCancelledGMT - SOAP::SOAPDateTime
+#   orderID - SOAP::SOAPInt
+#   clientOrderIdentifier - SOAP::SOAPString
+#   sellerOrderID - SOAP::SOAPString
+#   flagStyle - SOAP::SOAPString
+#   orderStatus - ChannelAdvisor::OrderServiceSOAP::OrderStatus
+#   resellerID - SOAP::SOAPString
+#   buyerEmailAddress - SOAP::SOAPString
+#   emailOptIn - SOAP::SOAPBoolean
+#   paymentInfo - ChannelAdvisor::OrderServiceSOAP::PaymentInfoResponse
+#   shippingInfo - ChannelAdvisor::OrderServiceSOAP::ShippingInfoResponse
+#   billingInfo - ChannelAdvisor::OrderServiceSOAP::BillingInfo
+#   flagDescription - SOAP::SOAPString
+class OrderResponseDetailMedium < OrderResponseDetailLow
+  attr_accessor :numberOfMatches
+  attr_accessor :orderTimeGMT
+  attr_accessor :lastUpdateDate
+  attr_accessor :totalOrderAmount
+  attr_accessor :orderState
+  attr_accessor :dateCancelledGMT
+  attr_accessor :orderID
+  attr_accessor :clientOrderIdentifier
+  attr_accessor :sellerOrderID
+  attr_accessor :flagStyle
+  attr_accessor :orderStatus
+  attr_accessor :resellerID
+  attr_accessor :buyerEmailAddress
+  attr_accessor :emailOptIn
+  attr_accessor :paymentInfo
+  attr_accessor :shippingInfo
+  attr_accessor :billingInfo
+  attr_accessor :flagDescription
+
+  def initialize(numberOfMatches = nil, orderTimeGMT = nil, lastUpdateDate = nil, totalOrderAmount = nil, orderState = nil, dateCancelledGMT = nil, orderID = nil, clientOrderIdentifier = nil, sellerOrderID = nil, flagStyle = nil, orderStatus = nil, resellerID = nil, buyerEmailAddress = nil, emailOptIn = nil, paymentInfo = nil, shippingInfo = nil, billingInfo = nil, flagDescription = nil)
+    @numberOfMatches = numberOfMatches
+    @orderTimeGMT = orderTimeGMT
+    @lastUpdateDate = lastUpdateDate
+    @totalOrderAmount = totalOrderAmount
+    @orderState = orderState
+    @dateCancelledGMT = dateCancelledGMT
+    @orderID = orderID
+    @clientOrderIdentifier = clientOrderIdentifier
+    @sellerOrderID = sellerOrderID
+    @flagStyle = flagStyle
+    @orderStatus = orderStatus
+    @resellerID = resellerID
+    @buyerEmailAddress = buyerEmailAddress
+    @emailOptIn = emailOptIn
+    @paymentInfo = paymentInfo
+    @shippingInfo = shippingInfo
+    @billingInfo = billingInfo
+    @flagDescription = flagDescription
+  end
+end
+
+# {http://api.channeladvisor.com/datacontracts/orders}OrderResponseDetailHigh
+#   numberOfMatches - SOAP::SOAPInt
+#   orderTimeGMT - SOAP::SOAPDateTime
+#   lastUpdateDate - SOAP::SOAPDateTime
+#   totalOrderAmount - SOAP::SOAPDecimal
+#   orderState - SOAP::SOAPString
+#   dateCancelledGMT - SOAP::SOAPDateTime
+#   orderID - SOAP::SOAPInt
+#   clientOrderIdentifier - SOAP::SOAPString
+#   sellerOrderID - SOAP::SOAPString
+#   flagStyle - SOAP::SOAPString
+#   orderStatus - ChannelAdvisor::OrderServiceSOAP::OrderStatus
+#   resellerID - SOAP::SOAPString
+#   buyerEmailAddress - SOAP::SOAPString
+#   emailOptIn - SOAP::SOAPBoolean
+#   paymentInfo - ChannelAdvisor::OrderServiceSOAP::PaymentInfoResponse
+#   shippingInfo - ChannelAdvisor::OrderServiceSOAP::ShippingInfoResponse
+#   billingInfo - ChannelAdvisor::OrderServiceSOAP::BillingInfo
+#   flagDescription - SOAP::SOAPString
+#   shoppingCart - ChannelAdvisor::OrderServiceSOAP::OrderCart
+class OrderResponseDetailHigh < OrderResponseDetailMedium
+  attr_accessor :numberOfMatches
+  attr_accessor :orderTimeGMT
+  attr_accessor :lastUpdateDate
+  attr_accessor :totalOrderAmount
+  attr_accessor :orderState
+  attr_accessor :dateCancelledGMT
+  attr_accessor :orderID
+  attr_accessor :clientOrderIdentifier
+  attr_accessor :sellerOrderID
+  attr_accessor :flagStyle
+  attr_accessor :orderStatus
+  attr_accessor :resellerID
+  attr_accessor :buyerEmailAddress
+  attr_accessor :emailOptIn
+  attr_accessor :paymentInfo
+  attr_accessor :shippingInfo
+  attr_accessor :billingInfo
+  attr_accessor :flagDescription
+  attr_accessor :shoppingCart
+
+  def initialize(numberOfMatches = nil, orderTimeGMT = nil, lastUpdateDate = nil, totalOrderAmount = nil, orderState = nil, dateCancelledGMT = nil, orderID = nil, clientOrderIdentifier = nil, sellerOrderID = nil, flagStyle = nil, orderStatus = nil, resellerID = nil, buyerEmailAddress = nil, emailOptIn = nil, paymentInfo = nil, shippingInfo = nil, billingInfo = nil, flagDescription = nil, shoppingCart = nil)
+    @numberOfMatches = numberOfMatches
+    @orderTimeGMT = orderTimeGMT
+    @lastUpdateDate = lastUpdateDate
+    @totalOrderAmount = totalOrderAmount
+    @orderState = orderState
+    @dateCancelledGMT = dateCancelledGMT
+    @orderID = orderID
+    @clientOrderIdentifier = clientOrderIdentifier
+    @sellerOrderID = sellerOrderID
+    @flagStyle = flagStyle
+    @orderStatus = orderStatus
+    @resellerID = resellerID
+    @buyerEmailAddress = buyerEmailAddress
+    @emailOptIn = emailOptIn
+    @paymentInfo = paymentInfo
+    @shippingInfo = shippingInfo
+    @billingInfo = billingInfo
+    @flagDescription = flagDescription
+    @shoppingCart = shoppingCart
+  end
+end
+
+# {http://api.channeladvisor.com/datacontracts/orders}OrderResponseDetailComplete
+#   numberOfMatches - SOAP::SOAPInt
+#   orderTimeGMT - SOAP::SOAPDateTime
+#   lastUpdateDate - SOAP::SOAPDateTime
+#   totalOrderAmount - SOAP::SOAPDecimal
+#   orderState - SOAP::SOAPString
+#   dateCancelledGMT - SOAP::SOAPDateTime
+#   orderID - SOAP::SOAPInt
+#   clientOrderIdentifier - SOAP::SOAPString
+#   sellerOrderID - SOAP::SOAPString
+#   flagStyle - SOAP::SOAPString
+#   orderStatus - ChannelAdvisor::OrderServiceSOAP::OrderStatus
+#   resellerID - SOAP::SOAPString
+#   buyerEmailAddress - SOAP::SOAPString
+#   emailOptIn - SOAP::SOAPBoolean
+#   paymentInfo - ChannelAdvisor::OrderServiceSOAP::PaymentInfoResponse
+#   shippingInfo - ChannelAdvisor::OrderServiceSOAP::ShippingInfoResponse
+#   billingInfo - ChannelAdvisor::OrderServiceSOAP::BillingInfo
+#   flagDescription - SOAP::SOAPString
+#   shoppingCart - ChannelAdvisor::OrderServiceSOAP::OrderCart
+#   customValueList - ChannelAdvisor::OrderServiceSOAP::ArrayOfCustomValue
+#   buyerIpAddress - SOAP::SOAPString
+#   transactionNotes - SOAP::SOAPString
+class OrderResponseDetailComplete < OrderResponseDetailHigh
+  attr_accessor :numberOfMatches
+  attr_accessor :orderTimeGMT
+  attr_accessor :lastUpdateDate
+  attr_accessor :totalOrderAmount
+  attr_accessor :orderState
+  attr_accessor :dateCancelledGMT
+  attr_accessor :orderID
+  attr_accessor :clientOrderIdentifier
+  attr_accessor :sellerOrderID
+  attr_accessor :flagStyle
+  attr_accessor :orderStatus
+  attr_accessor :resellerID
+  attr_accessor :buyerEmailAddress
+  attr_accessor :emailOptIn
+  attr_accessor :paymentInfo
+  attr_accessor :shippingInfo
+  attr_accessor :billingInfo
+  attr_accessor :flagDescription
+  attr_accessor :shoppingCart
+  attr_accessor :customValueList
+  attr_accessor :buyerIpAddress
+  attr_accessor :transactionNotes
+
+  def initialize(numberOfMatches = nil, orderTimeGMT = nil, lastUpdateDate = nil, totalOrderAmount = nil, orderState = nil, dateCancelledGMT = nil, orderID = nil, clientOrderIdentifier = nil, sellerOrderID = nil, flagStyle = nil, orderStatus = nil, resellerID = nil, buyerEmailAddress = nil, emailOptIn = nil, paymentInfo = nil, shippingInfo = nil, billingInfo = nil, flagDescription = nil, shoppingCart = nil, customValueList = nil, buyerIpAddress = nil, transactionNotes = nil)
+    @numberOfMatches = numberOfMatches
+    @orderTimeGMT = orderTimeGMT
+    @lastUpdateDate = lastUpdateDate
+    @totalOrderAmount = totalOrderAmount
+    @orderState = orderState
+    @dateCancelledGMT = dateCancelledGMT
+    @orderID = orderID
+    @clientOrderIdentifier = clientOrderIdentifier
+    @sellerOrderID = sellerOrderID
+    @flagStyle = flagStyle
+    @orderStatus = orderStatus
+    @resellerID = resellerID
+    @buyerEmailAddress = buyerEmailAddress
+    @emailOptIn = emailOptIn
+    @paymentInfo = paymentInfo
+    @shippingInfo = shippingInfo
+    @billingInfo = billingInfo
+    @flagDescription = flagDescription
+    @shoppingCart = shoppingCart
+    @customValueList = customValueList
+    @buyerIpAddress = buyerIpAddress
+    @transactionNotes = transactionNotes
+  end
 end
 
 # {http://api.channeladvisor.com/webservices/}ResultStatus
@@ -1544,200 +1895,27 @@ class ResultStatus < ::String
   Success = new("Success")
 end
 
-# {http://api.channeladvisor.com/datacontracts/orders}RefundAdjustmentReason
-class RefundAdjustmentReason < ::String
-  AlternateItemProvided = new("AlternateItemProvided")
-  BuyerCancelled = new("BuyerCancelled")
-  CouldNotShip = new("CouldNotShip")
-  CustomerExchange = new("CustomerExchange")
-  CustomerReturnedItem = new("CustomerReturnedItem")
-  GeneralAdjustment = new("GeneralAdjustment")
-  ItemNotAvailable = new("ItemNotAvailable")
-  MerchandiseNotReceived = new("MerchandiseNotReceived")
-  ShippingAddressUndeliverable = new("ShippingAddressUndeliverable")
-end
-
-# {http://api.channeladvisor.com/datacontracts/orders}SiteToken
-class SiteToken < ::String
-  AMAZON_AUCTIONS = new("AMAZON_AUCTIONS")
-  AMAZON_DE = new("AMAZON_DE")
-  AMAZON_FR = new("AMAZON_FR")
-  AMAZON_MARKETPLACE = new("AMAZON_MARKETPLACE")
-  AMAZON_MERCHANTSAT = new("AMAZON_MERCHANTSAT")
-  AMAZON_UK = new("AMAZON_UK")
-  AMAZON_US = new("AMAZON_US")
-  BUY_DOT_COM = new("BUY_DOT_COM")
-  CHANNELADVISOR_STORE = new("CHANNELADVISOR_STORE")
-  DEMANDWARE_STORE = new("DEMANDWARE_STORE")
-  DIRECT_SALE = new("DIRECT_SALE")
-  EBAY_AU = new("EBAY_AU")
-  EBAY_CA = new("EBAY_CA")
-  EBAY_DE = new("EBAY_DE")
-  EBAY_ES = new("EBAY_ES")
-  EBAY_FR = new("EBAY_FR")
-  EBAY_IE = new("EBAY_IE")
-  EBAY_IT = new("EBAY_IT")
-  EBAY_MOTORS = new("EBAY_MOTORS")
-  EBAY_MOTORS_FIXED_PRICE = new("EBAY_MOTORS_FIXED_PRICE")
-  EBAY_STORES = new("EBAY_STORES")
-  EBAY_UK = new("EBAY_UK")
-  EBAY_US = new("EBAY_US")
-  OVERSTOCK = new("OVERSTOCK")
-  OVERSTOCK_SHOPPING = new("OVERSTOCK_SHOPPING")
-  PIXMANIA = new("PIXMANIA")
-  STOREADVISOR_PREMIUM = new("STOREADVISOR_PREMIUM")
-  TRADING_POST = new("TRADING_POST")
-  UNKNOWN = new("UNKNOWN")
-  YAHOO = new("YAHOO")
-  YAHOO_STORES = new("YAHOO_STORES")
-end
-
-# {http://api.channeladvisor.com/datacontracts/orders}AsyncStatusCode
-class AsyncStatusCode < ::String
-  AcknowledgedPostProcessingNotComplete = new("AcknowledgedPostProcessingNotComplete")
-  Error = new("Error")
-  NoChange = new("NoChange")
-  PostProcessingComplete = new("PostProcessingComplete")
-  ProcessedNotAcknowledged = new("ProcessedNotAcknowledged")
-  SubmittedNotProcessed = new("SubmittedNotProcessed")
-end
-
-# {http://api.channeladvisor.com/datacontracts/orders}DetailLevelType
-class DetailLevelType < ::String
-  Complete = new("Complete")
-  High = new("High")
-  Low = new("Low")
-  Medium = new("Medium")
-end
-
-# {http://api.channeladvisor.com/datacontracts/orders}ExportStateType
-class ExportStateType < ::String
-  Exported = new("Exported")
-  NotExported = new("NotExported")
-  Unknown = new("Unknown")
-end
-
-# {http://api.channeladvisor.com/datacontracts/orders}OrderStateCode
-class OrderStateCode < ::String
-  Active = new("Active")
-  Archived = new("Archived")
-  Cancelled = new("Cancelled")
-end
-
-# {http://api.channeladvisor.com/datacontracts/orders}PaymentStatusCode
-class PaymentStatusCode < ::String
-  Cleared = new("Cleared")
-  Deposited = new("Deposited")
-  Failed = new("Failed")
-  NoChange = new("NoChange")
-  NotSubmitted = new("NotSubmitted")
-  Submitted = new("Submitted")
-end
-
-# {http://api.channeladvisor.com/datacontracts/orders}CheckoutStatusCode
-class CheckoutStatusCode < ::String
-  Cancelled = new("Cancelled")
-  Completed = new("Completed")
-  CompletedOffline = new("CompletedOffline")
-  NoChange = new("NoChange")
-  NotVisited = new("NotVisited")
-  OnHold = new("OnHold")
-  Visited = new("Visited")
-end
-
-# {http://api.channeladvisor.com/datacontracts/orders}ShippingStatusCode
-class ShippingStatusCode < ::String
-  NoChange = new("NoChange")
-  PartiallyShipped = new("PartiallyShipped")
-  Shipped = new("Shipped")
-  Unshipped = new("Unshipped")
-end
-
-# {http://api.channeladvisor.com/datacontracts/orders}FlagType
-class FlagType < ::String
-  BlueFlag = new("BlueFlag")
-  ExclamationPoint = new("ExclamationPoint")
-  GreenFlag = new("GreenFlag")
-  ItemCopied = new("ItemCopied")
-  NoFlag = new("NoFlag")
-  NotAvailable = new("NotAvailable")
-  Price = new("Price")
-  QuestionMark = new("QuestionMark")
-  RedFlag = new("RedFlag")
-  YellowFlag = new("YellowFlag")
-end
-
-# {http://api.channeladvisor.com/datacontracts/orders}OrderRefundStatusCode
-class OrderRefundStatusCode < ::String
-  FailedAttemptsOnly = new("FailedAttemptsOnly")
-  LineItemLevel = new("LineItemLevel")
-  NoRefunds = new("NoRefunds")
-  OrderAndLineItemLevel = new("OrderAndLineItemLevel")
-  OrderLevel = new("OrderLevel")
-end
-
-# {http://api.channeladvisor.com/datacontracts/orders}CheckoutSourceType
-class CheckoutSourceType < ::String
-  CA_Checkout = new("CA_Checkout")
-  Demandware_Checkout = new("Demandware_Checkout")
-  Google_Checkout = new("Google_Checkout")
-  Overstock_Shopping = new("Overstock_Shopping")
-  PayPal = new("PayPal")
-  Site_Checkout = new("Site_Checkout")
-  Unspecified = new("Unspecified")
-  YahooStores_Checkout = new("YahooStores_Checkout")
-end
-
-# {http://api.channeladvisor.com/datacontracts/orders}VAT_Calculation_Type
-class VAT_Calculation_Type < ::String
-  Unspecified = new("Unspecified")
-  VAT_EXCLUSIVE = new("VAT_EXCLUSIVE")
-  VAT_INCLUSIVE = new("VAT_INCLUSIVE")
-end
-
-# {http://api.channeladvisor.com/datacontracts/orders}LineItemTypeCode
-class LineItemTypeCode < ::String
-  AdditionalCostOrDiscount = new("AdditionalCostOrDiscount")
-  BuyerOptInIncentive = new("BuyerOptInIncentive")
-  GiftWrap = new("GiftWrap")
-  Listing = new("Listing")
-  Promotion = new("Promotion")
-  SKU = new("SKU")
-  SalesTax = new("SalesTax")
-  Shipping = new("Shipping")
-  ShippingInsurance = new("ShippingInsurance")
-  VATGiftWrap = new("VATGiftWrap")
-  VATShipping = new("VATShipping")
-end
-
-# {http://api.channeladvisor.com/datacontracts/orders}CheckoutPaymentStatusCode
-class CheckoutPaymentStatusCode < ::String
-  CheckoutCanceledPaymentFailed = new("CheckoutCanceledPaymentFailed")
-  CheckoutReopenedPaymentFailed = new("CheckoutReopenedPaymentFailed")
-  CheckoutSamePaymentCleared = new("CheckoutSamePaymentCleared")
-  CheckoutSamePaymentDeposited = new("CheckoutSamePaymentDeposited")
-  CheckoutSamePaymentSubmitted = new("CheckoutSamePaymentSubmitted")
-  NoChange = new("NoChange")
-end
-
 # {http://api.channeladvisor.com/webservices/}SetOrdersExportStatus
 #   accountID - SOAP::SOAPString
-#   clientOrderIdentifiers - ChannelAdvisor::OrderServiceSOAP::ArrayOfString
+#   orderIDList - ChannelAdvisor::OrderServiceSOAP::ArrayOfInt
+#   clientOrderIdentifierList - ChannelAdvisor::OrderServiceSOAP::ArrayOfString
 #   markAsExported - SOAP::SOAPBoolean
 class SetOrdersExportStatus
   attr_accessor :accountID
-  attr_accessor :clientOrderIdentifiers
+  attr_accessor :orderIDList
+  attr_accessor :clientOrderIdentifierList
   attr_accessor :markAsExported
 
-  def initialize(accountID = nil, clientOrderIdentifiers = nil, markAsExported = nil)
+  def initialize(accountID = nil, orderIDList = nil, clientOrderIdentifierList = nil, markAsExported = nil)
     @accountID = accountID
-    @clientOrderIdentifiers = clientOrderIdentifiers
+    @orderIDList = orderIDList
+    @clientOrderIdentifierList = clientOrderIdentifierList
     @markAsExported = markAsExported
   end
 end
 
 # {http://api.channeladvisor.com/webservices/}SetOrdersExportStatusResponse
-#   setOrdersExportStatusResult - ChannelAdvisor::OrderServiceSOAP::APIResultOfArrayOfBoolean
+#   setOrdersExportStatusResult - ChannelAdvisor::OrderServiceSOAP::APIResultOfArrayOfSetExportStatusResponse
 class SetOrdersExportStatusResponse
   attr_accessor :setOrdersExportStatusResult
 
@@ -1766,52 +1944,6 @@ class SubmitOrderRefundResponse
 
   def initialize(submitOrderRefundResult = nil)
     @submitOrderRefundResult = submitOrderRefundResult
-  end
-end
-
-# {http://api.channeladvisor.com/webservices/}GetOrderList
-#   accountID - SOAP::SOAPString
-#   orderCriteria - ChannelAdvisor::OrderServiceSOAP::OrderCriteria
-class GetOrderList
-  attr_accessor :accountID
-  attr_accessor :orderCriteria
-
-  def initialize(accountID = nil, orderCriteria = nil)
-    @accountID = accountID
-    @orderCriteria = orderCriteria
-  end
-end
-
-# {http://api.channeladvisor.com/webservices/}GetOrderListResponse
-#   getOrderListResult - ChannelAdvisor::OrderServiceSOAP::APIResultOfArrayOfOrderResponseItem
-class GetOrderListResponse
-  attr_accessor :getOrderListResult
-
-  def initialize(getOrderListResult = nil)
-    @getOrderListResult = getOrderListResult
-  end
-end
-
-# {http://api.channeladvisor.com/webservices/}SubmitOrder
-#   accountID - SOAP::SOAPString
-#   order - ChannelAdvisor::OrderServiceSOAP::OrderSubmit
-class SubmitOrder
-  attr_accessor :accountID
-  attr_accessor :order
-
-  def initialize(accountID = nil, order = nil)
-    @accountID = accountID
-    @order = order
-  end
-end
-
-# {http://api.channeladvisor.com/webservices/}SubmitOrderResponse
-#   submitOrderResult - ChannelAdvisor::OrderServiceSOAP::APIResultOfInt32
-class SubmitOrderResponse
-  attr_accessor :submitOrderResult
-
-  def initialize(submitOrderResult = nil)
-    @submitOrderResult = submitOrderResult
   end
 end
 
@@ -1913,6 +2045,104 @@ class UpdateOrderListResponse
 
   def initialize(updateOrderListResult = nil)
     @updateOrderListResult = updateOrderListResult
+  end
+end
+
+# {http://api.channeladvisor.com/webservices/}OrderMerge
+#   accountID - SOAP::SOAPString
+#   primaryOrderID - SOAP::SOAPInt
+#   orderIDMergeList - ChannelAdvisor::OrderServiceSOAP::ArrayOfInt
+class OrderMerge
+  attr_accessor :accountID
+  attr_accessor :primaryOrderID
+  attr_accessor :orderIDMergeList
+
+  def initialize(accountID = nil, primaryOrderID = nil, orderIDMergeList = nil)
+    @accountID = accountID
+    @primaryOrderID = primaryOrderID
+    @orderIDMergeList = orderIDMergeList
+  end
+end
+
+# {http://api.channeladvisor.com/webservices/}OrderMergeResponse
+#   orderMergeResult - ChannelAdvisor::OrderServiceSOAP::APIResultOfBoolean
+class OrderMergeResponse
+  attr_accessor :orderMergeResult
+
+  def initialize(orderMergeResult = nil)
+    @orderMergeResult = orderMergeResult
+  end
+end
+
+# {http://api.channeladvisor.com/webservices/}OrderSplit
+#   accountID - SOAP::SOAPString
+#   orderID - SOAP::SOAPInt
+#   lineItemIDList - ChannelAdvisor::OrderServiceSOAP::ArrayOfInt
+class OrderSplit
+  attr_accessor :accountID
+  attr_accessor :orderID
+  attr_accessor :lineItemIDList
+
+  def initialize(accountID = nil, orderID = nil, lineItemIDList = nil)
+    @accountID = accountID
+    @orderID = orderID
+    @lineItemIDList = lineItemIDList
+  end
+end
+
+# {http://api.channeladvisor.com/webservices/}OrderSplitResponse
+#   orderSplitResult - ChannelAdvisor::OrderServiceSOAP::APIResultOfBoolean
+class OrderSplitResponse
+  attr_accessor :orderSplitResult
+
+  def initialize(orderSplitResult = nil)
+    @orderSplitResult = orderSplitResult
+  end
+end
+
+# {http://api.channeladvisor.com/webservices/}SubmitOrder
+#   accountID - SOAP::SOAPString
+#   order - ChannelAdvisor::OrderServiceSOAP::OrderSubmit
+class SubmitOrder
+  attr_accessor :accountID
+  attr_accessor :order
+
+  def initialize(accountID = nil, order = nil)
+    @accountID = accountID
+    @order = order
+  end
+end
+
+# {http://api.channeladvisor.com/webservices/}SubmitOrderResponse
+#   submitOrderResult - ChannelAdvisor::OrderServiceSOAP::APIResultOfInt32
+class SubmitOrderResponse
+  attr_accessor :submitOrderResult
+
+  def initialize(submitOrderResult = nil)
+    @submitOrderResult = submitOrderResult
+  end
+end
+
+# {http://api.channeladvisor.com/webservices/}GetOrderList
+#   accountID - SOAP::SOAPString
+#   orderCriteria - ChannelAdvisor::OrderServiceSOAP::OrderCriteria
+class GetOrderList
+  attr_accessor :accountID
+  attr_accessor :orderCriteria
+
+  def initialize(accountID = nil, orderCriteria = nil)
+    @accountID = accountID
+    @orderCriteria = orderCriteria
+  end
+end
+
+# {http://api.channeladvisor.com/webservices/}GetOrderListResponse
+#   getOrderListResult - ChannelAdvisor::OrderServiceSOAP::APIResultOfArrayOfOrderResponseItem
+class GetOrderListResponse
+  attr_accessor :getOrderListResult
+
+  def initialize(getOrderListResult = nil)
+    @getOrderListResult = getOrderListResult
   end
 end
 

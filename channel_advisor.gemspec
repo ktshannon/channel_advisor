@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = 'channel_advisor'
-  s.version = '1.0.34'
+  s.version = '2.0.0'
 
   s.required_rubygems_version = Gem::Requirement.new('>= 0')
   s.authors = ['Second Rotation, Inc.']

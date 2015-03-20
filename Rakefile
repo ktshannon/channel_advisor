@@ -67,7 +67,7 @@ task :generate do
     `mkdir -p #{service_dir}`
 
     # Generate the files from the wsdl
-    `cd #{service_dir} && wsdl2ruby.rb --wsdl https://api.channeladvisor.com/ChannelAdvisorAPI/v4/#{camel_name}.asmx?WSDL --type client --module_path ChannelAdvisor::#{camel_name}SOAP`
+    `cd #{service_dir} && wsdl2ruby.rb --wsdl https://api.channeladvisor.com/ChannelAdvisorAPI/v7/#{camel_name}.asmx?WSDL --type client --module_path ChannelAdvisor::#{camel_name}SOAP`
 
     # Remove the generated client file
     `rm #{File.join(service_dir, camel_name)}Client.rb`

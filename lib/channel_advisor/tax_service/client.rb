@@ -6,7 +6,7 @@ module ChannelAdvisor
 module TaxServiceSOAP
 
 class TaxServiceSoap < ::SOAP::RPC::Driver
-  DefaultEndpointUrl = "https://api.channeladvisor.com/ChannelAdvisorAPI/v4/TaxService.asmx"
+  DefaultEndpointUrl = "https://api.channeladvisor.com/ChannelAdvisorAPI/v7/TaxService.asmx"
 
   Methods = [
     [ "http://api.channeladvisor.com/webservices/GetTaxRateList",

@@ -10,7 +10,7 @@ module ChannelAdvisor; module MarketplaceAdServiceSOAP
 #   postingTemplate - SOAP::SOAPString
 #   adTemplate - SOAP::SOAPString
 #   schedule - SOAP::SOAPString
-#   flagStyle - ChannelAdvisor::MarketplaceAdServiceSOAP::FlagType
+#   flagStyle - SOAP::SOAPString
 #   flagDescription - SOAP::SOAPString
 #   primaryCategory - SOAP::SOAPString
 #   secondaryCategory - SOAP::SOAPString
@@ -162,6 +162,10 @@ class APIResultOfBoolean
   end
 end
 
+# {http://api.channeladvisor.com/webservices/}ArrayOfInt
+class ArrayOfInt < ::Array
+end
+
 # {http://api.channeladvisor.com/webservices/}APIResultOfString
 #   status - ChannelAdvisor::MarketplaceAdServiceSOAP::ResultStatus
 #   messageCode - SOAP::SOAPInt
@@ -182,19 +186,6 @@ class APIResultOfString
     @data = data
     @resultData = resultData
   end
-end
-
-# {http://api.channeladvisor.com/webservices/}FlagType
-class FlagType < ::String
-  BlueFlag = new("BlueFlag")
-  ExclamationPoint = new("ExclamationPoint")
-  GreenFlag = new("GreenFlag")
-  NoFlag = new("NoFlag")
-  NotAvailable = new("NotAvailable")
-  Price = new("Price")
-  QuestionMark = new("QuestionMark")
-  RedFlag = new("RedFlag")
-  YellowFlag = new("YellowFlag")
 end
 
 # {http://api.channeladvisor.com/webservices/}ResultStatus
@@ -232,7 +223,7 @@ end
 #   postingTemplate - SOAP::SOAPString
 #   adTemplate - SOAP::SOAPString
 #   schedule - SOAP::SOAPString
-#   flagStyle - ChannelAdvisor::MarketplaceAdServiceSOAP::FlagType
+#   flagStyle - SOAP::SOAPString
 #   flagDescription - SOAP::SOAPString
 #   primaryCategory - SOAP::SOAPString
 #   secondaryCategory - SOAP::SOAPString
@@ -296,6 +287,29 @@ class DeleteMarketplaceAdResponse
 
   def initialize(deleteMarketplaceAdResult = nil)
     @deleteMarketplaceAdResult = deleteMarketplaceAdResult
+  end
+end
+
+# {http://api.channeladvisor.com/webservices/}DeleteMarketplaceAdList
+#   accountID - SOAP::SOAPString
+#   marketplaceAdIDList - ChannelAdvisor::MarketplaceAdServiceSOAP::ArrayOfInt
+class DeleteMarketplaceAdList
+  attr_accessor :accountID
+  attr_accessor :marketplaceAdIDList
+
+  def initialize(accountID = nil, marketplaceAdIDList = nil)
+    @accountID = accountID
+    @marketplaceAdIDList = marketplaceAdIDList
+  end
+end
+
+# {http://api.channeladvisor.com/webservices/}DeleteMarketplaceAdListResponse
+#   deleteMarketplaceAdListResult - ChannelAdvisor::MarketplaceAdServiceSOAP::APIResultOfBoolean
+class DeleteMarketplaceAdListResponse
+  attr_accessor :deleteMarketplaceAdListResult
+
+  def initialize(deleteMarketplaceAdListResult = nil)
+    @deleteMarketplaceAdListResult = deleteMarketplaceAdListResult
   end
 end
 
