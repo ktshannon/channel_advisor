@@ -1,5 +1,5 @@
 require 'rubygems'
-gem 'soap4r-ruby1.9'
+gem 'soap4r-ng', :git=>'https://github.com/rubyjedi/soap4r.git', :branch=>'master'
 require 'xsd/qname'
 require 'xsd/mapping'
 require 'soap/mapping'
