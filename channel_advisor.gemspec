@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
   s.rubygems_version = '1.4.2'
   s.summary = 'channel_advisor'
 
-  s.add_runtime_dependency('soap4r')
+  s.add_runtime_dependency('soap4r-ng')
   s.add_runtime_dependency('configatron', ['~> 2.6'])
   s.add_development_dependency('rake', ['>= 0'])
   s.add_development_dependency('rspec', ['~> 2.99'])
