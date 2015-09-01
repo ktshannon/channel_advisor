@@ -44,6 +44,8 @@ module ChannelAdvisor
             request = request_class.new(*args)
 
             result = client.send(method_name, request)
+            puts method_name
+            puts request
             response = result.send(result_method)
 
             check_for_success(response)
