@@ -10,6 +10,7 @@ module ChannelAdvisor
 
       def init_client(developer_key = nil, password = nil)
         client = self.class.const_get(:SOAP_CLASS).new
+        client.wiredump_dev = STDOUT
         client.headerhandler << ChannelAdvisor::AuthHandler.new(developer_key, password)
         client
       end
@@ -44,8 +45,6 @@ module ChannelAdvisor
             request = request_class.new(*args)
 
             result = client.send(method_name, request)
-            puts method_name
-            puts request
             response = result.send(result_method)
 
             check_for_success(response)
